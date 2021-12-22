@@ -1,6 +1,5 @@
 package app.ishizaki.ryu.examapplication
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +10,8 @@ import io.realm.RealmRecyclerViewAdapter
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ToDoAdapter (
-    private val context: Context,
+class ToDoAdapter(
+    private val context: RecyclerView,
     private var taskList: OrderedRealmCollection<ToDo>?,
     private val autoUpdate: Boolean
 ): RealmRecyclerViewAdapter<ToDo, ToDoAdapter.ViewHolder>(taskList, autoUpdate){
@@ -28,7 +27,7 @@ class ToDoAdapter (
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(context).inflate(R.layout.item_schedule_data_cell, parent, false
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_schedule_data_cell, parent, false
         )
         return  ViewHolder(v)
     }

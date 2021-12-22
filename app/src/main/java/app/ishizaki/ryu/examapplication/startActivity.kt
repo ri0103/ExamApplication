@@ -1,15 +1,19 @@
 package app.ishizaki.ryu.examapplication
 
+import android.app.PendingIntent.getActivity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import app.ishizaki.ryu.examapplication.fragments.CoverageFragment
 import app.ishizaki.ryu.examapplication.fragments.HomeFragment
 import app.ishizaki.ryu.examapplication.fragments.TodoFragment
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_start.*
 
 class startActivity : AppCompatActivity() {
+
+
+
 
 
 
@@ -22,6 +26,11 @@ class startActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
         replaceFragment(homeFragment)
+
+
+
+
+
 
 
 bottom_navigation.setOnNavigationItemSelectedListener {

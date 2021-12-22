@@ -1,6 +1,5 @@
 package app.ishizaki.ryu.examapplication
 
-import android.content.Context
 import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
@@ -9,11 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import io.realm.OrderedRealmCollection
 import io.realm.RealmRecyclerViewAdapter
-import java.text.SimpleDateFormat
-import java.util.*
+import io.realm.RealmResults
 
-class CoverageAdapter (
-    private val context: Context,
+class CoverageAdapter(
+    private val context: RecyclerView,
     private var taskList: OrderedRealmCollection<Coverage>?,
     private val autoUpdate: Boolean
 ): RealmRecyclerViewAdapter<Coverage, CoverageAdapter.ViewHolder>(taskList, autoUpdate){
@@ -29,7 +27,7 @@ class CoverageAdapter (
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(context).inflate(R.layout.item_exam_coverage_data_cell, parent, false
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_exam_coverage_data_cell, parent, false
         )
         return  ViewHolder(v)
     }
