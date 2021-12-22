@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddToDoActivity">
+
+    <EditText
+        android:id="@+id/subjectSchedule"
+        android:layout_width="250sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:hint="科目名"
+        android:inputType="textPersonName"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/contentSchedule"
+        android:gravity="top|left"
+        android:layout_width="300sp"
+        android:layout_height="250sp"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:hint="内容"
+        android:inputType="textMultiLine"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subjectSchedule" />
+
+    <Button
+        android:id="@+id/scheduleSaveButton"
+        android:layout_width="120sp"
+        android:layout_height="50sp"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="#8cc2ff"
+        android:text="保存"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/dateScheduleButton"
+        android:layout_width="120sp"
+        android:layout_height="40sp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="58dp"
+        android:backgroundTint="#02cf13"
+        android:text="日付を選択"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/timeScheduleButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contentSchedule" />
+
+    <Button
+        android:id="@+id/timeScheduleButton"
+        android:layout_width="120sp"
+        android:layout_height="40sp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="#02cf13"
+        android:text="時間を選択"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dateScheduleButton"
+        app:layout_constraintTop_toBottomOf="@+id/contentSchedule" />
+
+    <TextView
+        android:id="@+id/selectedDateToDo"
+        android:layout_width="120sp"
+        android:layout_height="30sp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateScheduleButton" />
+
+    <TextView
+        android:id="@+id/selectedTimeToDo"
+        android:layout_width="120sp"
+        android:layout_height="30sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="70dp"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeScheduleButton" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
