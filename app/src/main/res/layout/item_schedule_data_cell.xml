@@ -9,54 +9,51 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="4dp"
-        app:cardElevation="5dp"
+        app:cardCornerRadius="15sp"
+        app:cardElevation="5sp"
         app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingRight="5sp"
+        android:paddingLeft="5sp">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_margin="10dp">
+            android:layout_margin="15sp"
+            android:orientation="vertical">
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/subjectText"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
+                android:text="科目"
+                android:paddingBottom="15sp"
+                android:textSize="30sp"
+                android:layout_gravity="center"/>
+
 
                 <TextView
                     android:id="@+id/dateText"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="15sp"
                     android:text="~月~日~時~分"
-                    android:textSize="24sp" />
+                    android:textSize="25sp"
+                    android:layout_gravity="center"/>
 
-                <TextView
-                    android:id="@+id/subjectText"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
-                    android:layout_weight="1"
-                    android:text="科目"
-                    android:textSize="30sp"
-                    tools:layout_editor_absoluteX="383dp" />
-            </LinearLayout>
+
+
 
             <TextView
                 android:id="@+id/contentText"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:text="内容"
-                android:textSize="16sp"
-                tools:layout_editor_absoluteX="30dp" />
+                android:textSize="15sp" />
 
         </LinearLayout>
 
