@@ -7,12 +7,26 @@
     tools:context=".fragments.CoverageFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/coverageTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="時間割・範囲"
+        android:textSize="40sp"
+        android:padding="20sp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView2"
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp" />
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/coverageTitleText"
+        app:layout_constraintBottom_toBottomOf="parent"
+         />
 
     <Button
         android:id="@+id/fabCoverage"

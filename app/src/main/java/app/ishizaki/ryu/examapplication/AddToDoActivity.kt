@@ -58,6 +58,11 @@ finish()
 
         }
 
+
+        cancelAddingToDo.setOnClickListener{
+            finish()
+        }
+
     }
 
 
@@ -77,7 +82,7 @@ finish()
 
     override fun selectedDate(year: Int, month: Int, date: Int) {
 
-        selectedDateToDo.text="${month+1}月${date}日"
+        dateScheduleButton.text="${month+1}月${date}日"
 
         yearSaved = year
         monthSaved = month
@@ -87,7 +92,7 @@ finish()
 
     override fun selectedTime(hourOfDay: Int, minute: Int) {
 
-        selectedTimeToDo.text="${hourOfDay}時${minute}分"
+        timeScheduleButton.text="${hourOfDay}時${minute}分"
 
         hourSaved=hourOfDay
         minuteSaved=minute

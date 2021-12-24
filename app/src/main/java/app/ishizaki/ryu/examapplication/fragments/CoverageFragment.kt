@@ -13,6 +13,7 @@ import app.ishizaki.ryu.examapplication.*
 import io.realm.Realm
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.fragment_coverage.*
+import kotlinx.android.synthetic.main.fragment_todo.*
 
 class CoverageFragment : Fragment() {
 
@@ -45,6 +46,8 @@ class CoverageFragment : Fragment() {
             val intent = Intent(activity, AddCoverageActivity::class.java)
             activity?.startActivity(intent)
         }
+
+
     }
 
     fun readAll(): RealmResults<Coverage> {

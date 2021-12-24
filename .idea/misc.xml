@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/border1.xml" value="0.24210526315789474" />
         <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/bottom_menu_color.xml" value="0.24210526315789474" />
+        <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.24210526315789474" />
         <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/ic_coverage.xml" value="0.24210526315789474" />
         <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/ic_home.xml" value="0.24210526315789474" />
         <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/ic_todo.xml" value="0.24210526315789474" />
