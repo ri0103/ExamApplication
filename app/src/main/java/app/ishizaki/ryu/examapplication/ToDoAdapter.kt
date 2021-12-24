@@ -20,6 +20,7 @@ class ToDoAdapter(
         val subjectText: TextView = view.findViewById(R.id.subjectText)
         val contentText: TextView = view.findViewById(R.id.contentText)
         val dateText: TextView = view.findViewById(R.id.dateText)
+        val timeEndText: TextView =view.findViewById(R.id.timeEndText)
     }
 
     override fun getItemCount(): Int {
@@ -36,7 +37,8 @@ class ToDoAdapter(
         val toDo: ToDo = taskList?.get(position) ?:return
         holder.subjectText.text = toDo.subject
         holder.contentText.text = toDo.content
-        holder.dateText.text = SimpleDateFormat("MM月dd日　HH:mm", Locale.JAPANESE).format(toDo.dateTime)
+        holder.dateText.text = SimpleDateFormat("MM月dd日　HH:mm-", Locale.JAPANESE).format(toDo.dateTime)
+        holder.timeEndText.text = SimpleDateFormat("HH:mm", Locale.JAPANESE).format(toDo.dateTime2)
 
     }
 }

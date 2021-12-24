@@ -113,6 +113,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/dateScheduleButton"
             app:layout_constraintTop_toBottomOf="@+id/contentSchedule" />
+        <Button
+            android:id="@+id/endTimeScheduleButton"
+            android:layout_width="120sp"
+            android:layout_height="60sp"
+            android:layout_marginLeft="10sp"
+            android:backgroundTint="@color/dark_mint_green"
+            android:text="時間を選択"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:cornerRadius="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dateScheduleButton"
+            app:layout_constraintTop_toBottomOf="@+id/contentSchedule" />
 
 
     </LinearLayout>
