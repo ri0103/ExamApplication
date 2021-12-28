@@ -17,8 +17,8 @@
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scheduleSaveButton"
-        android:textColor="@color/nice_black"/>
+        app:layout_constraintTop_toBottomOf="@id/buttonfortodoadding"
+        android:textColor="@color/blackorwhite"/>
 
     <EditText
         android:id="@+id/contentSchedule"
@@ -28,105 +28,93 @@
         android:padding="10sp"
         android:minHeight="100sp"
         android:layout_marginTop="60sp"
-        android:ems="1000"
         android:hint="内容"
         android:inputType="textMultiLine"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@color/nice_black"
+        android:textColor="@color/blackorwhite"
         app:layout_constraintTop_toBottomOf="@+id/subjectSchedule"
         android:background="@drawable/border1"
         />
+
+
+<LinearLayout
+    android:layout_marginTop="24sp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    android:orientation="horizontal"
+    android:id="@+id/buttonfortodoadding"
+    android:gravity="center_vertical">
+
+
+    <ImageButton
+        android:layout_marginLeft="24sp"
+        android:id="@+id/cancelAddingToDo"
+        android:layout_width="36sp"
+        android:layout_height="36sp"
+        android:background="@drawable/ic_baseline_close_24"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <View
+        android:layout_width="0sp"
+        android:layout_height="1sp"
+        android:layout_weight="1"/>
+
 
     <Button
         android:id="@+id/scheduleSaveButton"
         android:layout_width="100sp"
         android:layout_height="50sp"
-        android:layout_marginTop="25sp"
         android:backgroundTint="@color/sky_blue"
         android:text="保存"
-        android:textColor="@color/white"
+        android:textColor="@color/bothwhite"
+        android:layout_marginRight="24sp"
         android:textSize="18sp"
         app:cornerRadius="15sp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="25sp"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/cancelAddingToDo"
-        android:minHeight="0dp"
-        android:minWidth="0dp"
-        android:backgroundTint="@color/white"
-        android:outlineSpotShadowColor="@color/white"
-        android:outlineAmbientShadowColor="@color/white"
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="25sp"
-        android:layout_marginLeft="25sp"
-        android:text="✕"
-        android:padding="0dp"
-        android:textSize="30sp"
-        android:textColor="@color/nice_black"
-        android:gravity="center" />
+</LinearLayout>
 
     <LinearLayout
-        android:id="@+id/dateandtimebuttons"
+        android:gravity="center"
+        android:layout_marginTop="50sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/contentSchedule">
-
 
         <Button
             android:id="@+id/dateScheduleButton"
             android:layout_width="120sp"
             android:layout_height="60sp"
-            android:layout_marginRight="10sp"
             android:backgroundTint="@color/dark_mint_green"
             android:text="日付を選択"
-            android:textColor="@color/white"
+            android:textColor="@color/bothwhite"
             android:textSize="16sp"
             app:cornerRadius="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/timeScheduleButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/contentSchedule" />
+            android:layout_marginRight="10sp"/>
+
 
 
         <Button
             android:id="@+id/timeScheduleButton"
             android:layout_width="120sp"
             android:layout_height="60sp"
-            android:layout_marginLeft="10sp"
             android:backgroundTint="@color/dark_mint_green"
-            android:text="時間を選択"
-            android:textColor="@color/white"
+            android:text="時刻を選択"
+            android:textColor="@color/bothwhite"
             android:textSize="16sp"
-            app:cornerRadius="10sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/dateScheduleButton"
-            app:layout_constraintTop_toBottomOf="@+id/contentSchedule" />
-        <Button
-            android:id="@+id/endTimeScheduleButton"
-            android:layout_width="120sp"
-            android:layout_height="60sp"
             android:layout_marginLeft="10sp"
-            android:backgroundTint="@color/dark_mint_green"
-            android:text="時間を選択"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:cornerRadius="10sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/dateScheduleButton"
-            app:layout_constraintTop_toBottomOf="@+id/contentSchedule" />
-
+            app:cornerRadius="10sp" />
 
     </LinearLayout>
 

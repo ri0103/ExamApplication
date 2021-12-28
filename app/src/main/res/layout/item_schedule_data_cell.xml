@@ -35,10 +35,7 @@
                 android:textSize="30sp"
                 android:layout_gravity="center"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+
 
                 <TextView
                     android:id="@+id/dateText"
@@ -48,16 +45,9 @@
                     android:text="~月~日　〇時〇分-"
                     android:textSize="25sp"
                     android:layout_gravity="center"/>
-            <TextView
-                android:id="@+id/timeEndText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="15sp"
-                android:text="〇時〇分"
-                android:textSize="25sp"
-                android:layout_gravity="center"/>
 
-            </LinearLayout>
+
+
 
 
             <TextView
@@ -66,6 +56,8 @@
                 android:layout_height="wrap_content"
                 android:text="内容"
                 android:textSize="15sp" />
+
+
 
         </LinearLayout>
 

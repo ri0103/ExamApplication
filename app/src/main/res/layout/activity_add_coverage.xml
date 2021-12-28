@@ -9,41 +9,82 @@
     <EditText
         android:id="@+id/subjectCoverage"
         android:layout_width="300sp"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80sp"
         android:ems="10"
         android:hint="科目名"
-        android:inputType="textMultiLine"
-        android:layout_marginTop="70sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:inputType="textPersonName"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonforcoverageadding"
+        android:textColor="@color/blackorwhite"/>
 
     <EditText
         android:id="@+id/contentCoverage"
+        android:gravity="top|left"
         android:layout_width="300sp"
-        android:layout_height="200dp"
-        android:layout_marginTop="60sp"
-        android:ems="10"
-        android:gravity="left"
+        android:layout_height="wrap_content"
         android:padding="10sp"
-        android:hint="範囲を入力してください"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:minHeight="200sp"
+        android:layout_marginTop="60sp"
+        android:hint="内容"
+        android:inputType="textMultiLine"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/blackorwhite"
         app:layout_constraintTop_toBottomOf="@id/subjectCoverage"
         android:background="@drawable/border1"
-        android:inputType="textMultiLine" />
+        />
 
-    <Button
-        android:id="@+id/coverageSaveButton"
-        android:layout_width="150sp"
-        android:layout_height="60sp"
-        app:cornerRadius="15sp"
-        android:textSize="18sp"
-        android:layout_marginBottom="120dp"
-        android:backgroundTint="@color/sky_blue"
-        android:text="保存"
-        android:layout_marginTop="60sp"
-        app:layout_constraintTop_toBottomOf="@id/contentCoverage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <LinearLayout
+        android:layout_marginTop="24sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:orientation="horizontal"
+        android:id="@+id/buttonforcoverageadding"
+        android:gravity="center_vertical">
+
+
+        <ImageButton
+            android:layout_marginLeft="24sp"
+            android:id="@+id/cancelAddingCoverage"
+            android:layout_width="36sp"
+            android:layout_height="36sp"
+            android:background="@drawable/ic_baseline_close_24"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <View
+            android:layout_width="0sp"
+            android:layout_height="1sp"
+            android:layout_weight="1"/>
+
+
+        <Button
+            android:id="@+id/coverageSaveButton"
+            android:layout_width="100sp"
+            android:layout_height="50sp"
+            android:backgroundTint="@color/sky_blue"
+            android:text="保存"
+            android:textColor="@color/bothwhite"
+            android:layout_marginRight="24sp"
+            android:textSize="18sp"
+            app:cornerRadius="15sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+
+
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

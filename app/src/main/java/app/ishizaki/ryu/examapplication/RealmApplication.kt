@@ -15,4 +15,9 @@ class RealmApplication : Application(){
 
         Realm.setDefaultConfiguration(realmConfig)
     }
+
+
+
+
+
 }

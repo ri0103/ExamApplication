@@ -8,14 +8,10 @@ import androidx.fragment.app.Fragment
 import app.ishizaki.ryu.examapplication.fragments.CoverageFragment
 import app.ishizaki.ryu.examapplication.fragments.HomeFragment
 import app.ishizaki.ryu.examapplication.fragments.TodoFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_start.*
 
 class startActivity : AppCompatActivity() {
-
-
-
-
-
 
     private val todoFragment = TodoFragment()
     private val homeFragment = HomeFragment()

@@ -32,6 +32,10 @@ class AddCoverageActivity : AppCompatActivity(){
             finish()
 
             }
+
+        cancelAddingCoverage.setOnClickListener{
+            finish()
+        }
         }
 
     }

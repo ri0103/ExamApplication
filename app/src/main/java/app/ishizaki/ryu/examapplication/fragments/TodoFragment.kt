@@ -1,7 +1,9 @@
 package app.ishizaki.ryu.examapplication.fragments
 
 import android.app.AlertDialog
+import android.app.LauncherActivity
 import android.content.Intent
+import android.content.LocusId
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -10,6 +12,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,8 +20,11 @@ import androidx.recyclerview.widget.RecyclerView
 import app.ishizaki.ryu.examapplication.*
 import io.realm.Realm
 import io.realm.RealmResults
+import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_add_to_do.*
 import kotlinx.android.synthetic.main.fragment_todo.*
+import kotlinx.android.synthetic.main.item_schedule_data_cell.*
+import java.util.*
 
 class TodoFragment : Fragment() {
 
@@ -29,14 +35,9 @@ class TodoFragment : Fragment() {
     }
 
 
-
-
-
     val toDoList = readAll()
 
 
-    private var layoutManager: RecyclerView.LayoutManager?=null
-    private var adapter: RecyclerView.Adapter<ToDoAdapter.ViewHolder>?=null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,6 +48,8 @@ class TodoFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
         super.onViewCreated(view, savedInstanceState)
         recyclerView1.apply {
             layoutManager = LinearLayoutManager(activity)
@@ -59,53 +62,25 @@ class TodoFragment : Fragment() {
         }
 
 
-        val itemSwipe = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
 
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                return false
-            }
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                showDialog(viewHolder)
-            }
-
-        }
-
-val swap = ItemTouchHelper(itemSwipe)
-        swap.attachToRecyclerView(recyclerView1)
 
 
     }
 
 
-    
 
 
-    private fun showDialog(viewHolder: RecyclerView.ViewHolder) {
-        val builder = AlertDialog.Builder(activity)
-        builder.setTitle("計画を削除")
-        builder.setMessage("計画を削除してもよろしいですか。二度と戻すことはできません。")
-        builder.setPositiveButton("はい"){dialog, which ->
-          val position = viewHolder.adapterPosition
-            toDoList.removeAt(position)
-            adapter?.notifyItemRemoved(position)
+
+
+
+
+
+        fun readAll(): RealmResults<ToDo> {
+            return realm.where(ToDo::class.java).findAll()
         }
-        builder.setNegativeButton("中止"){dialog, which ->
-            val position = viewHolder.adapterPosition
-            adapter?.notifyItemChanged(position)
-        }
-        builder.show()
-    }
-
-    fun readAll(): RealmResults<ToDo> {
-        return realm.where(ToDo::class.java).findAll()
-    }
 
 
 
 }
+
 
