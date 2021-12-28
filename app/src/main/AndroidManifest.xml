@@ -11,8 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamApplication">
         <activity
+            android:name=".DatePickerDialogActivity"
+            android:exported="false" />
+        <activity
             android:name=".startActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,9 +33,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"/>
-
-
+            android:exported="true" />
     </application>
 
 </manifest>

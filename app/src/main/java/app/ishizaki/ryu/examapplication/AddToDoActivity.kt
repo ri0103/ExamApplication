@@ -1,5 +1,6 @@
 package app.ishizaki.ryu.examapplication
 
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TimePicker
@@ -26,8 +27,6 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_to_do)
-
-
 
 
         dateScheduleButton.setOnClickListener {
