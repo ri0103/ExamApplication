@@ -6,11 +6,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/cardView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="15sp"
-        app:cardElevation="5sp"
+        app:cardElevation="8sp"
         app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +33,8 @@
                 android:text="科目"
                 android:paddingBottom="15sp"
                 android:textSize="30sp"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                />
 
 
 
@@ -56,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:text="内容"
                 android:textSize="15sp" />
+
 
 
 

@@ -39,7 +39,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="100sp"
         android:layout_marginBottom="100sp"
-        android:textSize="64sp"/>
+        android:textSize="64sp"
+        />
 
     <Button
         android:id="@+id/untilExamSelectButton"

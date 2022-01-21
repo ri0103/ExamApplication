@@ -30,6 +30,8 @@ class TodoFragment : Fragment() {
 
 
 
+
+
     private val realm: Realm by lazy {
         Realm.getDefaultInstance()
     }
@@ -65,12 +67,7 @@ class TodoFragment : Fragment() {
 
 
 
-    }
-
-
-
-
-
+        }
 
 
 
