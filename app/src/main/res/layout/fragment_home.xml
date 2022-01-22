@@ -52,6 +52,12 @@
         android:text="定期試験の開始日を選択"
         android:backgroundTint="@color/dark_mint_green"/>
 
+        <Button
+            android:layout_width="100sp"
+            android:layout_height="40sp"
+            android:id="@+id/untilExamSaveButton"
+            android:text="保存"/>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

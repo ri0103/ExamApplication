@@ -10,7 +10,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import app.ishizaki.ryu.examapplication.R
+import app.ishizaki.ryu.examapplication.ToDo
+import app.ishizaki.ryu.examapplication.UntilExamDate
+import io.realm.Realm
+import io.realm.RealmResults
 import kotlinx.android.synthetic.main.activity_add_to_do.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.time.*
@@ -20,6 +25,14 @@ class HomeFragment : Fragment(){
 
 
     var calendar1: Calendar = Calendar.getInstance();
+
+    var yearSavedE: Int? = null
+    var monthSavedE: Int? = null
+    var dateSavedE: Int? = null
+    val realm: Realm = Realm.getDefaultInstance()
+
+    var UntilExamDateSaved = readFirst()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,11 +46,21 @@ class HomeFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
 
+
         untilExamSelectButton.setOnClickListener{
             showDatePickerDialog()
         }
 
+
+
     }
+
+
+    fun readFirst(): UntilExamDate? {
+        return realm.where(UntilExamDate::class.java).findFirst()
+    }
+
+
 
     fun showDatePickerDialog() {
         val calendar: Calendar = Calendar.getInstance()
@@ -52,7 +75,54 @@ class HomeFragment : Fragment(){
 
                 untilExamSelectButton.text="${year}年${monthOfYear+1}月${dayOfMonth}日"
 
-                calendar1.set(year, monthOfYear, dayOfMonth)
+
+
+                yearSavedE = year
+                monthSavedE = monthOfYear
+                dateSavedE = dayOfMonth
+
+
+
+
+
+
+
+                realm.executeTransaction{
+                    if (UntilExamDateSaved !=null){
+                        UntilExamDateSaved!!.yearE = yearSavedE as Int
+                        UntilExamDateSaved!!.monthE = monthSavedE as Int
+                        UntilExamDateSaved!!.dateE = dateSavedE as Int
+                    }else {
+                        val newExamDate: UntilExamDate =
+                            it.createObject(UntilExamDate::class.java, UUID.randomUUID().toString())
+                        newExamDate.yearE = yearSavedE as Int
+                        newExamDate.monthE = monthSavedE as Int
+                        newExamDate.dateE = dateSavedE as Int
+                    }
+                }
+
+
+
+                if(UntilExamDateSaved !=null){
+                    calendar1.set(UntilExamDateSaved!!.yearE, UntilExamDateSaved!!.monthE, UntilExamDateSaved!!.dateE)
+
+
+                    var timeMills1: Long = calendar1.timeInMillis
+                    var currentTimeMills: Long = System.currentTimeMillis()
+                    var timeDiff: Long = timeMills1 - currentTimeMills;
+
+                    timeDiff = timeDiff / 1000;
+                    timeDiff = timeDiff / 60;
+                    timeDiff = timeDiff / 60;
+                    timeDiff = timeDiff / 24;
+                    timeDiff = timeDiff + 1;
+
+                    var str: String=timeDiff.toString() + "日"
+                    untilExamNumber.setText( str )
+
+                }
+
+
 
 
                 var timeMills1: Long = calendar1.timeInMillis
@@ -65,9 +135,10 @@ class HomeFragment : Fragment(){
                 timeDiff = timeDiff / 24;
                 timeDiff = timeDiff + 1;
 
-
                 var str: String=timeDiff.toString() + "日"
                 untilExamNumber.setText( str )
+
+
 
 
             },
@@ -77,6 +148,8 @@ class HomeFragment : Fragment(){
         ).apply {
         }.show()
     }
+
+
 
 
 }

@@ -1,5 +1,6 @@
 package app.ishizaki.ryu.examapplication.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -16,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_coverage.*
 import kotlinx.android.synthetic.main.fragment_todo.*
 
 class CoverageFragment : Fragment() {
+
 
     private val realm: Realm by lazy {
         Realm.getDefaultInstance()

@@ -4,6 +4,7 @@ import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.HorizontalScrollView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import io.realm.OrderedRealmCollection
@@ -36,8 +37,5 @@ class CoverageAdapter(
         val coverage: Coverage = taskList?.get(position) ?:return
         holder.coverageSubjectText.text = coverage.subject
         holder.coverageContentText.text = coverage.content
-
-
-        holder.coverageContentText.movementMethod = ScrollingMovementMethod()
     }
 }
