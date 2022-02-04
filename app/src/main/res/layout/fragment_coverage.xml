@@ -10,13 +10,20 @@
 
     <TextView
         android:id="@+id/coverageTitleText"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/border3"
+        android:fontFamily="@font/mplusthin"
+        android:layout_marginRight="4sp"
+        android:layout_marginLeft="4sp"
+        android:layout_marginTop="4sp"
+        android:paddingTop="8sp"
+        android:paddingBottom="8sp"
         android:text="時間割・範囲"
-        android:textSize="40sp"
-        android:padding="20sp" />
+        android:textAlignment="center"
+        android:textSize="48sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView2"

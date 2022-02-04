@@ -4,6 +4,7 @@ import android.app.PendingIntent.getActivity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.webkit.CookieSyncManager.createInstance
 import androidx.fragment.app.Fragment
 import app.ishizaki.ryu.examapplication.fragments.CoverageFragment
@@ -12,8 +13,10 @@ import app.ishizaki.ryu.examapplication.fragments.TodoFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.realm.internal.core.IncludeDescriptor.createInstance
 import kotlinx.android.synthetic.main.activity_start.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class startActivity : AppCompatActivity() {
+
 
     private val todoFragment = TodoFragment()
     private val homeFragment = HomeFragment()
@@ -36,10 +39,12 @@ bottom_navigation.setOnNavigationItemSelectedListener {
 }
 
 
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.add(R.id.fragment_container, TodoFragment.createInstance(this))
-        transaction.addToBackStack(null)
-        transaction.commit()
+//        val transaction = supportFragmentManager.beginTransaction()
+//        transaction.add(R.id.fragment_container, TodoFragment.createInstance(this))
+//        transaction.addToBackStack(null)
+//        transaction.commit()
+
+
 
 
     }
@@ -54,6 +59,7 @@ bottom_navigation.setOnNavigationItemSelectedListener {
             transaction.commit()
         }
     }
+
 
 
 

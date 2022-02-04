@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddToDoActivity">
+    tools:context=".AddToDoActivity"
+    android:background="@color/whiteorblack"
+    android:id="@+id/addToDoActivityBG">
 
     <EditText
         android:id="@+id/subjectSchedule"
@@ -18,7 +20,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/buttonfortodoadding"
-        android:textColor="@color/blackorwhite"/>
+        android:textColor="@color/blackorwhite"
+        android:fontFamily="@font/mplusbold"/>
 
     <EditText
         android:id="@+id/contentSchedule"
@@ -36,6 +39,7 @@
         android:textColor="@color/blackorwhite"
         app:layout_constraintTop_toBottomOf="@+id/subjectSchedule"
         android:background="@drawable/border1"
+        android:fontFamily="@font/mplusregular"
         />
 
 
@@ -78,7 +82,8 @@
         android:textSize="18sp"
         app:cornerRadius="15sp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/mplusregular"/>
 
 </LinearLayout>
 
@@ -90,33 +95,139 @@
         android:orientation="horizontal"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/contentSchedule">
+        app:layout_constraintTop_toBottomOf="@id/contentSchedule"
+        android:id="@+id/selectionButtons">
+
 
         <Button
             android:id="@+id/dateScheduleButton"
             android:layout_width="120sp"
             android:layout_height="60sp"
-            android:backgroundTint="@color/dark_mint_green"
+            android:layout_marginRight="10sp"
+            android:backgroundTint="@color/matcha_green"
+            android:fontFamily="@font/mplusregular"
             android:text="日付を選択"
             android:textColor="@color/bothwhite"
             android:textSize="16sp"
-            app:cornerRadius="10sp"
-            android:layout_marginRight="10sp"/>
-
-
+            app:cornerRadius="10sp" />
 
         <Button
             android:id="@+id/timeScheduleButton"
             android:layout_width="120sp"
             android:layout_height="60sp"
-            android:backgroundTint="@color/dark_mint_green"
+            android:backgroundTint="@color/matcha_green"
             android:text="時刻を選択"
             android:textColor="@color/bothwhite"
             android:textSize="16sp"
             android:layout_marginLeft="10sp"
-            app:cornerRadius="10sp" />
+            app:cornerRadius="10sp"
+            android:fontFamily="@font/mplusregular"/>
 
     </LinearLayout>
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/selectionButtons"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        android:layout_marginTop="32sp">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:padding="4sp">-->
+<!--            <ImageButton-->
+<!--                android:layout_width="50sp"-->
+<!--                android:layout_height="50sp"-->
+<!--                android:background="@drawable/circle_button1"-->
+<!--                android:layout_marginRight="1sp"-->
+<!--                android:layout_marginLeft="1sp"/>-->
+<!--            <ImageButton-->
+<!--                android:layout_width="50sp"-->
+<!--                android:layout_height="50sp"-->
+<!--                android:background="@drawable/circle_button2"-->
+<!--                android:layout_marginRight="1sp"-->
+<!--                android:layout_marginLeft="1sp"/>-->
+<!--            <ImageButton-->
+<!--                android:layout_width="50sp"-->
+<!--                android:layout_height="50sp"-->
+<!--                android:background="@drawable/circle_button3"-->
+<!--                android:layout_marginRight="1sp"-->
+<!--                android:layout_marginLeft="1sp"/>-->
+<!--            <ImageButton-->
+<!--                android:layout_width="50sp"-->
+<!--                android:layout_height="50sp"-->
+<!--                android:background="@drawable/circle_button4"-->
+<!--                android:layout_marginRight="1sp"-->
+<!--                android:layout_marginLeft="1sp"/>-->
+<!--            <ImageButton-->
+<!--                android:layout_width="50sp"-->
+<!--                android:layout_height="50sp"-->
+<!--                android:background="@drawable/circle_button5"-->
+<!--                android:layout_marginRight="1sp"-->
+<!--                android:layout_marginLeft="1sp"/>-->
+<!--            <ImageButton-->
+<!--                android:layout_width="50sp"-->
+<!--                android:layout_height="50sp"-->
+<!--                android:background="@drawable/circle_button6"-->
+<!--                android:layout_marginRight="1sp"-->
+<!--                android:layout_marginLeft="1sp"/>-->
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:padding="4sp">-->
+<!--            <ImageButton-->
+<!--                android:layout_width="50sp"-->
+<!--                android:layout_height="50sp"-->
+<!--                android:background="@drawable/circle_button12"-->
+<!--                android:layout_marginRight="1sp"-->
+<!--                android:layout_marginLeft="1sp"/>-->
+<!--            <ImageButton-->
+<!--                android:layout_width="50sp"-->
+<!--                android:layout_height="50sp"-->
+<!--                android:background="@drawable/circle_button11"-->
+<!--                android:layout_marginRight="1sp"-->
+<!--                android:layout_marginLeft="1sp"/>-->
+<!--            <ImageButton-->
+<!--                android:layout_width="50sp"-->
+<!--                android:layout_height="50sp"-->
+<!--                android:background="@drawable/circle_button10"-->
+<!--                android:layout_marginRight="1sp"-->
+<!--                android:layout_marginLeft="1sp"/>-->
+<!--            <ImageButton-->
+<!--                android:layout_width="50sp"-->
+<!--                android:layout_height="50sp"-->
+<!--                android:background="@drawable/circle_button9"-->
+<!--                android:layout_marginRight="1sp"-->
+<!--                android:layout_marginLeft="1sp"/>-->
+<!--            <ImageButton-->
+<!--                android:layout_width="50sp"-->
+<!--                android:layout_height="50sp"-->
+<!--                android:background="@drawable/circle_button8"-->
+<!--                android:layout_marginRight="1sp"-->
+<!--                android:layout_marginLeft="1sp"-->
+<!--                android:id="@+id/circleButton8"/>-->
+<!--            <ImageButton-->
+<!--                android:layout_width="50sp"-->
+<!--                android:layout_height="50sp"-->
+<!--                android:background="@drawable/circle_button7"-->
+<!--                android:layout_marginRight="1sp"-->
+<!--                android:layout_marginLeft="1sp"/>-->
+<!--        </LinearLayout>-->
+
+<!--    </LinearLayout>-->
+
+
+
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

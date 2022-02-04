@@ -24,29 +24,30 @@ import io.realm.RealmResults
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_add_to_do.*
 import kotlinx.android.synthetic.main.fragment_todo.*
+import kotlinx.android.synthetic.main.item_exam_coverage_data_cell.*
 import kotlinx.android.synthetic.main.item_schedule_data_cell.*
 import java.util.*
 
 class TodoFragment : Fragment() {
 
 
+
     private val realm: Realm by lazy {
         Realm.getDefaultInstance()
     }
 
-    private var mContext: Context? = null
+//    private var mContext: Context? = null
 
 
     var toDoList = readAll()
 
-    companion object{
-        fun createInstance(context: Context): Fragment{
-            val fragment = TodoFragment()
-            fragment.mContext = context
-            return fragment
-        }
-    }
-
+//    companion object{
+//        fun createInstance(context: Context): Fragment{
+//            val fragment = TodoFragment()
+//            fragment.mContext = context
+//            return fragment
+//        }
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,11 +58,9 @@ class TodoFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-
-
-
         super.onViewCreated(view, savedInstanceState)
+
+
         recyclerView1.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = ToDoAdapter(this, toDoList, true)
@@ -74,22 +73,11 @@ class TodoFragment : Fragment() {
             val intent = Intent(activity, AddToDoActivity::class.java)
             activity?.startActivity(intent)
         }
-
-
-
-
-
         }
-
-
-
 
         fun readAll(): RealmResults<ToDo> {
             return realm.where(ToDo::class.java).findAll()
         }
-
-
-
 
 
     private fun getSwipeToDismissTouchHelper(adapter: ToDoAdapter)=
@@ -139,10 +127,20 @@ class TodoFragment : Fragment() {
 
                 val itemView = viewHolder.itemView
                 val background = ColorDrawable(Color.RED)
-                val deleteIcon = AppCompatResources.getDrawable(
-                    mContext!!,
-                    R.drawable.ic_baseline_delete_24
-                )
+
+//                val deleteIcon = AppCompatResources.getDrawable(
+//                    activity,
+//                    R.drawable.ic_baseline_delete_24
+//                )
+
+                val deleteIcon = activity?.let {
+                    AppCompatResources.getDrawable(
+                        it,
+                        R.drawable.ic_baseline_delete_24
+                    )
+                }
+
+
 
                 val iconMarginVertical = (viewHolder.itemView.height - deleteIcon!!.intrinsicHeight) /2
                 deleteIcon.setBounds(
@@ -155,7 +153,7 @@ class TodoFragment : Fragment() {
                 background.setBounds(
                     itemView.left,
                     itemView.top,
-                    itemView.right + dX.toInt(),
+                    itemView.right+ dX.toInt() ,
                     itemView.bottom
                 )
                 background.draw(c)

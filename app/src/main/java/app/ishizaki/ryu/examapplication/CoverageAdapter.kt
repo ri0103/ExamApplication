@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.HorizontalScrollView
+import android.widget.ScrollView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import io.realm.OrderedRealmCollection
@@ -18,10 +19,10 @@ class CoverageAdapter(
 ): RealmRecyclerViewAdapter<Coverage, CoverageAdapter.ViewHolder>(taskList, autoUpdate){
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
-
         val coverageSubjectText: TextView = view.findViewById(R.id.coverageSubjectText)
         val coverageContentText: TextView = view.findViewById(R.id.coverageContentText)
     }
+
 
     override fun getItemCount(): Int {
         return taskList?.size ?: 0
@@ -33,9 +34,14 @@ class CoverageAdapter(
         return  ViewHolder(v)
     }
 
+
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val coverage: Coverage = taskList?.get(position) ?:return
         holder.coverageSubjectText.text = coverage.subject
         holder.coverageContentText.text = coverage.content
+
+
+        holder.coverageContentText.movementMethod = ScrollingMovementMethod()
     }
 }

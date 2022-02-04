@@ -11,11 +11,18 @@
     <color name="dark_sky_blue">#5eaaff</color>
     <color name="nice_black">#171717</color>
     <color name="nice_white">#ededed</color>
-    <color name="mint_green">#64fab4</color>
     <color name="darkish_blue">#004f8c</color>
-    <color name="dark_mint_green">#08c46c</color>
-    <color name="whiteorblack">#FFFFFF</color>
-    <color name="blackorwhite">#171717</color>
-    <color name="bothblack">#171717</color>
-    <color name="bothwhite">#FFFFFF</color>
+    <color name="matcha_green">#7ccc70</color>
+    <color name="whiteorblack">#ededed</color>
+    <color name="blackoryellow">#262626</color>
+    <color name="blackorwhite">#363636</color>
+    <color name="bothblack">#262626</color>
+    <color name="bothwhite">#ededed</color>
+    <color name="background_main">#fffff7</color>
+    <color name="menu_bg_color">#b5dfff</color>
+    <color name="cell_bg_color">#edfffa</color>
+    <color name="cell_title_color">#06003b</color>
+    <color name="title_recyclerview">#ffe8ef</color>
+
+
 </resources>

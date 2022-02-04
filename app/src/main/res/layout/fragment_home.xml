@@ -19,6 +19,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:gravity="center">
 
+
+
     <TextView
         android:id="@+id/untilExamTitle"
         android:layout_width="wrap_content"
@@ -27,6 +29,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:fontFamily="@font/mplusregular"
+
         android:textSize="40sp"/>
 
     <TextView
@@ -37,26 +41,38 @@
         app:layout_constraintTop_toTopOf="@id/untilExamTitle"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="100sp"
+        android:layout_marginTop="32sp"
         android:layout_marginBottom="100sp"
-        android:textSize="64sp"
+        android:textSize="100sp"
+        android:fontFamily="@font/mochiypoppone"
+        android:textColor="@color/blackoryellow"
         />
 
-    <Button
-        android:id="@+id/untilExamSelectButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/untilExamNumber"
-        app:layout_constraintRight_toRightOf="parent"
-        android:textSize="18sp"
-        android:text="定期試験の開始日を選択"
-        android:backgroundTint="@color/dark_mint_green"/>
+        <Button
+            android:id="@+id/untilExamSelectButton"
+            android:layout_width="250sp"
+            android:layout_height="60sp"
+            android:backgroundTint="@color/matcha_green"
+            android:text="定期試験の開始日を選択"
+            app:cornerRadius="18sp"
+            android:textSize="18sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/untilExamNumber"
+            android:textColor="@color/bothwhite"
+            android:fontFamily="@font/mpluslight"/>
 
         <Button
             android:layout_width="100sp"
-            android:layout_height="40sp"
+            android:layout_height="80sp"
             android:id="@+id/untilExamSaveButton"
-            android:text="保存"/>
+            android:layout_marginTop="24sp"
+            app:cornerRadius="12sp"
+            android:textSize="24sp"
+            android:textColor="@color/bothwhite"
+            android:text="更新" />
+
+
+
 
     </LinearLayout>
 

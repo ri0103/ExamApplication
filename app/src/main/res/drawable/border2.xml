@@ -5,6 +5,4 @@
         android:color="@color/blackorwhite"
         android:width="1sp"
         />
-
-
 </shape>
