@@ -16,5 +16,6 @@ open class ToDo (
     open var day: Int = 0,
     open var hour: Int = 0,
     open var minute: Int = 0,
+    open var bgColor: Int = 0,
     open var dateTime: Date = Date(System.currentTimeMillis())
 ) : RealmObject()

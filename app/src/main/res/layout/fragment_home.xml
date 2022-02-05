@@ -69,6 +69,7 @@
             app:cornerRadius="12sp"
             android:textSize="24sp"
             android:textColor="@color/bothwhite"
+            android:fontFamily="@font/mplusregular"
             android:text="更新" />
 
 

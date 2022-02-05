@@ -10,12 +10,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamApplication">
-        <activity
-            android:name=".BGColorTestActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DatePickerDialogActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".BGColorTestActivity"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".DatePickerDialogActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".startActivity"
             android:exported="true">
@@ -28,15 +28,15 @@
         <activity
             android:name=".AddCoverageActivity"
             android:exported="false" />
-        <activity
-            android:name=".CoverageMainActivity"
-            android:exported="true" />
+<!--        <activity-->
+<!--            android:name=".CoverageMainActivity"-->
+<!--            android:exported="true" />-->
         <activity
             android:name=".AddToDoActivity"
             android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" />
+<!--        <activity-->
+<!--            android:name=".MainActivity"-->
+<!--            android:exported="true" />-->
     </application>
 
 </manifest>

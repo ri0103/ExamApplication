@@ -8,7 +8,7 @@
     <color name="black">#FFFFFFFF</color>
     <color name="white">#171717</color>
     <color name="sky_blue">#00428c</color>
-    <color name="dark_sky_blue">#5eaaff</color>
+    <color name="dark_sky_blue">#0062cf</color>
     <color name="nice_black">#ededed</color>
     <color name="nice_white">#171717</color>
     <color name="darkish_blue">#004f8c</color>
@@ -21,6 +21,23 @@
     <color name="background_main">#2b2b29</color>
     <color name="menu_bg_color">#013f6e</color>
     <color name="cell_bg_color">#004734</color>
-    <color name="cell_title_color">#e1defa</color>
+    <color name="cell_title_color">#ecebfa</color>
     <color name="title_recyclerview">#45091b</color>
+    <color name="menu_color1">#ededed</color>
+    <color name="menu_color2">#858585</color>
+
+    <color name="bg_grey">#262626</color>
+    <color name="bg_red">#300000</color>
+    <color name="bg_orange">#452001</color>
+    <color name="bg_yellow">#424200</color>
+    <color name="bg_green">#214200</color>
+    <color name="bg_darkgreen">#142900</color>
+    <color name="bg_bluegreen">#014a35</color>
+    <color name="bg_skyblue">#002c4a</color>
+    <color name="bg_purple">#080140</color>
+    <color name="bg_redpurple">#29013d</color>
+    <color name="bg_lightpink">#42002b</color>
+    <color name="bg_purewhite">#000000</color>
+
+
 </resources>

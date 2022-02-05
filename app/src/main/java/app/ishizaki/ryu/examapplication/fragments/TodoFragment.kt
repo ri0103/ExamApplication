@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView
 import app.ishizaki.ryu.examapplication.*
 import io.realm.Realm
 import io.realm.RealmResults
+import io.realm.Sort
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_add_to_do.*
 import kotlinx.android.synthetic.main.fragment_todo.*
@@ -40,6 +41,9 @@ class TodoFragment : Fragment() {
 
 
     var toDoList = readAll()
+
+
+
 
 //    companion object{
 //        fun createInstance(context: Context): Fragment{
@@ -76,7 +80,7 @@ class TodoFragment : Fragment() {
         }
 
         fun readAll(): RealmResults<ToDo> {
-            return realm.where(ToDo::class.java).findAll()
+            return realm.where(ToDo::class.java).findAll().sort("dateTime", Sort.ASCENDING)
         }
 
 

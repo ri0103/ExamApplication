@@ -23,6 +23,23 @@
     <color name="cell_bg_color">#edfffa</color>
     <color name="cell_title_color">#06003b</color>
     <color name="title_recyclerview">#ffe8ef</color>
+    <color name="menu_color1">#262626</color>
+    <color name="menu_color2">#fffff7</color>
+
+    <color name="bg_grey">#ededed</color>
+    <color name="bg_red">#fff5f5</color>
+    <color name="bg_orange">#fff0e3</color>
+    <color name="bg_yellow">#ffffe3</color>
+    <color name="bg_green">#edfcde</color>
+    <color name="bg_darkgreen">#d2fcd2</color>
+    <color name="bg_bluegreen">#d2fcf0</color>
+    <color name="bg_skyblue">#d2ebfc</color>
+    <color name="bg_purple">#d7d2fc</color>
+    <color name="bg_redpurple">#eed2fc</color>
+    <color name="bg_lightpink">#ffe3f5</color>
+    <color name="bg_purewhite">#ffffff </color>
+
+
 
 
 </resources>

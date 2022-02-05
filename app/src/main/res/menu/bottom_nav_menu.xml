@@ -6,7 +6,7 @@
     <item
         android:title="ホーム"
         android:id="@+id/ic_home"
-        android:icon="@drawable/ic_home"/>
+        android:icon="@drawable/ic_home" />
 
     <item
         android:title="やること"
