@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TimePicker
 import io.realm.Realm
+import kotlinx.android.synthetic.main.activity_add_coverage.*
 import kotlinx.android.synthetic.main.activity_add_to_do.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.sql.Time
+import java.time.DayOfWeek
 import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.ZoneId
@@ -21,7 +23,7 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
     var dateSaved: Int? = null
     var hourSaved: Int? = null
     var minuteSaved: Int? = null
-    var bgColorSaved: Int? = null
+    var colorSaved: Int = R.color.bg_grey
     var realm: Realm = Realm.getDefaultInstance()
 
 
@@ -56,6 +58,7 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
                     newToDo.day = dateSaved as Int
                     newToDo.hour = hourSaved as Int
                     newToDo.minute = minuteSaved as Int
+                    newToDo.bgColor = colorSaved as Int
 
                     val intToDateTime: LocalDateTime = LocalDateTime.of(
                         yearSaved!!,
@@ -88,41 +91,51 @@ finish()
 
         circleButton1.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_grey)
-
-
+            colorSaved = R.color.bg_grey
         }
         circleButton2.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_red)
+            colorSaved = R.color.bg_red
         }
         circleButton3.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_orange)
+            colorSaved = R.color.bg_orange
         }
         circleButton4.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_yellow)
+            colorSaved = R.color.bg_yellow
         }
         circleButton5.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_green)
+            colorSaved = R.color.bg_green
         }
         circleButton6.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_darkgreen)
+            colorSaved = R.color.bg_darkgreen
         }
         circleButton7.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_bluegreen)
+            colorSaved = R.color.bg_bluegreen
         }
         circleButton8.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_skyblue)
+            colorSaved = R.color.bg_skyblue
         }
         circleButton9.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_purple)
+            colorSaved = R.color.bg_purple
         }
         circleButton10.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_redpurple)
+            colorSaved = R.color.bg_redpurple
         }
         circleButton11.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_lightpink)
+            colorSaved = R.color.bg_lightpink
         }
         circleButton12.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_purewhite)
+            colorSaved = R.color.bg_purewhite
         }
 
 

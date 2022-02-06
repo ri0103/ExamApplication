@@ -1,12 +1,13 @@
 package app.ishizaki.ryu.examapplication
 
+import android.graphics.Color
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 import java.sql.Time
 import java.time.chrono.ChronoLocalDateTime
 import java.util.*
 
-open class ToDo (
+open class ToDo(
     @PrimaryKey
     open var id: String = UUID.randomUUID().toString(),
     open var subject: String = "",
