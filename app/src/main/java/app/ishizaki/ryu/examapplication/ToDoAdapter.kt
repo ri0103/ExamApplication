@@ -21,20 +21,12 @@ class ToDoAdapter(
 ): RealmRecyclerViewAdapter<ToDo, ToDoAdapter.ViewHolder>(taskList, autoUpdate){
 
 
-
-
-
-
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val subjectText: TextView = view.findViewById(R.id.subjectText)
         val contentText: TextView = view.findViewById(R.id.contentText)
         val dateText: TextView = view.findViewById(R.id.dateText)
         val scheduleCell: ConstraintLayout = view.findViewById(R.id.scheduleCell1)
     }
-
-
-
-
 
 
     override fun getItemCount(): Int {
