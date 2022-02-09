@@ -26,6 +26,7 @@ class ToDoAdapter(
         val contentText: TextView = view.findViewById(R.id.contentText)
         val dateText: TextView = view.findViewById(R.id.dateText)
         val scheduleCell: ConstraintLayout = view.findViewById(R.id.scheduleCell1)
+        val timeLengthText: TextView = view.findViewById(R.id.timeLenghtText)
     }
 
 
@@ -52,6 +53,7 @@ class ToDoAdapter(
         holder.contentText.text = toDo.content
         holder.dateText.text = SimpleDateFormat("MM月dd日(E)　HH:mm~ ", Locale.JAPANESE).format(toDo.dateTime)
         holder.scheduleCell.setBackgroundResource(toDo.bgColor)
+        holder.timeLengthText.text = toDo.timeLenght + "分間"
     }
 
 

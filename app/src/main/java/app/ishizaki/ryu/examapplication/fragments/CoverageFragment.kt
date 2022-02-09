@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import app.ishizaki.ryu.examapplication.*
 import io.realm.Realm
 import io.realm.RealmResults
+import io.realm.Sort
 import kotlinx.android.synthetic.main.fragment_coverage.*
 import kotlinx.android.synthetic.main.fragment_todo.*
 import kotlinx.android.synthetic.main.item_exam_coverage_data_cell.*
@@ -65,7 +66,7 @@ class CoverageFragment : Fragment() {
     }
 
     fun readAll(): RealmResults<Coverage> {
-        return realm.where(Coverage::class.java).findAll()
+        return realm.where(Coverage::class.java).findAll().sort("createdTime", Sort.ASCENDING)
     }
 
 
@@ -94,7 +95,7 @@ class CoverageFragment : Fragment() {
                         task.deleteFromRealm()
                     }
                 }
-                coverageList = realm.where(Coverage::class.java).findAll()
+                coverageList = realm.where(Coverage::class.java).findAll().sort("createdTime", Sort.ASCENDING)
                 adapter.notifyItemRemoved(viewHolder.adapterPosition)
             }
 

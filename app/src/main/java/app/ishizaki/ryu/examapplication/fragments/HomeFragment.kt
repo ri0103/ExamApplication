@@ -109,7 +109,7 @@ class HomeFragment : Fragment(){
 
         }
 
-        untilExamSaveButton.setOnClickListener {
+        untilExamSaveButton.setOnClickListener{
             realm.executeTransaction{
                 if (UntilExamDateSaved !=null){
                     UntilExamDateSaved!!.yearE = yearSavedE as Int
@@ -135,6 +135,7 @@ class HomeFragment : Fragment(){
             timeDiff = timeDiff + 1;
             var str: String = timeDiff.toString() + "日"
             untilExamNumber.setText(str)
+
 
         }
 

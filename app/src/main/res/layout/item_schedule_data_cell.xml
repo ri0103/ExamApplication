@@ -64,6 +64,11 @@
                 android:fontFamily="@font/mplusbold"
                 />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
 
             <TextView
                 android:id="@+id/dateText"
@@ -74,7 +79,21 @@
                 android:fontFamily="@font/mplusmedium"
                 android:paddingBottom="12sp"
                 android:text="~月~日　〇時〇分-"
-                android:textSize="25sp" />
+                android:layout_marginRight="12sp"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/timeLenghtText"
+                android:textColor="@color/blackorwhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/mplusmedium"
+                android:paddingBottom="12sp"
+                android:text="〇〇分間"
+                android:textSize="22sp" />
+
+            </LinearLayout>
 
             <TextView
                 android:textColor="@color/blackorwhite"

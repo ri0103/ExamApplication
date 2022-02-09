@@ -106,7 +106,7 @@ class TodoFragment : Fragment() {
                         task.deleteFromRealm()
                     }
                 }
-                toDoList = realm.where(ToDo::class.java).findAll()
+                toDoList = realm.where(ToDo::class.java).findAll().sort("dateTime", Sort.ASCENDING)
                 adapter.notifyItemRemoved(viewHolder.adapterPosition)
             }
 

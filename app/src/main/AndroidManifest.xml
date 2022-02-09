@@ -10,34 +10,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamApplication">
-        <activity
-            android:name=".TestActivity"
-            android:exported="false"
-            android:label="@string/title_activity_test"
-            android:theme="@style/Theme.ExamApplication.NoActionBar" />
-        <!-- <activity -->
-        <!-- android:name=".BGColorTestActivity" -->
-        <!-- android:exported="false" /> -->
-        <!-- <activity -->
-        <!-- android:name=".DatePickerDialogActivity" -->
-        <!-- android:exported="false" /> -->
+
         <activity
             android:name=".startActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".AddCoverageActivity"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".CoverageMainActivity" -->
-        <!-- android:exported="true" /> -->
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".AddToDoActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

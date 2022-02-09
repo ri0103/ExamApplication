@@ -1,10 +1,12 @@
 package app.ishizaki.ryu.examapplication
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TimePicker
+import android.widget.Toast
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_add_coverage.*
 import kotlinx.android.synthetic.main.activity_add_to_do.*
@@ -59,6 +61,7 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
                     newToDo.hour = hourSaved as Int
                     newToDo.minute = minuteSaved as Int
                     newToDo.bgColor = colorSaved as Int
+                    newToDo.timeLenght = timeNumberPicker.value.toString()
 
                     val intToDateTime: LocalDateTime = LocalDateTime.of(
                         yearSaved!!,
@@ -72,13 +75,14 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
                     newToDo.dateTime = date
 
                 }
+                finish()
+            }else{
+                val context: Context = applicationContext
+                Toast.makeText(context, "日付、時刻を選択してください", Toast.LENGTH_SHORT).show()
             }
 
 
 
-
-
-finish()
 
 
         }
@@ -87,6 +91,11 @@ finish()
         cancelAddingToDo.setOnClickListener{
             finish()
         }
+
+
+        timeNumberPicker.minValue = 0
+        timeNumberPicker.maxValue = 100
+        timeNumberPicker.value = 50
 
 
         circleButton1.setOnClickListener {

@@ -1,9 +1,11 @@
 package app.ishizaki.ryu.examapplication
 
+import android.annotation.SuppressLint
 import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ScrollView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +22,7 @@ class CoverageAdapter(
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val coverageSubjectText: TextView = view.findViewById(R.id.coverageSubjectText)
         val coverageContentText: TextView = view.findViewById(R.id.coverageContentText)
+        val coverageScrollView: ScrollView = view.findViewById(R.id.coverageScrollView)
     }
 
 
@@ -35,12 +38,19 @@ class CoverageAdapter(
 
 
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val coverage: Coverage = taskList?.get(position) ?:return
         holder.coverageSubjectText.text = coverage.subject
         holder.coverageContentText.text = coverage.content
 
+        holder.coverageScrollView.setOnTouchListener { view, motionEvent ->
+            view.parent.requestDisallowInterceptTouchEvent(true)
+            view.onTouchEvent(motionEvent)
+            true
+        }
 
-        holder.coverageContentText.movementMethod = ScrollingMovementMethod()
+
+//        holder.coverageContentText.movementMethod = ScrollingMovementMethod()
     }
 }
