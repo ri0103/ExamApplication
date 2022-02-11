@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
+import java.time.DayOfWeek
 import java.util.*
 
 class DatePickerDialogClass: DialogFragment(), DatePickerDialog.OnDateSetListener {
@@ -42,7 +43,7 @@ class DatePickerDialogClass: DialogFragment(), DatePickerDialog.OnDateSetListene
         }
     }
 
-    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int){
         listner.selectedDate(year,month,dayOfMonth)
     }
 

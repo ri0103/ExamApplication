@@ -1,5 +1,6 @@
 package app.ishizaki.ryu.examapplication.fragments
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
@@ -11,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import app.ishizaki.ryu.examapplication.*
 import io.realm.Realm
 import io.realm.RealmResults
@@ -31,6 +33,8 @@ class HomeFragment : Fragment(){
 
     var UntilExamDateSaved = readFirst()
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,33 +47,18 @@ class HomeFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
 
+        untilExamSaveButton.isVisible = false
+
+
         if (UntilExamDateSaved !=null) {
-            calendar1.set(
-                UntilExamDateSaved?.yearE as Int,
-                UntilExamDateSaved?.monthE as Int,
-                UntilExamDateSaved?.dateE as Int
-            )
-            var timeMills1: Long = calendar1.timeInMillis
-            var currentTimeMills: Long = System.currentTimeMillis()
-            var timeDiff: Long = timeMills1 - currentTimeMills;
-            timeDiff = timeDiff / 1000;
-            timeDiff = timeDiff / 60;
-            timeDiff = timeDiff / 60;
-            timeDiff = timeDiff / 24;
-            timeDiff = timeDiff + 1;
-            var str: String = timeDiff.toString() + "日"
-            untilExamNumber.setText(str)
-
-            untilExamSelectButton.text="${UntilExamDateSaved?.yearE as Int}年${UntilExamDateSaved?.monthE as Int+1}月${UntilExamDateSaved?.dateE as Int}日~"
-
-        }else{
-            untilExamSaveButton.text="保存"
+            yearSavedE = UntilExamDateSaved!!.yearE
+            monthSavedE = UntilExamDateSaved!!.monthE
+            dateSavedE = UntilExamDateSaved!!.dateE
+            countDownShow()
         }
 
 
         untilExamSelectButton.setOnClickListener{
-
-
 
             DatePickerDialog(
                 requireContext(),
@@ -77,27 +66,11 @@ class HomeFragment : Fragment(){
                 { _, year, monthOfYear, dayOfMonth ->
                     Calendar.getInstance().apply { set(year, monthOfYear, dayOfMonth) }
 
-
-                    untilExamSelectButton.text="${year}年${monthOfYear+1}月${dayOfMonth}日~"
-
-
-
                     yearSavedE = year
                     monthSavedE = monthOfYear
                     dateSavedE = dayOfMonth
 
-                    calendar1.set(year, monthOfYear, dayOfMonth)
-                    var timeMills1: Long = calendar1.timeInMillis
-                    var currentTimeMills: Long = System.currentTimeMillis()
-                    var timeDiff: Long = timeMills1 - currentTimeMills;
-                    timeDiff = timeDiff / 1000;
-                    timeDiff = timeDiff / 60;
-                    timeDiff = timeDiff / 60;
-                    timeDiff = timeDiff / 24;
-                    timeDiff = timeDiff + 1;
-                    var str: String = timeDiff.toString() + "日"
-                    untilExamNumber.setText(str)
-
+                    countDownShow()
 
                 },
                 calendar1.get(Calendar.YEAR),
@@ -106,42 +79,29 @@ class HomeFragment : Fragment(){
             ).apply {
             }.show()
 
+            untilExamSaveButton.isVisible = true
 
         }
 
         untilExamSaveButton.setOnClickListener{
+
             realm.executeTransaction{
                 if (UntilExamDateSaved !=null){
                     UntilExamDateSaved!!.yearE = yearSavedE as Int
                     UntilExamDateSaved!!.monthE = monthSavedE as Int
                     UntilExamDateSaved!!.dateE = dateSavedE as Int
                 }else {
-                    val newExamDate: UntilExamDate =
-                        it.createObject(UntilExamDate::class.java, UUID.randomUUID().toString())
+                    val newExamDate: UntilExamDate = it.createObject(UntilExamDate::class.java, UUID.randomUUID().toString())
                     newExamDate.yearE = yearSavedE as Int
                     newExamDate.monthE = monthSavedE as Int
                     newExamDate.dateE = dateSavedE as Int
                 }
             }
 
-            calendar1.set(yearSavedE as Int, monthSavedE as Int, dateSavedE as Int)
-            var timeMills1: Long = calendar1.timeInMillis
-            var currentTimeMills: Long = System.currentTimeMillis()
-            var timeDiff: Long = timeMills1 - currentTimeMills;
-            timeDiff = timeDiff / 1000;
-            timeDiff = timeDiff / 60;
-            timeDiff = timeDiff / 60;
-            timeDiff = timeDiff / 24;
-            timeDiff = timeDiff + 1;
-            var str: String = timeDiff.toString() + "日"
-            untilExamNumber.setText(str)
+            untilExamSaveButton.isVisible = false
 
 
         }
-
-
-
-
 
 
     }
@@ -152,52 +112,44 @@ class HomeFragment : Fragment(){
     }
 
 
+    fun countDownShow(){
+
+        calendar1.set(yearSavedE as Int, monthSavedE as Int, dateSavedE as Int)
+        var timeMills1: Long = calendar1.timeInMillis
+        var currentTimeMills: Long = System.currentTimeMillis()
+        var timeDiff: Long = timeMills1 - currentTimeMills;
+        timeDiff = timeDiff / 1000;
+        timeDiff = timeDiff / 60;
+        timeDiff = timeDiff / 60;
 
 
+        if (timeDiff<1){
+            untilExamNumber.setText("!試験期間中!")
+            untilExamNumber.textSize = 60F
+            untilExamTitle.isVisible = false
+            untilExamNumber.setTextColor(getResources().getColor(R.color.delete_red))
+        }
+        else{
+            timeDiff = timeDiff / 24;
+            timeDiff = timeDiff + 1
 
-//    fun showDatePickerDialog() {
-//        val calendar: Calendar = Calendar.getInstance()
-//
-//
-//        DatePickerDialog(
-//            requireContext(),
-//
-//            { _, year, monthOfYear, dayOfMonth ->
-//                Calendar.getInstance().apply { set(year, monthOfYear, dayOfMonth) }
-//
-//
-//                untilExamSelectButton.text="${year}年${monthOfYear+1}月${dayOfMonth}日"
-//
-//
-//
-//                yearSavedE = year
-//                monthSavedE = monthOfYear
-//                dateSavedE = dayOfMonth
-//
-//                calendar1.set(year, monthOfYear, dayOfMonth)
-//
-//
-//                var timeMills1: Long = calendar1.timeInMillis
-//                var currentTimeMills: Long = System.currentTimeMillis()
-//                var timeDiff: Long = timeMills1 - currentTimeMills;
-//                timeDiff = timeDiff / 1000;
-//                timeDiff = timeDiff / 60;
-//                timeDiff = timeDiff / 60;
-//                timeDiff = timeDiff / 24;
-//                timeDiff = timeDiff + 1;
-//                var str: String=timeDiff.toString() + "日"
-//                untilExamNumber.setText( str )
-//
-//
-//            },
-//            calendar.get(Calendar.YEAR),
-//            calendar.get(Calendar.MONTH),
-//            calendar.get(Calendar.DAY_OF_MONTH)
-//        ).apply {
-//        }.show()
-//    }
+            if(timeDiff<4){
+                var str: String = timeDiff.toString() + "日"
+                untilExamNumber.setText(str)
+                untilExamNumber.textSize = 130F
+                untilExamTitle.isVisible = true
+                untilExamNumber.setTextColor(getResources().getColor(R.color.delete_red))
+            }else{
+                var str: String = timeDiff.toString() + "日"
+                untilExamNumber.setText(str)
+                untilExamNumber.textSize = 100F
+                untilExamTitle.isVisible = true
+                untilExamNumber.setTextColor(getResources().getColor(R.color.blackorwhite))
+            }
+        }
 
+        untilExamSelectButton.text="${yearSavedE as Int}年${monthSavedE as Int+1}月${dateSavedE as Int}日~"
 
-
+    }
 
 }

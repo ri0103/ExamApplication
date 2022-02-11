@@ -51,9 +51,9 @@ class ToDoAdapter(
         val toDo: ToDo = taskList?.get(position) ?:return
         holder.subjectText.text = toDo.subject
         holder.contentText.text = toDo.content
-        holder.dateText.text = SimpleDateFormat("MM月dd日(E)　HH:mm~ ", Locale.JAPANESE).format(toDo.dateTime)
+        holder.dateText.text = SimpleDateFormat("MM月dd日(E)  HH:mm~", Locale.JAPANESE).format(toDo.dateTime)
         holder.scheduleCell.setBackgroundResource(toDo.bgColor)
-        holder.timeLengthText.text = toDo.timeLenght + "分間"
+        holder.timeLengthText.text = SimpleDateFormat("HH:mm", Locale.JAPANESE).format(toDo.dateTimeEnd)
     }
 
 

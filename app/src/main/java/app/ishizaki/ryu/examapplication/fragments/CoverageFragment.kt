@@ -119,7 +119,7 @@ class CoverageFragment : Fragment() {
                 )
 
                 val itemView = viewHolder.itemView
-                val background = ColorDrawable(Color.RED)
+                val background = ColorDrawable(getResources().getColor(R.color.delete_red))
 
 //                val deleteIcon = AppCompatResources.getDrawable(
 //                    activity,

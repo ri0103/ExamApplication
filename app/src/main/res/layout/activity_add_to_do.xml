@@ -8,247 +8,262 @@
     android:background="@color/whiteorblack"
     android:id="@+id/addToDoActivityBG">
 
-    <EditText
-        android:id="@+id/subjectSchedule"
-        android:layout_width="300sp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80sp"
-        android:ems="10"
-        android:hint="科目名"
-        android:inputType="textPersonName"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonfortodoadding"
-        android:textColor="@color/blackorwhite"
-        android:fontFamily="@font/mplusbold"/>
-
-    <EditText
-        android:id="@+id/contentSchedule"
-        android:gravity="top|left"
-        android:layout_width="300sp"
-        android:layout_height="wrap_content"
-        android:padding="10sp"
-        android:minHeight="100sp"
-        android:layout_marginTop="60sp"
-        android:hint="内容"
-        android:inputType="textMultiLine"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@color/blackorwhite"
-        app:layout_constraintTop_toBottomOf="@+id/subjectSchedule"
-        android:background="@drawable/border1"
-        android:fontFamily="@font/mplusregular"
-        />
-
-
-<LinearLayout
-    android:layout_marginTop="24sp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    android:orientation="horizontal"
-    android:id="@+id/buttonfortodoadding"
-    android:gravity="center_vertical">
-
-
-    <ImageButton
-        android:layout_marginLeft="24sp"
-        android:id="@+id/cancelAddingToDo"
-        android:layout_width="36sp"
-        android:layout_height="36sp"
-        android:background="@drawable/ic_baseline_close_24"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <View
-        android:layout_width="0sp"
-        android:layout_height="1sp"
-        android:layout_weight="1"/>
-
-
-    <Button
-        android:id="@+id/scheduleSaveButton"
-        android:layout_width="100sp"
-        android:layout_height="50sp"
-        android:backgroundTint="@color/sky_blue"
-        android:text="保存"
-        android:textColor="@color/bothwhite"
-        android:layout_marginRight="24sp"
-        android:textSize="18sp"
-        app:cornerRadius="15sp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:fontFamily="@font/mplusregular"/>
-
-</LinearLayout>
 
     <LinearLayout
-        android:gravity="center"
-        android:layout_marginTop="50sp"
+        android:layout_marginTop="24sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/contentSchedule"
-        android:id="@+id/selectionButtons">
+        android:orientation="horizontal"
+        android:id="@+id/buttonfortodoadding"
+        android:gravity="center_vertical">
+
+
+        <ImageButton
+            android:layout_marginLeft="24sp"
+            android:id="@+id/cancelAddingToDo"
+            android:layout_width="36sp"
+            android:layout_height="36sp"
+            android:background="@drawable/ic_baseline_close_24"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <View
+            android:layout_width="0sp"
+            android:layout_height="1sp"
+            android:layout_weight="1"/>
 
 
         <Button
-            android:id="@+id/dateScheduleButton"
-            android:layout_width="120sp"
-            android:layout_height="60sp"
-            android:layout_marginRight="12sp"
-            android:backgroundTint="@color/matcha_green"
-            android:fontFamily="@font/mplusregular"
-            android:text="日付を選択"
+            android:id="@+id/scheduleSaveButton"
+            android:layout_width="100sp"
+            android:layout_height="50sp"
+            android:backgroundTint="@color/sky_blue"
+            android:text="保存"
             android:textColor="@color/bothwhite"
-            android:textSize="16sp"
-            app:cornerRadius="10sp" />
-
-        <Button
-            android:id="@+id/timeScheduleButton"
-            android:layout_width="120sp"
-            android:layout_height="60sp"
-            android:backgroundTint="@color/matcha_green"
-            android:text="時刻を選択"
-            android:textColor="@color/bothwhite"
-            android:textSize="16sp"
-            android:layout_marginRight="12sp"
-            app:cornerRadius="10sp"
-            android:fontFamily="@font/mplusregular"/>
-
-        <NumberPicker
-            android:layout_width="40sp"
-            android:layout_height="60sp"
-            android:id="@+id/timeNumberPicker"
-            />
-        <TextView
-            android:layout_width="40sp"
-            android:layout_height="60sp"
-            android:text="分間"
-            android:textSize="16sp"
-            android:gravity="center"
+            android:layout_marginRight="24sp"
+            android:textSize="18sp"
+            app:cornerRadius="15sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:fontFamily="@font/mplusregular"/>
 
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/selectionButtons"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="32sp">
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+
+        <EditText
+            android:id="@+id/subjectSchedule"
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80sp"
+            android:ems="10"
+            android:hint="科目名"
+            android:inputType="textPersonName"
+            android:textSize="30sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/contentSchedule"
+            android:textColor="@color/blackorwhite"
+            android:fontFamily="@font/mplusbold"/>
+
+        <EditText
+            android:id="@+id/contentSchedule"
+            android:gravity="top|left"
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:padding="10sp"
+            android:minHeight="100sp"
+            android:maxHeight="140sp"
+            android:layout_marginTop="50sp"
+            android:hint="内容"
+            android:inputType="textMultiLine"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/blackorwhite"
+            app:layout_constraintTop_toBottomOf="@+id/subjectSchedule"
+            android:background="@drawable/border1"
+            android:fontFamily="@font/mplusregular"
+            android:letterSpacing="0.2"
+            />
+
+
+
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="50sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="4sp">
-            <ImageButton
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:background="@drawable/circle_button1"
-                android:layout_marginRight="1sp"
-                android:layout_marginLeft="1sp"
-                android:id="@+id/circleButton1"/>
-            <ImageButton
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:background="@drawable/circle_button2"
-                android:layout_marginRight="1sp"
-                android:layout_marginLeft="1sp"
-                android:id="@+id/circleButton2"/>
-            <ImageButton
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:background="@drawable/circle_button3"
-                android:layout_marginRight="1sp"
-                android:layout_marginLeft="1sp"
-                android:id="@+id/circleButton3"/>
-            <ImageButton
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:background="@drawable/circle_button4"
-                android:layout_marginRight="1sp"
-                android:layout_marginLeft="1sp"
-                android:id="@+id/circleButton4"/>
-            <ImageButton
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:background="@drawable/circle_button5"
-                android:layout_marginRight="1sp"
-                android:layout_marginLeft="1sp"
-                android:id="@+id/circleButton5"/>
-            <ImageButton
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:background="@drawable/circle_button6"
-                android:layout_marginRight="1sp"
-                android:layout_marginLeft="1sp"
-                android:id="@+id/circleButton6"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/contentSchedule"
+            android:id="@+id/selectionButtons">
+
+
+            <Button
+                android:id="@+id/dateScheduleButton"
+                android:layout_width="120sp"
+                android:layout_height="60sp"
+                android:layout_marginRight="12sp"
+                android:backgroundTint="@color/matcha_green"
+                android:fontFamily="@font/mplusregular"
+                android:text="日付を選択"
+                android:textColor="@color/bothwhite"
+                android:textSize="16sp"
+                app:cornerRadius="10sp" />
+
+            <Button
+                android:id="@+id/timeScheduleButton"
+                android:layout_width="120sp"
+                android:layout_height="60sp"
+                android:backgroundTint="@color/matcha_green"
+                android:text="時刻を選択"
+                android:textColor="@color/bothwhite"
+                android:textSize="16sp"
+                android:layout_marginRight="12sp"
+                app:cornerRadius="10sp"
+                android:fontFamily="@font/mplusregular"/>
+
+            <NumberPicker
+                android:layout_width="40sp"
+                android:layout_height="60sp"
+                android:id="@+id/timeNumberPicker"
+                />
+            <TextView
+                android:layout_width="40sp"
+                android:layout_height="60sp"
+                android:text="分間"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:fontFamily="@font/mplusregular"/>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="4sp">
-            <ImageButton
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:background="@drawable/circle_button12"
-                android:layout_marginRight="1sp"
-                android:layout_marginLeft="1sp"
-                android:id="@+id/circleButton12"/>
-            <ImageButton
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:background="@drawable/circle_button11"
-                android:layout_marginRight="1sp"
-                android:layout_marginLeft="1sp"
-                android:id="@+id/circleButton11"/>
-            <ImageButton
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:background="@drawable/circle_button10"
-                android:layout_marginRight="1sp"
-                android:layout_marginLeft="1sp"
-                android:id="@+id/circleButton10"/>
-            <ImageButton
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:background="@drawable/circle_button9"
-                android:layout_marginRight="1sp"
-                android:layout_marginLeft="1sp"
-                android:id="@+id/circleButton9"/>
-            <ImageButton
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:background="@drawable/circle_button8"
-                android:layout_marginRight="1sp"
-                android:layout_marginLeft="1sp"
-                android:id="@+id/circleButton8" />
-            <ImageButton
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:background="@drawable/circle_button7"
-                android:layout_marginRight="1sp"
-                android:layout_marginLeft="1sp"
-                android:id="@+id/circleButton7"/>
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/selectionButtons"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="32sp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4sp">
+                <ImageButton
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:background="@drawable/circle_button1"
+                    android:layout_marginRight="1sp"
+                    android:layout_marginLeft="1sp"
+                    android:id="@+id/circleButton1"/>
+                <ImageButton
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:background="@drawable/circle_button2"
+                    android:layout_marginRight="1sp"
+                    android:layout_marginLeft="1sp"
+                    android:id="@+id/circleButton2"/>
+                <ImageButton
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:background="@drawable/circle_button3"
+                    android:layout_marginRight="1sp"
+                    android:layout_marginLeft="1sp"
+                    android:id="@+id/circleButton3"/>
+                <ImageButton
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:background="@drawable/circle_button4"
+                    android:layout_marginRight="1sp"
+                    android:layout_marginLeft="1sp"
+                    android:id="@+id/circleButton4"/>
+                <ImageButton
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:background="@drawable/circle_button5"
+                    android:layout_marginRight="1sp"
+                    android:layout_marginLeft="1sp"
+                    android:id="@+id/circleButton5"/>
+                <ImageButton
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:background="@drawable/circle_button6"
+                    android:layout_marginRight="1sp"
+                    android:layout_marginLeft="1sp"
+                    android:id="@+id/circleButton6"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4sp">
+                <ImageButton
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:background="@drawable/circle_button12"
+                    android:layout_marginRight="1sp"
+                    android:layout_marginLeft="1sp"
+                    android:id="@+id/circleButton12"/>
+                <ImageButton
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:background="@drawable/circle_button11"
+                    android:layout_marginRight="1sp"
+                    android:layout_marginLeft="1sp"
+                    android:id="@+id/circleButton11"/>
+                <ImageButton
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:background="@drawable/circle_button10"
+                    android:layout_marginRight="1sp"
+                    android:layout_marginLeft="1sp"
+                    android:id="@+id/circleButton10"/>
+                <ImageButton
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:background="@drawable/circle_button9"
+                    android:layout_marginRight="1sp"
+                    android:layout_marginLeft="1sp"
+                    android:id="@+id/circleButton9"/>
+                <ImageButton
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:background="@drawable/circle_button8"
+                    android:layout_marginRight="1sp"
+                    android:layout_marginLeft="1sp"
+                    android:id="@+id/circleButton8" />
+                <ImageButton
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:background="@drawable/circle_button7"
+                    android:layout_marginRight="1sp"
+                    android:layout_marginLeft="1sp"
+                    android:id="@+id/circleButton7"/>
+            </LinearLayout>
+
         </LinearLayout>
 
-    </LinearLayout>
 
-
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
