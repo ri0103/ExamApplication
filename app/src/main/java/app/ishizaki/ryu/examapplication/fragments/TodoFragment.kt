@@ -147,6 +147,7 @@ class TodoFragment : Fragment() {
 
 
 
+
                 val iconMarginVertical = (viewHolder.itemView.height - deleteIcon!!.intrinsicHeight) /2
                 deleteIcon.setBounds(
                     itemView.left + iconMarginVertical,
@@ -158,7 +159,7 @@ class TodoFragment : Fragment() {
                 background.setBounds(
                     itemView.left,
                     itemView.top,
-                    itemView.right+ dX.toInt() ,
+                    itemView.right + dX.toInt(),
                     itemView.bottom
                 )
                 background.draw(c)

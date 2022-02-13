@@ -34,7 +34,6 @@
         android:inputType="textMultiLine"
         android:minHeight="200sp"
         android:maxHeight="260sp"
-        android:letterSpacing="0.2"
         android:padding="10sp"
         android:textColor="@color/blackorwhite"
         android:textSize="14sp"

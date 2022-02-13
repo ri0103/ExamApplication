@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.TimePicker
 import android.widget.Toast
 import io.realm.Realm
@@ -66,8 +67,15 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
             showTimePickerDialog()
         }
 
+        dateSelectChoices()
 
+        setBackgroundColors()
 
+        val subjectsAuto = resources.getStringArray(R.array.subjects)
+        val adapter = ArrayAdapter(this,
+            android.R.layout.simple_list_item_1, subjectsAuto)
+        subjectSchedule.setAdapter(adapter)
+        subjectSchedule.setCompletionHint("科目を選択してください");
 
 
         scheduleSaveButton.setOnClickListener {
@@ -104,24 +112,9 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
                 val date = Date.from(zdt.toInstant())
                 newToDo.dateTime = date
 
-//                    val intToDateTime2: LocalDateTime = LocalDateTime.of(
-//                        yearSaved!!,
-//                        monthSaved!!,
-//                        dateSaved!!,
-//                        hourSaved!!,
-//                        minuteSaved!! + timeLenghtSaved!!
-//                    )
-//                    val zdt2 = intToDateTime2.atZone((ZoneId.systemDefault()))
-//                    val date2 = Date.from(zdt2.toInstant())
-//                    newToDo.endDateTime = date2
 
             }
             finish()
-
-
-
-
-
 
         }
 
@@ -133,6 +126,70 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
 
 
 
+
+
+
+
+
+    }
+
+
+    private fun showDatePickerDialog(){
+
+        val datePickerDialogClass = DatePickerDialogClass()
+        datePickerDialogClass.show(supportFragmentManager, null)
+
+
+    }
+
+    private fun showTimePickerDialog(){
+
+        val timePickerDialogClass = TimePickerDialogClass()
+        timePickerDialogClass.show(supportFragmentManager, null)
+
+    }
+
+
+
+    override fun selectedDate(year: Int, month: Int, date: Int) {
+
+        yearSaved = year
+        monthSaved = month +1
+        dateSaved = date
+
+
+        dateScheduleButton.text="${monthSaved}月${dateSaved}日"
+
+
+    }
+
+
+    override fun selectedTime(hourOfDay: Int, minute: Int) {
+
+
+        hourSaved = hourOfDay
+        minuteSaved = minute
+
+        timeScheduleButton.text="${hourSaved}時${minuteSaved}分"
+
+    }
+
+    private fun dateSelectChoices(){
+        selectTodayButton.setOnClickListener {
+            dateSaved = LocalDate.now().dayOfMonth
+            dateScheduleButton.text="${monthSaved}月${dateSaved}日"
+        }
+        selectTomorrowButton.setOnClickListener {
+            dateSaved = LocalDate.now().dayOfMonth +1
+            dateScheduleButton.text="${monthSaved}月${dateSaved}日"
+        }
+        selectNextTomorrowButton.setOnClickListener {
+            dateSaved = LocalDate.now().dayOfMonth +2
+            dateScheduleButton.text="${monthSaved}月${dateSaved}日"
+        }
+    }
+
+    private fun setBackgroundColors(){
 
         circleButton1.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_grey)
@@ -183,49 +240,9 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
             colorSaved = R.color.bg_purewhite
         }
 
-
     }
 
 
-    private fun showDatePickerDialog(){
-
-        val datePickerDialogClass = DatePickerDialogClass()
-        datePickerDialogClass.show(supportFragmentManager, null)
-
-
-    }
-
-    private fun showTimePickerDialog(){
-
-        val timePickerDialogClass = TimePickerDialogClass()
-        timePickerDialogClass.show(supportFragmentManager, null)
-
-    }
-
-
-
-    override fun selectedDate(year: Int, month: Int, date: Int) {
-
-        yearSaved = year
-        monthSaved = month +1
-        dateSaved = date
-
-
-        dateScheduleButton.text="${monthSaved}月${dateSaved}日"
-
-
-    }
-
-
-    override fun selectedTime(hourOfDay: Int, minute: Int) {
-
-
-        hourSaved = hourOfDay
-        minuteSaved = minute
-
-        timeScheduleButton.text="${hourSaved}時${minuteSaved}分"
-
-    }
 
 
 

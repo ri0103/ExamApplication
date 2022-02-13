@@ -11,4 +11,36 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+
+    <string-array name="subjects">
+        <item>数学</item>
+        <item>数学Ⅰ</item>
+        <item>数学Ⅱ</item>
+        <item>数学Ⅲ</item>
+        <item>数学A</item>
+        <item>数学B</item>
+        <item>国語</item>
+        <item>現代文</item>
+        <item>古典</item>
+        <item>漢文</item>
+        <item>英語</item>
+        <item>理科</item>
+        <item>生物</item>
+        <item>地学</item>
+        <item>物理</item>
+        <item>化学</item>
+        <item>地理</item>
+        <item>公民</item>
+        <item>現代社会</item>
+        <item>歴史</item>
+        <item>日本史</item>
+        <item>世界史</item>
+        <item>情報</item>
+        <item>音楽</item>
+        <item>家庭科</item>
+        <item>美術</item>
+        <item>保健</item>
+    </string-array>
+
 </resources>

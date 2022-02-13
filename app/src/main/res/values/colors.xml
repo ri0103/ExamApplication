@@ -25,7 +25,7 @@
     <color name="title_recyclerview">#ffe8ef</color>
     <color name="menu_color1">#262626</color>
     <color name="menu_color2">#fffff7</color>
-    <color name="delete_red">#ff0000</color>
+    <color name="delete_red">#ff5252</color>
 
     <color name="bg_grey">#ededed</color>
     <color name="bg_red">#fff5f5</color>
