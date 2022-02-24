@@ -58,14 +58,13 @@
             android:id="@+id/subjectText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="科目"
-            android:textColor="@color/cell_title_color"
-            android:paddingBottom="12sp"
-            android:paddingTop="12sp"
-            android:textSize="35sp"
             android:layout_gravity="center"
             android:fontFamily="@font/mplusbold"
-            />
+            android:paddingTop="12sp"
+            android:paddingBottom="12sp"
+            android:text="科目"
+            android:textColor="@color/cell_title_color"
+            android:textSize="35sp" />
 
         <LinearLayout
             android:layout_width="match_parent"

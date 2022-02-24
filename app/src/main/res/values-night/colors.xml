@@ -18,27 +18,27 @@
     <color name="blackorwhite">#ededed</color>
     <color name="bothblack">#262626</color>
     <color name="bothwhite">#ededed</color>
-    <color name="background_main">#2b2b29</color>
+    <color name="background_main">#1C1C1E</color>
     <color name="menu_bg_color">#013f6e</color>
-    <color name="cell_bg_color">#004734</color>
+    <color name="cell_bg_color">#01645A</color>
     <color name="cell_title_color">#ecebfa</color>
     <color name="title_recyclerview">#45091b</color>
-    <color name="menu_color1">#ededed</color>
-    <color name="menu_color2">#858585</color>
+    <color name="menu_color1">#919191</color>
+    <color name="menu_color2">#d6d6d6</color>
     <color name="delete_red">#ff5252</color>
 
-    <color name="bg_grey">#262626</color>
-    <color name="bg_red">#300000</color>
-    <color name="bg_orange">#452001</color>
-    <color name="bg_yellow">#424200</color>
-    <color name="bg_green">#214200</color>
-    <color name="bg_darkgreen">#142900</color>
-    <color name="bg_bluegreen">#014a35</color>
-    <color name="bg_skyblue">#002c4a</color>
-    <color name="bg_purple">#080140</color>
-    <color name="bg_redpurple">#29013d</color>
-    <color name="bg_lightpink">#42002b</color>
-    <color name="bg_purewhite">#000000</color>
+    <color name="bg_grey">#3A3A3A</color>
+    <color name="bg_red">#4F0101</color>
+    <color name="bg_orange">#592A02</color>
+    <color name="bg_yellow">#5D5D03</color>
+    <color name="bg_green">#305E02</color>
+    <color name="bg_darkgreen">#364D03</color>
+    <color name="bg_bluegreen">#035D43</color>
+    <color name="bg_skyblue">#05385b</color>
+    <color name="bg_purple">#0d035d</color>
+    <color name="bg_redpurple">#3f025d</color>
+    <color name="bg_lightpink">#5d033e</color>
+    <color name="bg_purewhite">#0a0a0a</color>
 
 
 </resources>

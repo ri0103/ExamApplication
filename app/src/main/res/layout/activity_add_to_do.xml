@@ -55,7 +55,7 @@
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -157,48 +157,67 @@
                     android:fontFamily="@font/mplusregular"/>
 
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="34sp"
-                android:orientation="horizontal"
-                android:gravity="left"
+
+            <HorizontalScrollView
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30sp"
+
                 >
 
-                <Button
-                    android:layout_width="30sp"
+                <LinearLayout
+                    android:layout_width="100sp"
                     android:layout_height="34sp"
-                    android:layout_marginLeft="5sp"
-                    android:text="今日"
-                    android:textSize="8sp"
-                    android:padding="0sp"
-                    android:textColor="@color/blackorwhite"
-                    android:backgroundTint="@color/bg_grey"
-                    android:elevation="5sp"
-                    android:id="@+id/selectTodayButton"/>
-                <Button
-                    android:layout_width="30sp"
-                    android:layout_height="34sp"
-                    android:layout_marginLeft="5sp"
-                    android:text="明日"
-                    android:textSize="8sp"
-                    android:padding="0sp"
-                    android:textColor="@color/blackorwhite"
-                    android:backgroundTint="@color/bg_grey"
-                    android:elevation="5sp"
-                    android:id="@+id/selectTomorrowButton"/>
-                <Button
-                    android:layout_width="30sp"
-                    android:layout_height="34sp"
-                    android:layout_marginLeft="5sp"
-                    android:text="明後日"
-                    android:textSize="8sp"
-                    android:padding="0sp"
-                    android:textColor="@color/blackorwhite"
-                    android:backgroundTint="@color/bg_grey"
-                    android:elevation="5sp"
-                    android:id="@+id/selectNextTomorrowButton"/>
+                    android:orientation="horizontal"
+                    >
 
-            </LinearLayout>
+                    <Button
+                        android:layout_width="30sp"
+                        android:layout_height="34sp"
+                        android:layout_marginLeft="5sp"
+                        android:text="今日"
+                        android:textSize="8sp"
+                        android:padding="0sp"
+                        android:textColor="@color/blackorwhite"
+                        android:backgroundTint="@color/bg_grey"
+                        android:elevation="5sp"
+                        android:id="@+id/selectTodayButton"/>
+                    <Button
+                        android:layout_width="30sp"
+                        android:layout_height="34sp"
+                        android:layout_marginLeft="5sp"
+                        android:text="明日"
+                        android:textSize="8sp"
+                        android:padding="0sp"
+                        android:textColor="@color/blackorwhite"
+                        android:backgroundTint="@color/bg_grey"
+                        android:elevation="5sp"
+                        android:id="@+id/selectTomorrowButton"/>
+                    <Button
+                        android:layout_width="30sp"
+                        android:layout_height="34sp"
+                        android:layout_marginLeft="5sp"
+                        android:text="明後日"
+                        android:textSize="8sp"
+                        android:padding="0sp"
+                        android:textColor="@color/blackorwhite"
+                        android:backgroundTint="@color/bg_grey"
+                        android:elevation="5sp"
+                        android:id="@+id/selectNextTomorrowButton"/>
+                    <Button
+                        android:layout_width="30sp"
+                        android:layout_height="34sp"
+                        android:layout_marginLeft="5sp"
+                        android:text="来週"
+                        android:textSize="8sp"
+                        android:padding="0sp"
+                        android:textColor="@color/blackorwhite"
+                        android:backgroundTint="@color/bg_grey"
+                        android:elevation="5sp"
+                        android:id="@+id/selectNextWeekButton"/>
+
+                </LinearLayout>
+            </HorizontalScrollView>
         </LinearLayout>
 
 

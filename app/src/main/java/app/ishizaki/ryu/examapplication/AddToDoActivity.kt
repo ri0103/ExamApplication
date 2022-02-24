@@ -170,6 +170,10 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
             dateSaved = LocalDate.now().dayOfMonth +2
             dateScheduleButton.text="${monthSaved}月${dateSaved}日"
         }
+        selectNextWeekButton.setOnClickListener {
+            dateSaved = LocalDate.now().dayOfMonth +7
+            dateScheduleButton.text="${monthSaved}月${dateSaved}日"
+        }
     }
 
     private fun setBackgroundColors(){

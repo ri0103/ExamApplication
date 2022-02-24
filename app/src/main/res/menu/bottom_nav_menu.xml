@@ -6,16 +6,17 @@
     <item
         android:title="ホーム"
         android:id="@+id/ic_home"
-        android:icon="@drawable/ic_home" />
+        android:icon="@drawable/home_icon_fill"
+ />
 
     <item
         android:title="やること"
         android:id="@+id/ic_todo"
-        android:icon="@drawable/ic_todo"/>
+        android:icon="@drawable/todo_icon_fill"/>
 
     <item
         android:title="時間割・範囲"
         android:id="@+id/ic_coverage"
-        android:icon="@drawable/ic_coverage"/>
+        android:icon="@drawable/coverage_icon_fill"/>
 
 </menu>
