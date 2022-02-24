@@ -44,8 +44,9 @@
         android:layout_marginTop="32sp"
         android:layout_marginBottom="100sp"
         android:textSize="100sp"
-        android:fontFamily="@font/mochiypoppone"
+        android:fontFamily="@font/mplusbold"
         android:textColor="@color/blackoryellow"
+        android:gravity="center"
         />
 
         <Button
@@ -70,7 +71,7 @@
             android:textSize="24sp"
             android:textColor="@color/bothwhite"
             android:fontFamily="@font/mplusregular"
-            android:text="更新" />
+            android:text="保存" />
 
 
 

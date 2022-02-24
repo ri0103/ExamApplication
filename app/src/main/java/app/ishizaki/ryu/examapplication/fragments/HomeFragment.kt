@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import app.ishizaki.ryu.examapplication.*
 import io.realm.Realm
@@ -25,10 +26,11 @@ import java.util.*
 class HomeFragment : Fragment(){
 
     var calendar1: Calendar = Calendar.getInstance();
+    var calendar2: Calendar = Calendar.getInstance()
 
-    var yearSavedE: Int? = null
-    var monthSavedE: Int? = null
-    var dateSavedE: Int? = null
+    var yearSavedE: Int = 1000
+    var monthSavedE: Int = 1
+    var dateSavedE: Int = 1
     val realm: Realm = Realm.getDefaultInstance()
 
     var UntilExamDateSaved = readFirst()
@@ -55,6 +57,8 @@ class HomeFragment : Fragment(){
             monthSavedE = UntilExamDateSaved!!.monthE
             dateSavedE = UntilExamDateSaved!!.dateE
             countDownShow()
+        }else{
+            countDownShow()
         }
 
 
@@ -73,11 +77,12 @@ class HomeFragment : Fragment(){
                     countDownShow()
 
                 },
-                calendar1.get(Calendar.YEAR),
-                calendar1.get(Calendar.MONTH),
-                calendar1.get(Calendar.DAY_OF_MONTH)
+                calendar2.get(Calendar.YEAR),
+                calendar2.get(Calendar.MONTH),
+                calendar2.get(Calendar.DAY_OF_MONTH)
             ).apply {
             }.show()
+
 
             untilExamSaveButton.isVisible = true
 
@@ -87,14 +92,14 @@ class HomeFragment : Fragment(){
 
             realm.executeTransaction{
                 if (UntilExamDateSaved !=null){
-                    UntilExamDateSaved!!.yearE = yearSavedE as Int
-                    UntilExamDateSaved!!.monthE = monthSavedE as Int
-                    UntilExamDateSaved!!.dateE = dateSavedE as Int
+                    UntilExamDateSaved!!.yearE = yearSavedE
+                    UntilExamDateSaved!!.monthE = monthSavedE
+                    UntilExamDateSaved!!.dateE = dateSavedE
                 }else {
                     val newExamDate: UntilExamDate = it.createObject(UntilExamDate::class.java, UUID.randomUUID().toString())
-                    newExamDate.yearE = yearSavedE as Int
-                    newExamDate.monthE = monthSavedE as Int
-                    newExamDate.dateE = dateSavedE as Int
+                    newExamDate.yearE = yearSavedE
+                    newExamDate.monthE = monthSavedE
+                    newExamDate.dateE = dateSavedE
                 }
             }
 
@@ -123,11 +128,24 @@ class HomeFragment : Fragment(){
         timeDiff = timeDiff / 60;
 
 
-        if (timeDiff<1){
-            untilExamNumber.setText("!試験期間中!")
-            untilExamNumber.textSize = 60F
-            untilExamTitle.isVisible = false
-            untilExamNumber.setTextColor(getResources().getColor(R.color.delete_red))
+        if (timeDiff<0.1){
+
+            if (timeDiff<-8760000){
+                untilExamTitle.text="ようこそ！"
+                untilExamNumber.setText("定期試験の開始日を\n選択することで、\nカウントダウン\nが開始されます！")
+                untilExamNumber.typeface = this.context?.let { ResourcesCompat.getFont(it, R.font.mplusregular) }
+                untilExamNumber.textSize = 24F
+                untilExamNumber.setTextColor(getResources().getColor(R.color.blackorwhite))
+                untilExamSelectButton.text="定期試験の開始日を選択"
+            }else {
+                untilExamNumber.setText("!試験期間中!")
+                untilExamNumber.typeface = this.context?.let { ResourcesCompat.getFont(it, R.font.mplusmedium) }
+                untilExamNumber.textSize = 60F
+                untilExamTitle.isVisible = false
+                untilExamNumber.setTextColor(getResources().getColor(R.color.delete_red))
+                untilExamSelectButton.text="${yearSavedE as Int}年${monthSavedE as Int+1}月${dateSavedE as Int}日~"
+            }
+
         }
         else{
             timeDiff = timeDiff / 24;
@@ -137,19 +155,26 @@ class HomeFragment : Fragment(){
                 var str: String = timeDiff.toString() + "日"
                 untilExamNumber.setText(str)
                 untilExamNumber.textSize = 130F
+                untilExamTitle.text="定期試験まであと"
                 untilExamTitle.isVisible = true
                 untilExamNumber.setTextColor(getResources().getColor(R.color.delete_red))
+                untilExamNumber.typeface = this.context?.let { ResourcesCompat.getFont(it, R.font.mplusbold) }
+                untilExamSelectButton.text="${yearSavedE as Int}年${monthSavedE as Int+1}月${dateSavedE as Int}日~"
             }else{
                 var str: String = timeDiff.toString() + "日"
                 untilExamNumber.setText(str)
                 untilExamNumber.textSize = 100F
+                untilExamTitle.text="定期試験まであと"
                 untilExamTitle.isVisible = true
                 untilExamNumber.setTextColor(getResources().getColor(R.color.blackorwhite))
+                untilExamNumber.typeface = this.context?.let { ResourcesCompat.getFont(it, R.font.mplusbold) }
+                untilExamSelectButton.text="${yearSavedE as Int}年${monthSavedE as Int+1}月${dateSavedE as Int}日~"
             }
         }
 
-        untilExamSelectButton.text="${yearSavedE as Int}年${monthSavedE as Int+1}月${dateSavedE as Int}日~"
+
 
     }
+
 
 }

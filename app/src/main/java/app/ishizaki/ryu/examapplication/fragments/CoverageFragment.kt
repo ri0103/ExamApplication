@@ -1,12 +1,11 @@
 package app.ishizaki.ryu.examapplication.fragments
 
-import android.content.Context
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,15 +13,12 @@ import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.ishizaki.ryu.examapplication.*
 import io.realm.Realm
 import io.realm.RealmResults
 import io.realm.Sort
 import kotlinx.android.synthetic.main.fragment_coverage.*
-import kotlinx.android.synthetic.main.fragment_todo.*
-import kotlinx.android.synthetic.main.item_exam_coverage_data_cell.*
 
 class CoverageFragment : Fragment() {
 
@@ -33,9 +29,6 @@ class CoverageFragment : Fragment() {
 
     var coverageList = readAll()
 
-
-    private var layoutManager: RecyclerView.LayoutManager?=null
-    private var adapter: RecyclerView.Adapter<CoverageAdapter.ViewHolder>?=null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,6 +43,7 @@ class CoverageFragment : Fragment() {
         recyclerView2.apply {
             layoutManager = GridLayoutManager (activity, 2, GridLayoutManager.VERTICAL, false)
             adapter = CoverageAdapter(this, coverageList, true)
+
         }
 
         val swipeToDismissTouchHelper = getSwipeToDismissTouchHelper(adapter = CoverageAdapter(recyclerView2, coverageList, true))
@@ -68,8 +62,6 @@ class CoverageFragment : Fragment() {
     fun readAll(): RealmResults<Coverage> {
         return realm.where(Coverage::class.java).findAll().sort("createdTime", Sort.ASCENDING)
     }
-
-
 
 
 
@@ -99,6 +91,7 @@ class CoverageFragment : Fragment() {
                 adapter.notifyItemRemoved(viewHolder.adapterPosition)
             }
 
+            @SuppressLint("ResourceType")
             override fun onChildDraw(
                 c: Canvas,
                 recyclerView: RecyclerView,
@@ -121,10 +114,6 @@ class CoverageFragment : Fragment() {
                 val itemView = viewHolder.itemView
                 val background = ColorDrawable(getResources().getColor(R.color.delete_red))
 
-//                val deleteIcon = AppCompatResources.getDrawable(
-//                    activity,
-//                    R.drawable.ic_baseline_delete_24
-//                )
 
                 val deleteIcon = activity?.let {
                     AppCompatResources.getDrawable(
@@ -132,8 +121,6 @@ class CoverageFragment : Fragment() {
                         R.drawable.ic_baseline_delete_24
                     )
                 }
-
-
 
                 val iconMarginVertical = (viewHolder.itemView.height - deleteIcon!!.intrinsicHeight) /2
                 deleteIcon.setBounds(
@@ -154,8 +141,5 @@ class CoverageFragment : Fragment() {
             }
 
         })
-
-
-
 
 }

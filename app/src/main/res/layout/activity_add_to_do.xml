@@ -171,8 +171,9 @@
                     android:text="今日"
                     android:textSize="8sp"
                     android:padding="0sp"
-                    android:textColor="@color/bothwhite"
-                    android:backgroundTint="@color/dark_sky_blue"
+                    android:textColor="@color/blackorwhite"
+                    android:backgroundTint="@color/bg_grey"
+                    android:elevation="5sp"
                     android:id="@+id/selectTodayButton"/>
                 <Button
                     android:layout_width="30sp"
@@ -181,8 +182,9 @@
                     android:text="明日"
                     android:textSize="8sp"
                     android:padding="0sp"
-                    android:textColor="@color/bothwhite"
-                    android:backgroundTint="@color/dark_sky_blue"
+                    android:textColor="@color/blackorwhite"
+                    android:backgroundTint="@color/bg_grey"
+                    android:elevation="5sp"
                     android:id="@+id/selectTomorrowButton"/>
                 <Button
                     android:layout_width="30sp"
@@ -191,8 +193,9 @@
                     android:text="明後日"
                     android:textSize="8sp"
                     android:padding="0sp"
-                    android:textColor="@color/bothwhite"
-                    android:backgroundTint="@color/dark_sky_blue"
+                    android:textColor="@color/blackorwhite"
+                    android:backgroundTint="@color/bg_grey"
+                    android:elevation="5sp"
                     android:id="@+id/selectNextTomorrowButton"/>
 
             </LinearLayout>

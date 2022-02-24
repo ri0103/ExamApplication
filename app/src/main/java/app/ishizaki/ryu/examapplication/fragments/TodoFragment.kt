@@ -1,20 +1,14 @@
 package app.ishizaki.ryu.examapplication.fragments
 
-import android.annotation.SuppressLint
-import android.app.AlertDialog
-import android.app.LauncherActivity
-import android.content.Context
 import android.content.Intent
-import android.content.LocusId
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
+import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,12 +17,9 @@ import app.ishizaki.ryu.examapplication.*
 import io.realm.Realm
 import io.realm.RealmResults
 import io.realm.Sort
-import io.realm.kotlin.where
-import kotlinx.android.synthetic.main.activity_add_to_do.*
 import kotlinx.android.synthetic.main.fragment_todo.*
-import kotlinx.android.synthetic.main.item_exam_coverage_data_cell.*
-import kotlinx.android.synthetic.main.item_schedule_data_cell.*
 import java.util.*
+import javax.security.auth.Subject
 
 class TodoFragment : Fragment() {
 
@@ -38,21 +29,7 @@ class TodoFragment : Fragment() {
         Realm.getDefaultInstance()
     }
 
-//    private var mContext: Context? = null
-
-
     var toDoList = readAll()
-
-
-
-
-//    companion object{
-//        fun createInstance(context: Context): Fragment{
-//            val fragment = TodoFragment()
-//            fragment.mContext = context
-//            return fragment
-//        }
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -68,21 +45,46 @@ class TodoFragment : Fragment() {
 
         recyclerView1.apply {
             layoutManager = LinearLayoutManager(activity)
-            adapter = ToDoAdapter(this, toDoList, true)
+            adapter = ToDoAdapter(this, toDoList, object : ToDoAdapter.OnButtonClickListener {
+                override fun onButtonClick(item: ToDo) {
+                    Toast.makeText(getActivity(),"リスナーの設置テスト",Toast.LENGTH_SHORT).show()
+                }
+            }, true)
+
         }
 
-            val swipeToDismissTouchHelper = getSwipeToDismissTouchHelper(adapter = ToDoAdapter(recyclerView1, toDoList, true))
-            swipeToDismissTouchHelper.attachToRecyclerView(recyclerView1)
+        val swipeToDismissTouchHelper = getSwipeToDismissTouchHelper(adapter = ToDoAdapter(recyclerView1, toDoList,object : ToDoAdapter.OnButtonClickListener {
+            override fun onButtonClick(item: ToDo) {} }, true))
+        swipeToDismissTouchHelper.attachToRecyclerView(recyclerView1)
 
         fab.setOnClickListener {
             val intent = Intent(activity, AddToDoActivity::class.java)
             activity?.startActivity(intent)
         }
-        }
 
-        fun readAll(): RealmResults<ToDo> {
-            return realm.where(ToDo::class.java).findAll().sort("dateTime", Sort.ASCENDING)
-        }
+
+
+    }
+
+    fun readAll(): RealmResults<ToDo> {
+        return realm.where(ToDo::class.java).findAll().sort("dateTime", Sort.ASCENDING)
+    }
+
+//    fun createFooter() {
+//        val calendarForFooter: Calendar = Calendar.getInstance()
+//        calendarForFooter.set(10000, 1, 1, 0, 0)
+//        val dateForFooter: Date = calendarForFooter.time
+//            createCell("", "", dateForFooter)
+//    }
+//
+//    fun createCell(subject: String, content: String, datetime: Date) {
+//        realm.executeTransaction {
+//            val toDo = it.createObject(ToDo::class.java, UUID.randomUUID().toString())
+//            toDo.subject = subject
+//            toDo.content = content
+//            toDo.dateTime = datetime
+//        }
+//    }
 
 
     private fun getSwipeToDismissTouchHelper(adapter: ToDoAdapter)=

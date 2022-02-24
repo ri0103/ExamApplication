@@ -8,5 +8,5 @@ open class Coverage (
     @PrimaryKey open var id: String = UUID.randomUUID().toString(),
     open var subject: String = "",
     open var content: String = "",
-    open var createdTime: Date = Date(System.currentTimeMillis())
+    open var createdTime: Date = Date(System.currentTimeMillis()) ,
 ) : RealmObject()

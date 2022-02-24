@@ -14,30 +14,25 @@ class AddCoverageActivity : AppCompatActivity(){
     var realm: Realm = Realm.getDefaultInstance()
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_coverage)
-
-
 
         coverageSaveButton.setOnClickListener {
             realm.executeTransaction{
                     val newCoverage: Coverage = it.createObject(Coverage::class.java, UUID.randomUUID().toString())
                     newCoverage.subject = subjectCoverage.text.toString()
                     newCoverage.content = contentCoverage.text.toString()
-
                 }
             finish()
-
             }
 
         cancelAddingCoverage.setOnClickListener{
             finish()
         }
+
         }
 
 
-    }
+}
 

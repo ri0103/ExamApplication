@@ -1,23 +1,11 @@
 package app.ishizaki.ryu.examapplication
 
-import android.content.Context
-import android.content.SharedPreferences
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import android.widget.TimePicker
-import android.widget.Toast
 import io.realm.Realm
-import kotlinx.android.synthetic.main.activity_add_coverage.*
 import kotlinx.android.synthetic.main.activity_add_to_do.*
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.item_schedule_data_cell.*
-import java.sql.Time
-import java.text.DateFormat
-import java.text.SimpleDateFormat
 import java.time.*
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDateListner, TimePickerDialogClass.OnSelectedTimeListner{
@@ -58,7 +46,6 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
 
 
 
-
         dateScheduleButton.setOnClickListener {
             showDatePickerDialog()
         }
@@ -75,7 +62,10 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
         val adapter = ArrayAdapter(this,
             android.R.layout.simple_list_item_1, subjectsAuto)
         subjectSchedule.setAdapter(adapter)
-        subjectSchedule.setCompletionHint("科目を選択してください");
+        subjectSchedule.setCompletionHint("科目を選択してください")
+        subjectSchedule.setOnFocusChangeListener { view, b ->
+            subjectSchedule.showDropDown()
+        }
 
 
         scheduleSaveButton.setOnClickListener {
@@ -123,14 +113,6 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
             finish()
         }
 
-
-
-
-
-
-
-
-
     }
 
 
@@ -175,6 +157,7 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
     }
 
     private fun dateSelectChoices(){
+
         selectTodayButton.setOnClickListener {
             dateSaved = LocalDate.now().dayOfMonth
             dateScheduleButton.text="${monthSaved}月${dateSaved}日"

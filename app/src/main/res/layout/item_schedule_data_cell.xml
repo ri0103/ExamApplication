@@ -11,7 +11,7 @@
 <!--        xmlns:android="http://schemas.android.com/apk/res/android"-->
 <!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
 <!--    xmlns:card_view="http://schemas.android.com/apk/res-auto"-->
-<!--        android:id="@+id/cardView1"-->
+<!--        android:id="@+id/scheduleCell1"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
 <!--        app:cardCornerRadius="15sp"-->
@@ -21,54 +21,58 @@
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        android:backgroundTint="@color/bg_grey">-->
+<!--    android:backgroundTint="@color/bg_grey"-->
+<!--    android:background="@color/bg_lightpink">-->
 
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scheduleCell1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/scheduleCell1"
     android:layout_marginTop="10sp"
     android:layout_marginBottom="2sp"
+    android:layout_marginRight="6sp"
+    android:layout_marginLeft="6sp"
     app:cornerRadius="15sp"
+    android:elevation="4sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     android:background="@color/bg_grey"
-
     >
 
 
 
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16sp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/subjectText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="科目"
+            android:textColor="@color/cell_title_color"
+            android:paddingBottom="12sp"
+            android:paddingTop="12sp"
+            android:textSize="35sp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/mplusbold"
+            />
+
         <LinearLayout
-            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="16sp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/subjectText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="科目"
-                android:textColor="@color/cell_title_color"
-                android:paddingBottom="12sp"
-                android:paddingTop="12sp"
-                android:textSize="35sp"
-                android:layout_gravity="center"
-                android:fontFamily="@font/mplusbold"
-                />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="12sp"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/dateText"
@@ -77,9 +81,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/mplusmedium"
-                android:paddingBottom="12sp"
                 android:text="~月~日　〇時〇分-"
-                android:textSize="25sp" />
+                android:textSize="22dp"/>
 
             <TextView
                 android:id="@+id/timeLenghtText"
@@ -88,27 +91,28 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/mplusmedium"
-                android:paddingBottom="12sp"
                 android:text="〇〇分間"
-                android:textSize="25sp" />
+                android:textSize="22dp"/>
 
-            </LinearLayout>
-
-            <TextView
-                android:textColor="@color/blackorwhite"
-                android:id="@+id/contentText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="4sp"
-                android:layout_marginLeft="4sp"
-                android:text="内容"
-                android:fontFamily="@font/mplusregular"
-                android:textSize="20sp"
-                android:paddingBottom="12sp"
-                />
         </LinearLayout>
 
+        <TextView
+            android:textColor="@color/blackorwhite"
+            android:id="@+id/contentText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4sp"
+            android:layout_marginLeft="4sp"
+            android:text="内容"
+            android:fontFamily="@font/mplusregular"
+            android:textSize="20sp"
+            android:paddingBottom="12sp"
+            />
+
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
-<!--</androidx.cardview.widget.CardView>-->
+    <!--</androidx.cardview.widget.CardView>-->
 
 
