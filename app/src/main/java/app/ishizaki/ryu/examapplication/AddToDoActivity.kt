@@ -18,24 +18,38 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
     var colorSaved: Int = R.color.bg_grey
     var realm: Realm = Realm.getDefaultInstance()
     var dateEnd: Date = Date(System.currentTimeMillis())
+    val calendarDefault: Calendar = Calendar.getInstance()
+    val calendarToday: Calendar = Calendar.getInstance()
+    val calendarTomorrow: Calendar = Calendar.getInstance()
+    val calendarNextTomorrow: Calendar = Calendar.getInstance()
+    val calendarNextWeek: Calendar = Calendar.getInstance()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_to_do)
 
+        calendarDefault.set(
+            LocalDate.now().year,
+            LocalDate.now().monthValue-1,
+            if (LocalTime.now().hour !=23){
+                LocalDate.now().dayOfMonth
+            }else {
+                LocalDate.now().dayOfMonth+1
+            },
+            if (LocalTime.now().hour !=23){
+                LocalTime.now().hour + 1
+            }else {
+                0
+            },
+            0
+        )
 
-
-        yearSaved = LocalDate.now().year
-        monthSaved = LocalDate.now().monthValue
-        dateSaved = LocalDate.now().dayOfMonth
-        if (LocalTime.now().hour !=23){
-            hourSaved = LocalTime.now().hour + 1
-        }else {
-            hourSaved = 0
-            dateSaved = LocalDate.now().dayOfMonth+1
-        }
-        minuteSaved = 0
+        yearSaved = calendarDefault.get(Calendar.YEAR)
+        monthSaved = calendarDefault.get(Calendar.MONTH)+1
+        dateSaved = calendarDefault.get(Calendar.DAY_OF_MONTH)
+        hourSaved = calendarDefault.get(Calendar.HOUR_OF_DAY)
+        minuteSaved = calendarDefault.get(Calendar.MINUTE)
 
         dateScheduleButton.text="${monthSaved}月${dateSaved}日"
         timeScheduleButton.text="${hourSaved}時${minuteSaved}分"
@@ -66,6 +80,7 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
         subjectSchedule.setOnFocusChangeListener { view, b ->
             subjectSchedule.showDropDown()
         }
+        subjectSchedule.dropDownHeight = 600
 
 
         scheduleSaveButton.setOnClickListener {
@@ -139,7 +154,6 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
         monthSaved = month +1
         dateSaved = date
 
-
         dateScheduleButton.text="${monthSaved}月${dateSaved}日"
 
 
@@ -147,7 +161,6 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
 
 
     override fun selectedTime(hourOfDay: Int, minute: Int) {
-
 
         hourSaved = hourOfDay
         minuteSaved = minute
@@ -157,21 +170,49 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
     }
 
     private fun dateSelectChoices(){
+        calendarToday.set(
+            LocalDate.now().year,
+            LocalDate.now().monthValue-1,
+            LocalDate.now().dayOfMonth
+        )
+        calendarTomorrow.set(
+            LocalDate.now().year,
+            LocalDate.now().monthValue-1,
+            LocalDate.now().dayOfMonth+1
+        )
+        calendarNextTomorrow.set(
+            LocalDate.now().year,
+            LocalDate.now().monthValue-1,
+            LocalDate.now().dayOfMonth+2
+        )
+        calendarNextWeek.set(
+            LocalDate.now().year,
+            LocalDate.now().monthValue-1,
+            LocalDate.now().dayOfMonth+7
+        )
 
         selectTodayButton.setOnClickListener {
-            dateSaved = LocalDate.now().dayOfMonth
+            yearSaved = calendarToday.get(Calendar.YEAR)
+            monthSaved = calendarToday.get(Calendar.MONTH)+1
+            dateSaved = calendarToday.get(Calendar.DAY_OF_MONTH)
             dateScheduleButton.text="${monthSaved}月${dateSaved}日"
         }
         selectTomorrowButton.setOnClickListener {
-            dateSaved = LocalDate.now().dayOfMonth +1
+            yearSaved = calendarTomorrow.get(Calendar.YEAR)
+            monthSaved = calendarTomorrow.get(Calendar.MONTH)+1
+            dateSaved = calendarTomorrow.get(Calendar.DAY_OF_MONTH)
             dateScheduleButton.text="${monthSaved}月${dateSaved}日"
         }
         selectNextTomorrowButton.setOnClickListener {
-            dateSaved = LocalDate.now().dayOfMonth +2
+            yearSaved = calendarNextTomorrow.get(Calendar.YEAR)
+            monthSaved = calendarNextTomorrow.get(Calendar.MONTH)+1
+            dateSaved = calendarNextTomorrow.get(Calendar.DAY_OF_MONTH)
             dateScheduleButton.text="${monthSaved}月${dateSaved}日"
         }
         selectNextWeekButton.setOnClickListener {
-            dateSaved = LocalDate.now().dayOfMonth +7
+            yearSaved = calendarNextWeek.get(Calendar.YEAR)
+            monthSaved = calendarNextWeek.get(Calendar.MONTH)+1
+            dateSaved = calendarNextWeek.get(Calendar.DAY_OF_MONTH)
             dateScheduleButton.text="${monthSaved}月${dateSaved}日"
         }
     }

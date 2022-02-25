@@ -143,7 +143,7 @@ class TodoFragment : Fragment() {
                 val deleteIcon = activity?.let {
                     AppCompatResources.getDrawable(
                         it,
-                        R.drawable.ic_baseline_delete_24
+                        R.drawable.ic_outline_delete_24
                     )
                 }
 
