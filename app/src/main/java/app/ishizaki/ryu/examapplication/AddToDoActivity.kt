@@ -21,16 +21,17 @@ import java.util.*
 
 class AddToDoActivity : AppCompatActivity(){
 
-    var colorSaved: Int = R.color.bg_grey
+    var colorSaved: Int = R.drawable.bg_resource1
     var realm: Realm = Realm.getDefaultInstance()
     var dateStartSet: Date = Date(System.currentTimeMillis())
     var dateEndSet: Date = Date(System.currentTimeMillis())
-    open val calendarDefault: Calendar = Calendar.getInstance()
+    val calendarDefault: Calendar = Calendar.getInstance()
     val dateFormatShow = SimpleDateFormat("M/dd (E)", Locale.JAPANESE)
     val timeFormatShow = SimpleDateFormat("H:mm~", Locale.JAPANESE)
     val calendarTestIfFuture: Calendar = Calendar.getInstance()
     var dateTimeStartHistory: Date = Date(System.currentTimeMillis())
     var dateTimeEndHistory: Date = Date(System.currentTimeMillis())
+    var numberPickerHistory: Int = 50
     var ToDoSaved = readFirst()
 
 
@@ -82,15 +83,15 @@ class AddToDoActivity : AppCompatActivity(){
         timeScheduleButton.text= timeFormatShow.format(calendarDefault.time)
 
 
-        timeNumberPicker.minValue = 0
-        timeNumberPicker.maxValue = 100
-        timeNumberPicker.value = 50
-
-
         if (ToDoSaved !=null){
             dateTimeStartHistory = ToDoSaved!!.dateTimeStart
             dateTimeEndHistory = ToDoSaved!!.dateTimeEnd
+            numberPickerHistory = ToDoSaved!!.timeLenght
         }
+
+        timeNumberPicker.minValue = 0
+        timeNumberPicker.maxValue = 180
+        timeNumberPicker.value = numberPickerHistory
 
 
         dateScheduleButton.setOnClickListener {
@@ -136,6 +137,8 @@ class AddToDoActivity : AppCompatActivity(){
         }
 
         dateSelectChoices()
+        timeAddChoices()
+        timeLenghtSelection()
 
         setBackgroundColors()
 
@@ -168,6 +171,7 @@ class AddToDoActivity : AppCompatActivity(){
                         newToDo.bgColor = colorSaved
                         newToDo.dateTimeStart = dateStartSet
                         newToDo.dateTimeEnd = dateEndSet
+                        newToDo.timeLenght = timeNumberPicker.value
                     }
                     finish()
                 }
@@ -180,6 +184,7 @@ class AddToDoActivity : AppCompatActivity(){
                     newToDo.bgColor = colorSaved
                     newToDo.dateTimeStart = dateStartSet
                     newToDo.dateTimeEnd = dateEndSet
+                    newToDo.timeLenght = timeNumberPicker.value
                 }
                 finish()
             }
@@ -273,6 +278,49 @@ class AddToDoActivity : AppCompatActivity(){
         }
     }
 
+    private fun timeAddChoices(){
+
+        addfiveminsButton.setOnClickListener {
+            calendarDefault.set(Calendar.MINUTE, calendarDefault.get(Calendar.MINUTE)+5)
+            timeScheduleButton.text = timeFormatShow.format(calendarDefault.time)
+            showDateText()
+        }
+        addtenminsButton.setOnClickListener {
+            calendarDefault.set(Calendar.MINUTE, calendarDefault.get(Calendar.MINUTE)+10)
+            timeScheduleButton.text = timeFormatShow.format(calendarDefault.time)
+            showDateText()
+        }
+        addthirtyminsButton.setOnClickListener {
+            calendarDefault.set(Calendar.MINUTE, calendarDefault.get(Calendar.MINUTE)+30)
+            timeScheduleButton.text = timeFormatShow.format(calendarDefault.time)
+            showDateText()
+        }
+        addonehourButton.setOnClickListener {
+            calendarDefault.set(Calendar.HOUR_OF_DAY, calendarDefault.get(Calendar.HOUR_OF_DAY)+1)
+            timeScheduleButton.text = timeFormatShow.format(calendarDefault.time)
+            showDateText()
+        }
+    }
+
+    private fun timeLenghtSelection(){
+
+        selectfifteenminsButton.setOnClickListener {
+            timeNumberPicker.value =15
+        }
+        selectthirtyminsButton.setOnClickListener {
+            timeNumberPicker.value =30
+        }
+        selectfourtyfiveminsButton.setOnClickListener {
+            timeNumberPicker.value =45
+        }
+        selectfiftyminsButton.setOnClickListener {
+            timeNumberPicker.value =50
+        }
+        selectsixtyminsButton.setOnClickListener {
+            timeNumberPicker.value =60
+        }
+    }
+
     private fun showDateText(){
         if (LocalDate.now().year == calendarDefault.get(Calendar.YEAR) &&
             LocalDate.now().monthValue == calendarDefault.get(Calendar.MONTH)+1 &&
@@ -287,51 +335,51 @@ class AddToDoActivity : AppCompatActivity(){
 
         circleButton1.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_grey)
-            colorSaved = R.color.bg_grey
+            colorSaved = R.drawable.bg_resource1
         }
         circleButton2.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_red)
-            colorSaved = R.color.bg_red
+            colorSaved = R.drawable.bg_resource2
         }
         circleButton3.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_orange)
-            colorSaved = R.color.bg_orange
+            colorSaved = R.drawable.bg_resource3
         }
         circleButton4.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_yellow)
-            colorSaved = R.color.bg_yellow
+            colorSaved = R.drawable.bg_resource4
         }
         circleButton5.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_green)
-            colorSaved = R.color.bg_green
+            colorSaved = R.drawable.bg_resource5
         }
         circleButton6.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_darkgreen)
-            colorSaved = R.color.bg_darkgreen
+            colorSaved = R.drawable.bg_resource6
         }
         circleButton7.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_bluegreen)
-            colorSaved = R.color.bg_bluegreen
+            colorSaved = R.drawable.bg_resource7
         }
         circleButton8.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_skyblue)
-            colorSaved = R.color.bg_skyblue
+            colorSaved = R.drawable.bg_resource8
         }
         circleButton9.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_purple)
-            colorSaved = R.color.bg_purple
+            colorSaved = R.drawable.bg_resource9
         }
         circleButton10.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_redpurple)
-            colorSaved = R.color.bg_redpurple
+            colorSaved = R.drawable.bg_resource10
         }
         circleButton11.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_lightpink)
-            colorSaved = R.color.bg_lightpink
+            colorSaved = R.drawable.bg_resource11
         }
         circleButton12.setOnClickListener {
             addToDoActivityBG.setBackgroundResource(R.color.bg_purewhite)
-            colorSaved = R.color.bg_purewhite
+            colorSaved = R.drawable.bg_resource12
         }
 
     }

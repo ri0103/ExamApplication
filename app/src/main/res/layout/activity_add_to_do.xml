@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddToDoActivity"
-    android:background="@color/whiteorblack"
+    android:background="@color/bg_grey"
     android:id="@+id/addToDoActivityBG">
 
 
@@ -161,66 +161,202 @@
 
             </LinearLayout>
 
-            <HorizontalScrollView
-                android:layout_width="100sp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30sp"
-                android:fadeScrollbars="false"
-                >
-
-                <LinearLayout
+                android:orientation="horizontal">
+                <HorizontalScrollView
                     android:layout_width="100sp"
-                    android:layout_height="34sp"
-                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30sp"
+                    android:fadeScrollbars="false"
                     >
 
-                    <Button
-                        android:layout_width="30sp"
+                    <LinearLayout
+                        android:layout_width="100sp"
                         android:layout_height="34sp"
-                        android:layout_marginLeft="5sp"
-                        android:text="今日"
-                        android:textSize="8sp"
-                        android:padding="0sp"
-                        android:textColor="@color/blackorwhite"
-                        android:backgroundTint="@color/bg_grey"
-                        android:elevation="5sp"
-                        android:id="@+id/selectTodayButton"/>
-                    <Button
-                        android:layout_width="30sp"
-                        android:layout_height="34sp"
-                        android:layout_marginLeft="5sp"
-                        android:text="明日"
-                        android:textSize="8sp"
-                        android:padding="0sp"
-                        android:textColor="@color/blackorwhite"
-                        android:backgroundTint="@color/bg_grey"
-                        android:elevation="5sp"
-                        android:id="@+id/selectTomorrowButton"/>
-                    <Button
-                        android:layout_width="30sp"
-                        android:layout_height="34sp"
-                        android:layout_marginLeft="5sp"
-                        android:text="明後日"
-                        android:textSize="8sp"
-                        android:padding="0sp"
-                        android:textColor="@color/blackorwhite"
-                        android:backgroundTint="@color/bg_grey"
-                        android:elevation="5sp"
-                        android:id="@+id/selectNextTomorrowButton"/>
-                    <Button
-                        android:layout_width="30sp"
-                        android:layout_height="34sp"
-                        android:layout_marginLeft="5sp"
-                        android:text="来週"
-                        android:textSize="8sp"
-                        android:padding="0sp"
-                        android:textColor="@color/blackorwhite"
-                        android:backgroundTint="@color/bg_grey"
-                        android:elevation="5sp"
-                        android:id="@+id/selectNextWeekButton"/>
+                        android:orientation="horizontal"
+                        >
 
-                </LinearLayout>
-            </HorizontalScrollView>
+                        <Button
+                            android:layout_width="30sp"
+                            android:layout_height="34sp"
+                            android:layout_marginLeft="5sp"
+                            android:text="今日"
+                            android:textSize="8sp"
+                            android:padding="0sp"
+                            android:textColor="@color/blackorwhite"
+                            android:backgroundTint="@color/bg_grey"
+                            android:elevation="5sp"
+                            android:id="@+id/selectTodayButton"/>
+                        <Button
+                            android:layout_width="30sp"
+                            android:layout_height="34sp"
+                            android:layout_marginLeft="5sp"
+                            android:text="明日"
+                            android:textSize="8sp"
+                            android:padding="0sp"
+                            android:textColor="@color/blackorwhite"
+                            android:backgroundTint="@color/bg_grey"
+                            android:elevation="5sp"
+                            android:id="@+id/selectTomorrowButton"/>
+                        <Button
+                            android:layout_width="30sp"
+                            android:layout_height="34sp"
+                            android:layout_marginLeft="5sp"
+                            android:text="明後日"
+                            android:textSize="8sp"
+                            android:padding="0sp"
+                            android:textColor="@color/blackorwhite"
+                            android:backgroundTint="@color/bg_grey"
+                            android:elevation="5sp"
+                            android:id="@+id/selectNextTomorrowButton"/>
+                        <Button
+                            android:layout_width="30sp"
+                            android:layout_height="34sp"
+                            android:layout_marginLeft="5sp"
+                            android:text="来週"
+                            android:textSize="8sp"
+                            android:padding="0sp"
+                            android:textColor="@color/blackorwhite"
+                            android:backgroundTint="@color/bg_grey"
+                            android:elevation="5sp"
+                            android:id="@+id/selectNextWeekButton"/>
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+                <HorizontalScrollView
+                    android:layout_width="100sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30sp"
+                    android:fadeScrollbars="false"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="100sp"
+                        android:layout_height="34sp"
+                        android:orientation="horizontal"
+                        >
+
+                        <Button
+                            android:layout_width="30sp"
+                            android:layout_height="34sp"
+                            android:layout_marginLeft="5sp"
+                            android:text="+5分"
+                            android:textSize="8sp"
+                            android:padding="0sp"
+                            android:textColor="@color/blackorwhite"
+                            android:backgroundTint="@color/bg_grey"
+                            android:elevation="5sp"
+                            android:id="@+id/addfiveminsButton"/>
+                        <Button
+                            android:layout_width="30sp"
+                            android:layout_height="34sp"
+                            android:layout_marginLeft="5sp"
+                            android:text="+10分"
+                            android:textSize="8sp"
+                            android:padding="0sp"
+                            android:textColor="@color/blackorwhite"
+                            android:backgroundTint="@color/bg_grey"
+                            android:elevation="5sp"
+                            android:id="@+id/addtenminsButton"/>
+                        <Button
+                            android:layout_width="30sp"
+                            android:layout_height="34sp"
+                            android:layout_marginLeft="5sp"
+                            android:text="+30分"
+                            android:textSize="8sp"
+                            android:padding="0sp"
+                            android:textColor="@color/blackorwhite"
+                            android:backgroundTint="@color/bg_grey"
+                            android:elevation="5sp"
+                            android:id="@+id/addthirtyminsButton"/>
+                        <Button
+                            android:layout_width="30sp"
+                            android:layout_height="34sp"
+                            android:layout_marginLeft="5sp"
+                            android:text="+1時間"
+                            android:textSize="8sp"
+                            android:padding="0sp"
+                            android:textColor="@color/blackorwhite"
+                            android:backgroundTint="@color/bg_grey"
+                            android:elevation="5sp"
+                            android:id="@+id/addonehourButton"/>
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+                <HorizontalScrollView
+                    android:layout_width="100sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30sp"
+                    android:fadeScrollbars="false"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="100sp"
+                        android:layout_height="34sp"
+                        android:orientation="horizontal"
+                        >
+
+                        <Button
+                            android:layout_width="30sp"
+                            android:layout_height="34sp"
+                            android:layout_marginLeft="5sp"
+                            android:text="15"
+                            android:textSize="8sp"
+                            android:padding="0sp"
+                            android:textColor="@color/blackorwhite"
+                            android:backgroundTint="@color/bg_grey"
+                            android:elevation="5sp"
+                            android:id="@+id/selectfifteenminsButton"/>
+                        <Button
+                            android:layout_width="30sp"
+                            android:layout_height="34sp"
+                            android:layout_marginLeft="5sp"
+                            android:text="30"
+                            android:textSize="8sp"
+                            android:padding="0sp"
+                            android:textColor="@color/blackorwhite"
+                            android:backgroundTint="@color/bg_grey"
+                            android:elevation="5sp"
+                            android:id="@+id/selectthirtyminsButton"/>
+                        <Button
+                            android:layout_width="30sp"
+                            android:layout_height="34sp"
+                            android:layout_marginLeft="5sp"
+                            android:text="45"
+                            android:textSize="8sp"
+                            android:padding="0sp"
+                            android:textColor="@color/blackorwhite"
+                            android:backgroundTint="@color/bg_grey"
+                            android:elevation="5sp"
+                            android:id="@+id/selectfourtyfiveminsButton"/>
+                        <Button
+                            android:layout_width="30sp"
+                            android:layout_height="34sp"
+                            android:layout_marginLeft="5sp"
+                            android:text="50"
+                            android:textSize="8sp"
+                            android:padding="0sp"
+                            android:textColor="@color/blackorwhite"
+                            android:backgroundTint="@color/bg_grey"
+                            android:elevation="5sp"
+                            android:id="@+id/selectfiftyminsButton"/>
+                        <Button
+                            android:layout_width="30sp"
+                            android:layout_height="34sp"
+                            android:layout_marginLeft="5sp"
+                            android:text="60"
+                            android:textSize="8sp"
+                            android:padding="0sp"
+                            android:textColor="@color/blackorwhite"
+                            android:backgroundTint="@color/bg_grey"
+                            android:elevation="5sp"
+                            android:id="@+id/selectsixtyminsButton"/>
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </LinearLayout>
         </LinearLayout>
 
 

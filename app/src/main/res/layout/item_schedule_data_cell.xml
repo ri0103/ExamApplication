@@ -60,8 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/mplusbold"
-            android:paddingTop="12sp"
-            android:paddingBottom="12sp"
+            android:paddingTop="6sp"
+            android:paddingBottom="6sp"
             android:text="科目"
             android:textColor="@color/cell_title_color"
             android:textSize="35sp" />
@@ -70,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="12sp"
+            android:paddingBottom="8sp"
             android:gravity="center">
 
             <TextView
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/mplusmedium"
-                android:text="~月~日　〇時〇分-"
+                android:text="//月//日(/) //://～"
                 android:textSize="22dp"/>
 
             <TextView
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/mplusmedium"
-                android:text="〇〇分間"
+                android:text="//://"
                 android:textSize="22dp"/>
 
         </LinearLayout>
@@ -105,7 +105,7 @@
             android:text="内容"
             android:fontFamily="@font/mplusregular"
             android:textSize="20sp"
-            android:paddingBottom="12sp"
+            android:paddingBottom="6sp"
             />
 
 

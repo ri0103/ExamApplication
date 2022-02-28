@@ -4,6 +4,18 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.24210526315789474" />
+        <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/bg_resource1.xml" value="0.2394736842105263" />
+        <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/bg_resource10.xml" value="0.2394736842105263" />
+        <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/bg_resource11.xml" value="0.2394736842105263" />
+        <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/bg_resource12.xml" value="0.2394736842105263" />
+        <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/bg_resource2.xml" value="0.24703947368421053" />
+        <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/bg_resource3.xml" value="0.24703947368421053" />
+        <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/bg_resource4.xml" value="0.2394736842105263" />
+        <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/bg_resource5.xml" value="0.2394736842105263" />
+        <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/bg_resource6.xml" value="0.24703947368421053" />
+        <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/bg_resource7.xml" value="0.2394736842105263" />
+        <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/bg_resource8.xml" value="0.2394736842105263" />
+        <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/bg_resource9.xml" value="0.2394736842105263" />
         <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/border1.xml" value="0.24210526315789474" />
         <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/border2.xml" value="0.24210526315789474" />
         <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/border3.xml" value="0.24967105263157896" />
@@ -41,6 +53,8 @@
         <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/ic_todo.xml" value="0.24210526315789474" />
         <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/number_picker_background.xml" value="0.2394736842105263" />
         <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/rounded_corner.xml" value="0.24210526315789474" />
+        <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/swipe_to_delete_background.xml" value="0.2394736842105263" />
+        <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/swipe_to_delete_background2.xml" value="0.2394736842105263" />
         <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/drawable/todo_icon_fill.xml" value="0.24703947368421053" />
         <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/font/mochiyfonts.xml" value="0.2509868421052632" />
         <entry key="..\:/Users/Ryu Ishizaki/AndroidStudioProjects/ExamApplication/app/src/main/res/font/mochiypopone.xml" value="0.2509868421052632" />
