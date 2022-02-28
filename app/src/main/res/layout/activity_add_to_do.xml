@@ -125,10 +125,11 @@
                     android:layout_marginRight="12sp"
                     android:backgroundTint="@color/matcha_green"
                     android:fontFamily="@font/mplusregular"
-                    android:text="日付を選択"
+                    android:text="/月/日(/)"
                     android:textColor="@color/bothwhite"
-                    android:textSize="16sp"
-                    app:cornerRadius="10sp" />
+                    android:textSize="14sp"
+                    app:cornerRadius="10sp"
+                    android:padding="0sp"/>
 
 
                 <Button
@@ -136,17 +137,19 @@
                     android:layout_width="120sp"
                     android:layout_height="60sp"
                     android:backgroundTint="@color/matcha_green"
-                    android:text="時刻を選択"
+                    android:text="//://~"
                     android:textColor="@color/bothwhite"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:layout_marginRight="12sp"
                     app:cornerRadius="10sp"
-                    android:fontFamily="@font/mplusregular"/>
+                    android:fontFamily="@font/mplusregular"
+                    android:padding="0sp"/>
 
                 <NumberPicker
                     android:layout_width="40sp"
                     android:layout_height="60sp"
                     android:id="@+id/timeNumberPicker"
+                    android:background="@drawable/number_picker_background"
                     />
                 <TextView
                     android:layout_width="40sp"
@@ -162,7 +165,7 @@
                 android:layout_width="100sp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30sp"
-
+                android:fadeScrollbars="false"
                 >
 
                 <LinearLayout

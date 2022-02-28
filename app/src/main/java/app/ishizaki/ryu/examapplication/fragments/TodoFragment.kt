@@ -67,7 +67,7 @@ class TodoFragment : Fragment() {
     }
 
     fun readAll(): RealmResults<ToDo> {
-        return realm.where(ToDo::class.java).findAll().sort("dateTime", Sort.ASCENDING)
+        return realm.where(ToDo::class.java).findAll().sort("dateTimeStart", Sort.ASCENDING)
     }
 
 //    fun createFooter() {
@@ -109,7 +109,7 @@ class TodoFragment : Fragment() {
                         task.deleteFromRealm()
                     }
                 }
-                toDoList = realm.where(ToDo::class.java).findAll().sort("dateTime", Sort.ASCENDING)
+                toDoList = realm.where(ToDo::class.java).findAll().sort("dateTimeStart", Sort.ASCENDING)
                 adapter.notifyItemRemoved(viewHolder.adapterPosition)
             }
 

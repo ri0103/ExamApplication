@@ -15,13 +15,7 @@ open class ToDo(
     open var id: String = UUID.randomUUID().toString(),
     open var subject: String = "",
     open var content: String = "",
-    open var year: Int = 0,
-    open var month: Int = 0,
-    open var day: Int = 0,
-    open var hour: Int = 0,
-    open var minute: Int = 0,
     open var bgColor: Int = 0,
-    open var timeLenght: String = "",
-    open var dateTime: Date = Date(System.currentTimeMillis()),
+    open var dateTimeStart: Date = Date(System.currentTimeMillis()),
     open var dateTimeEnd: Date = Date(System.currentTimeMillis())
 ) : RealmObject()

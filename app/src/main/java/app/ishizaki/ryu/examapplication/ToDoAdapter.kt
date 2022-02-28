@@ -1,7 +1,9 @@
 package app.ishizaki.ryu.examapplication
 
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +17,9 @@ import app.ishizaki.ryu.examapplication.fragments.TodoFragment
 import io.realm.OrderedRealmCollection
 import io.realm.Realm
 import io.realm.RealmRecyclerViewAdapter
+import kotlinx.android.synthetic.main.activity_add_to_do.*
 import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.util.*
 
 class ToDoAdapter(
@@ -89,13 +93,37 @@ class ToDoAdapter(
 
 
 
+    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val toDo: ToDo = taskList?.get(position) ?:return
         holder.subjectText.text = toDo.subject
         holder.contentText.text = toDo.content
-        holder.dateText.text = SimpleDateFormat("MM月dd日(E)  HH:mm", Locale.JAPANESE).format(toDo.dateTime)
-        holder.scheduleCell.setBackgroundResource(toDo.bgColor)
-        holder.timeLengthText.text = SimpleDateFormat("~HH:mm", Locale.JAPANESE).format(toDo.dateTimeEnd)
+
+        if (
+            LocalDate.now().year == toDo.dateTimeStart.year+1900 &&
+            LocalDate.now().monthValue == toDo.dateTimeStart.month+1 &&
+            LocalDate.now().dayOfMonth == toDo.dateTimeStart.date
+             ){
+            holder.dateText.text = SimpleDateFormat("今日  H:mm", Locale.JAPANESE).format(toDo.dateTimeStart)
+        }else{
+            holder.dateText.text = SimpleDateFormat("M月dd日(E)  H:mm", Locale.JAPANESE).format(toDo.dateTimeStart)
+        }
+
+        holder.timeLengthText.text = SimpleDateFormat("～H:mm", Locale.JAPANESE).format(toDo.dateTimeEnd)
+
+        if(
+            toDo.dateTimeEnd.time < System.currentTimeMillis()
+        ){
+            holder.scheduleCell.setBackgroundResource(R.color.bothblack)
+            holder.subjectText.setTextColor(Color.GRAY)
+            holder.contentText.setTextColor(Color.GRAY)
+            holder.dateText.setTextColor(Color.RED)
+            holder.timeLengthText.setTextColor(Color.RED)
+        }else{
+            holder.scheduleCell.setBackgroundResource(toDo.bgColor)
+
+        }
+
         holder.scheduleCell.setOnClickListener {
             listener.onButtonClick(toDo)
         }

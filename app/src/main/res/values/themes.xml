@@ -15,6 +15,34 @@
         <!-- Customize your theme here. -->
     </style>
 
+
+
+
+<!--    <style name="DatePickerStyle" parent="Theme.AppCompat.Light.Dialog">-->
+<!--        <item name="colorAccent">#ebf1ff</item>-->
+<!--&lt;!&ndash;        selected Item color&ndash;&gt;-->
+<!--        <item name="colorControlActivated">#004f8c</item>-->
+<!--&lt;!&ndash;         Highlight item color&ndash;&gt;-->
+<!--        <item name="colorControlHighlight">#004f8c</item>-->
+<!--&lt;!&ndash;        Calender Background color&ndash;&gt;-->
+<!--        <item name="android:windowBackground">#ebf1ff</item>-->
+<!--&lt;!&ndash;         Ok Cancel Color&ndash;&gt;-->
+<!--        <item name="android:textColor">@color/whiteorblack</item>-->
+
+<!--        &lt;!&ndash; Calender Number color arrow color (< >) &ndash;&gt;-->
+<!--        <item name="android:textColorPrimary">@color/blackorwhite</item>-->
+<!--        &lt;!&ndash;day , month&ndash;&gt;-->
+<!--        <item name="android:textColorPrimaryInverse">@color/blackorwhite</item>-->
+<!--        &lt;!&ndash; year&ndash;&gt;-->
+<!--        <item name="android:textColorSecondaryInverse">@color/blackorwhite</item>-->
+
+<!--        <item name="android:textColorLink">@color/whiteorblack</item>-->
+
+
+<!--    </style>-->
+
+
+
     <style name="Theme.ExamApplication.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

@@ -1,71 +1,138 @@
 package app.ishizaki.ryu.examapplication
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.DatePicker
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import io.realm.Realm
+import io.realm.RealmResults
+import io.realm.Sort
 import kotlinx.android.synthetic.main.activity_add_to_do.*
+import kotlinx.android.synthetic.main.item_schedule_data_cell.*
+import java.text.SimpleDateFormat
 import java.time.*
+import java.time.format.DateTimeFormatter
+import java.time.temporal.TemporalAccessor
 import java.util.*
 
-class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDateListner, TimePickerDialogClass.OnSelectedTimeListner{
+class AddToDoActivity : AppCompatActivity(){
 
-    var yearSaved: Int? = null
-    var monthSaved :Int? = null
-    var dateSaved: Int? = null
-    var hourSaved: Int? = null
-    var minuteSaved: Int? = null
     var colorSaved: Int = R.color.bg_grey
     var realm: Realm = Realm.getDefaultInstance()
-    var dateEnd: Date = Date(System.currentTimeMillis())
-    val calendarDefault: Calendar = Calendar.getInstance()
-    val calendarToday: Calendar = Calendar.getInstance()
-    val calendarTomorrow: Calendar = Calendar.getInstance()
-    val calendarNextTomorrow: Calendar = Calendar.getInstance()
-    val calendarNextWeek: Calendar = Calendar.getInstance()
+    var dateStartSet: Date = Date(System.currentTimeMillis())
+    var dateEndSet: Date = Date(System.currentTimeMillis())
+    open val calendarDefault: Calendar = Calendar.getInstance()
+    val dateFormatShow = SimpleDateFormat("M/dd (E)", Locale.JAPANESE)
+    val timeFormatShow = SimpleDateFormat("H:mm~", Locale.JAPANESE)
+    val calendarTestIfFuture: Calendar = Calendar.getInstance()
+    var dateTimeStartHistory: Date = Date(System.currentTimeMillis())
+    var dateTimeEndHistory: Date = Date(System.currentTimeMillis())
+    var ToDoSaved = readFirst()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_to_do)
 
-        calendarDefault.set(
-            LocalDate.now().year,
-            LocalDate.now().monthValue-1,
-            if (LocalTime.now().hour !=23){
-                LocalDate.now().dayOfMonth
+        if (ToDoSaved !=null){
+            if ( Date(System.currentTimeMillis()) > ToDoSaved!!.dateTimeEnd){
+                calendarDefault.set(
+                    LocalDate.now().year,
+                    LocalDate.now().monthValue-1,
+                    if (LocalTime.now().hour == 23){
+                        LocalDate.now().dayOfMonth+1
+                    }else {
+                        LocalDate.now().dayOfMonth
+                    },
+                    if (LocalTime.now().hour == 23){
+                        0
+                    }else {
+                        LocalTime.now().hour + 1
+                    },
+                    0
+                )
             }else {
-                LocalDate.now().dayOfMonth+1
-            },
-            if (LocalTime.now().hour !=23){
-                LocalTime.now().hour + 1
-            }else {
+                calendarDefault.setTime(ToDoSaved!!.dateTimeEnd)
+            }
+
+        }else{
+            calendarDefault.set(
+                LocalDate.now().year,
+                LocalDate.now().monthValue-1,
+                if (LocalTime.now().hour == 23){
+                    LocalDate.now().dayOfMonth+1
+                }else {
+                    LocalDate.now().dayOfMonth
+                },
+                if (LocalTime.now().hour == 23){
+                    0
+                }else {
+                    LocalTime.now().hour + 1
+                },
                 0
-            },
-            0
-        )
+            )
+        }
 
-        yearSaved = calendarDefault.get(Calendar.YEAR)
-        monthSaved = calendarDefault.get(Calendar.MONTH)+1
-        dateSaved = calendarDefault.get(Calendar.DAY_OF_MONTH)
-        hourSaved = calendarDefault.get(Calendar.HOUR_OF_DAY)
-        minuteSaved = calendarDefault.get(Calendar.MINUTE)
 
-        dateScheduleButton.text="${monthSaved}月${dateSaved}日"
-        timeScheduleButton.text="${hourSaved}時${minuteSaved}分"
+        showDateText()
+        timeScheduleButton.text= timeFormatShow.format(calendarDefault.time)
+
 
         timeNumberPicker.minValue = 0
         timeNumberPicker.maxValue = 100
         timeNumberPicker.value = 50
 
 
+        if (ToDoSaved !=null){
+            dateTimeStartHistory = ToDoSaved!!.dateTimeStart
+            dateTimeEndHistory = ToDoSaved!!.dateTimeEnd
+        }
+
 
         dateScheduleButton.setOnClickListener {
-            showDatePickerDialog()
+            DatePickerDialog(
+                this,
+                { _, year, month, dayOfMonth ->
+                    Calendar.getInstance().apply { set(year, month, dayOfMonth) }
+
+                    calendarDefault.set(year, month, dayOfMonth)
+
+                    showDateText()
+
+                },
+                calendarDefault.get(Calendar.YEAR),
+                calendarDefault.get(Calendar.MONTH),
+                calendarDefault.get(Calendar.DAY_OF_MONTH)
+
+            ).apply {
+            }.show()
+
         }
 
         timeScheduleButton.setOnClickListener{
-            showTimePickerDialog()
+            TimePickerDialog(
+                this,
+                { _, hour, minute ->
+                    Calendar.getInstance().apply {
+                        set(Calendar.HOUR_OF_DAY, hour);set(Calendar.MINUTE, minute)
+                    }
+
+                    calendarDefault.set(Calendar.HOUR_OF_DAY, hour)
+                    calendarDefault.set(Calendar.MINUTE, minute)
+
+                    timeScheduleButton.text = timeFormatShow.format(calendarDefault.time)
+
+                },
+                calendarDefault.get(Calendar.HOUR_OF_DAY),
+                calendarDefault.get(Calendar.MINUTE),
+                true
+            ).apply {
+            }.show()
+
         }
 
         dateSelectChoices()
@@ -85,43 +152,41 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
 
         scheduleSaveButton.setOnClickListener {
 
-            dateEnd.year = yearSaved!!
-            dateEnd.month = monthSaved!!
-            dateEnd.date = dateSaved!!
-            dateEnd.hours = hourSaved!!
-            dateEnd.minutes = minuteSaved!!+timeNumberPicker.value
+            dateStartSet = calendarDefault.time
+            dateEndSet = calendarDefault.time
+            dateEndSet.minutes = calendarDefault.get(Calendar.MINUTE)+timeNumberPicker.value
 
+            if (ToDoSaved !=null){
 
-            realm.executeTransaction {
-                val newToDo: ToDo = it.createObject(ToDo::class.java, UUID.randomUUID().toString())
-                newToDo.subject = subjectSchedule.text.toString()
-                newToDo.content = contentSchedule.text.toString()
-                newToDo.year = yearSaved as Int
-                newToDo.month = monthSaved as Int
-                newToDo.day = dateSaved as Int
-                newToDo.hour = hourSaved as Int
-                newToDo.minute = minuteSaved as Int
-                newToDo.bgColor = colorSaved as Int
-                newToDo.timeLenght = timeNumberPicker.value.toString()
-                newToDo.dateTimeEnd = dateEnd
+                if (dateTimeEndHistory > dateStartSet && dateTimeStartHistory< dateEndSet){
+                    Toast.makeText(applicationContext, "他の予定と重なっています！！", Toast.LENGTH_SHORT).show()
+                }else{
+                    realm.executeTransaction {
+                        val newToDo: ToDo = it.createObject(ToDo::class.java, UUID.randomUUID().toString())
+                        newToDo.subject = subjectSchedule.text.toString()
+                        newToDo.content = contentSchedule.text.toString()
+                        newToDo.bgColor = colorSaved
+                        newToDo.dateTimeStart = dateStartSet
+                        newToDo.dateTimeEnd = dateEndSet
+                    }
+                    finish()
+                }
 
-
-                val intToDateTime: LocalDateTime = LocalDateTime.of(
-                    yearSaved!!,
-                    monthSaved!!,
-                    dateSaved!!,
-                    hourSaved!!,
-                    minuteSaved!!
-                )
-                val zdt = intToDateTime.atZone((ZoneId.systemDefault()))
-                val date = Date.from(zdt.toInstant())
-                newToDo.dateTime = date
-
-
+            }else{
+                realm.executeTransaction {
+                    val newToDo: ToDo = it.createObject(ToDo::class.java, UUID.randomUUID().toString())
+                    newToDo.subject = subjectSchedule.text.toString()
+                    newToDo.content = contentSchedule.text.toString()
+                    newToDo.bgColor = colorSaved
+                    newToDo.dateTimeStart = dateStartSet
+                    newToDo.dateTimeEnd = dateEndSet
+                }
+                finish()
             }
-            finish()
 
         }
+
+
 
 
         cancelAddingToDo.setOnClickListener{
@@ -131,89 +196,90 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
     }
 
 
-    private fun showDatePickerDialog(){
-
-        val datePickerDialogClass = DatePickerDialogClass()
-        datePickerDialogClass.show(supportFragmentManager, null)
-
-
+    fun readFirst(): ToDo? {
+        return realm.where(ToDo::class.java).sort("dateTimeEnd", Sort.DESCENDING).findFirst()
     }
 
-    private fun showTimePickerDialog(){
-
-        val timePickerDialogClass = TimePickerDialogClass()
-        timePickerDialogClass.show(supportFragmentManager, null)
-
-    }
-
-
-
-    override fun selectedDate(year: Int, month: Int, date: Int) {
-
-        yearSaved = year
-        monthSaved = month +1
-        dateSaved = date
-
-        dateScheduleButton.text="${monthSaved}月${dateSaved}日"
+//    private fun showDatePickerDialog(){
+//
+//        val datePickerDialogClass = DatePickerDialogClass()
+//        datePickerDialogClass.show(supportFragmentManager, null)
+//
+//    }
+//
+//    private fun showTimePickerDialog(){
+//
+//        val timePickerDialogClass = TimePickerDialogClass()
+//        timePickerDialogClass.show(supportFragmentManager, null)
+//
+//    }
 
 
-    }
 
-
-    override fun selectedTime(hourOfDay: Int, minute: Int) {
-
-        hourSaved = hourOfDay
-        minuteSaved = minute
-
-        timeScheduleButton.text="${hourSaved}時${minuteSaved}分"
-
-    }
+//    override fun selectedDate(year: Int, month: Int, date: Int) {
+//
+////        calendarTestIfFuture.set(year, month, date)
+//
+////        if((calendarTestIfFuture.timeInMillis - System.currentTimeMillis() ) / 86400000 < 0){
+////            Toast.makeText(applicationContext, "過去の日付は選択できません(m_m)", Toast.LENGTH_SHORT).show()
+////        }else {
+//        calendarDefault.set(year, month, date)
+//        showDateText()
+////        }
+//    }
+//
+//
+//    override fun selectedTime(hourOfDay: Int, minute: Int) {
+//
+//        calendarDefault.set(Calendar.HOUR_OF_DAY, hourOfDay)
+//        calendarDefault.set(Calendar.MINUTE, minute)
+//        timeScheduleButton.text = timeFormatShow.format(calendarDefault.time)
+//
+//    }
 
     private fun dateSelectChoices(){
-        calendarToday.set(
-            LocalDate.now().year,
-            LocalDate.now().monthValue-1,
-            LocalDate.now().dayOfMonth
-        )
-        calendarTomorrow.set(
-            LocalDate.now().year,
-            LocalDate.now().monthValue-1,
-            LocalDate.now().dayOfMonth+1
-        )
-        calendarNextTomorrow.set(
-            LocalDate.now().year,
-            LocalDate.now().monthValue-1,
-            LocalDate.now().dayOfMonth+2
-        )
-        calendarNextWeek.set(
-            LocalDate.now().year,
-            LocalDate.now().monthValue-1,
-            LocalDate.now().dayOfMonth+7
-        )
 
         selectTodayButton.setOnClickListener {
-            yearSaved = calendarToday.get(Calendar.YEAR)
-            monthSaved = calendarToday.get(Calendar.MONTH)+1
-            dateSaved = calendarToday.get(Calendar.DAY_OF_MONTH)
-            dateScheduleButton.text="${monthSaved}月${dateSaved}日"
+            calendarDefault.set(
+                LocalDate.now().year,
+                LocalDate.now().monthValue-1,
+                LocalDate.now().dayOfMonth
+            )
+            showDateText()
         }
         selectTomorrowButton.setOnClickListener {
-            yearSaved = calendarTomorrow.get(Calendar.YEAR)
-            monthSaved = calendarTomorrow.get(Calendar.MONTH)+1
-            dateSaved = calendarTomorrow.get(Calendar.DAY_OF_MONTH)
-            dateScheduleButton.text="${monthSaved}月${dateSaved}日"
+            calendarDefault.set(
+                LocalDate.now().year,
+                LocalDate.now().monthValue-1,
+                LocalDate.now().dayOfMonth+1
+            )
+            showDateText()
         }
         selectNextTomorrowButton.setOnClickListener {
-            yearSaved = calendarNextTomorrow.get(Calendar.YEAR)
-            monthSaved = calendarNextTomorrow.get(Calendar.MONTH)+1
-            dateSaved = calendarNextTomorrow.get(Calendar.DAY_OF_MONTH)
-            dateScheduleButton.text="${monthSaved}月${dateSaved}日"
+            calendarDefault.set(
+                LocalDate.now().year,
+                LocalDate.now().monthValue-1,
+                LocalDate.now().dayOfMonth+2
+            )
+            showDateText()
         }
         selectNextWeekButton.setOnClickListener {
-            yearSaved = calendarNextWeek.get(Calendar.YEAR)
-            monthSaved = calendarNextWeek.get(Calendar.MONTH)+1
-            dateSaved = calendarNextWeek.get(Calendar.DAY_OF_MONTH)
-            dateScheduleButton.text="${monthSaved}月${dateSaved}日"
+            calendarDefault.set(
+                LocalDate.now().year,
+                LocalDate.now().monthValue-1,
+                LocalDate.now().dayOfMonth+7
+            )
+            showDateText()
+        }
+    }
+
+    private fun showDateText(){
+        if (LocalDate.now().year == calendarDefault.get(Calendar.YEAR) &&
+            LocalDate.now().monthValue == calendarDefault.get(Calendar.MONTH)+1 &&
+            LocalDate.now().dayOfMonth == calendarDefault.get(Calendar.DAY_OF_MONTH)){
+            dateScheduleButton.text = "今日"
+        }else{
+            dateScheduleButton.text = dateFormatShow.format(calendarDefault.time)
         }
     }
 
@@ -269,11 +335,6 @@ class AddToDoActivity : AppCompatActivity(), DatePickerDialogClass.OnSelectedDat
         }
 
     }
-
-
-
-
-
 
 
 

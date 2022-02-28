@@ -6,7 +6,6 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
-import java.time.DayOfWeek
 import java.util.*
 
 class DatePickerDialogClass: DialogFragment(), DatePickerDialog.OnDateSetListener {

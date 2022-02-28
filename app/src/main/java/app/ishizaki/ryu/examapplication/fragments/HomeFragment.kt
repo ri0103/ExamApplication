@@ -10,17 +10,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import app.ishizaki.ryu.examapplication.*
 import io.realm.Realm
-import io.realm.RealmResults
-import kotlinx.android.synthetic.main.activity_add_to_do.*
-import kotlinx.android.synthetic.main.fragment_coverage.*
 import kotlinx.android.synthetic.main.fragment_home.*
-import java.time.*
 import java.util.*
 
 class HomeFragment : Fragment(){
@@ -66,6 +60,7 @@ class HomeFragment : Fragment(){
 
             DatePickerDialog(
                 requireContext(),
+//                R.style.DatePickerStyle,
 
                 { _, year, monthOfYear, dayOfMonth ->
                     Calendar.getInstance().apply { set(year, monthOfYear, dayOfMonth) }
