@@ -39,6 +39,7 @@
     <color name="bg_redpurple">#3f025d</color>
     <color name="bg_lightpink">#5d033e</color>
     <color name="bg_purewhite">#0a0a0a</color>
+    <color name="bg_timeover">#545454 </color>
 
 
 </resources>

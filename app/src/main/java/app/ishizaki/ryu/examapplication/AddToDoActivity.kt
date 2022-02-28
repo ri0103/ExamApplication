@@ -5,18 +5,12 @@ import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import android.widget.DatePicker
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import io.realm.Realm
-import io.realm.RealmResults
 import io.realm.Sort
 import kotlinx.android.synthetic.main.activity_add_to_do.*
-import kotlinx.android.synthetic.main.item_schedule_data_cell.*
 import java.text.SimpleDateFormat
 import java.time.*
-import java.time.format.DateTimeFormatter
-import java.time.temporal.TemporalAccessor
 import java.util.*
 
 class AddToDoActivity : AppCompatActivity(){
@@ -28,7 +22,6 @@ class AddToDoActivity : AppCompatActivity(){
     val calendarDefault: Calendar = Calendar.getInstance()
     val dateFormatShow = SimpleDateFormat("M/dd (E)", Locale.JAPANESE)
     val timeFormatShow = SimpleDateFormat("H:mm~", Locale.JAPANESE)
-    val calendarTestIfFuture: Calendar = Calendar.getInstance()
     var dateTimeStartHistory: Date = Date(System.currentTimeMillis())
     var dateTimeEndHistory: Date = Date(System.currentTimeMillis())
     var numberPickerHistory: Int = 50
@@ -139,7 +132,6 @@ class AddToDoActivity : AppCompatActivity(){
         dateSelectChoices()
         timeAddChoices()
         timeLenghtSelection()
-
         setBackgroundColors()
 
         val subjectsAuto = resources.getStringArray(R.array.subjects)
@@ -151,7 +143,6 @@ class AddToDoActivity : AppCompatActivity(){
             subjectSchedule.showDropDown()
         }
         subjectSchedule.dropDownHeight = 600
-
 
         scheduleSaveButton.setOnClickListener {
 
