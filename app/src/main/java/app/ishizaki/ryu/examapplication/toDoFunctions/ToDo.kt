@@ -1,13 +1,7 @@
-package app.ishizaki.ryu.examapplication
+package app.ishizaki.ryu.examapplication.toDoFunctions
 
-import android.graphics.Color
-import android.icu.util.LocaleData
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
-import java.sql.Time
-import java.time.DayOfWeek
-import java.time.chrono.ChronoLocalDateTime
-import java.time.chrono.JapaneseDate
 import java.util.*
 
 open class ToDo(

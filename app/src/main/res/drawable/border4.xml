@@ -8,7 +8,7 @@
         android:width="1sp"
         />
     <solid
-        android:color="@color/bg_grey"/>
+        android:color="@color/selection_buttons_color"/>
 
 
 

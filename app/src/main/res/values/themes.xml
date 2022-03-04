@@ -16,6 +16,11 @@
     </style>
 
 
+    <style name="NumberPickerAddToDo">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColorPrimary">@color/blackorwhite</item>
+        <item name="android:fontFamily">@font/mplusregular</item>
+    </style>
 
 
 <!--    <style name="DatePickerStyle" parent="Theme.AppCompat.Light.Dialog">-->
@@ -35,8 +40,10 @@
 <!--        <item name="android:textColorPrimaryInverse">@color/blackorwhite</item>-->
 <!--        &lt;!&ndash; year&ndash;&gt;-->
 <!--        <item name="android:textColorSecondaryInverse">@color/blackorwhite</item>-->
-
 <!--        <item name="android:textColorLink">@color/whiteorblack</item>-->
+<!--        <item name="android:datePickerMode">spinner</item>-->
+<!--        <item name="android:datePickerStyle">@android:style/Widget.DatePicker</item>-->
+<!--        <item name="cornerRadius">30sp</item>-->
 
 
 <!--    </style>-->

@@ -1,10 +1,9 @@
 package app.ishizaki.ryu.examapplication.fragments
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Canvas
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -42,11 +41,30 @@ class CoverageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView2.apply {
             layoutManager = GridLayoutManager (activity, 2, GridLayoutManager.VERTICAL, false)
-            adapter = CoverageAdapter(this, coverageList, true)
+            adapter = CoverageAdapter(coverageList, true)
 
         }
 
-        val swipeToDismissTouchHelper = getSwipeToDismissTouchHelper(adapter = CoverageAdapter(recyclerView2, coverageList, true))
+
+
+        coverageTitleText.setOnLongClickListener {
+            AlertDialog.Builder(this.requireContext())
+                .setTitle("時間割・範囲の一括削除")
+                .setMessage("すべての時間割・範囲を削除してもよろしいですか。")
+                .setPositiveButton("はい"){ _,_ ->
+                    deleteCoverageFromRealm()
+                }
+                .setNegativeButton("キャンセル"){_,_ -> }
+                .show()
+
+            true
+        }
+
+
+        val swipeToDismissTouchHelper = getSwipeToDismissTouchHelper(adapter = CoverageAdapter(
+            coverageList,
+            true
+        ))
         swipeToDismissTouchHelper.attachToRecyclerView(recyclerView2)
 
 
@@ -63,7 +81,12 @@ class CoverageFragment : Fragment() {
         return realm.where(Coverage::class.java).findAll().sort("createdTime", Sort.ASCENDING)
     }
 
-
+    fun deleteCoverageFromRealm() {
+        val task = realm.where(Coverage::class.java).findAll()
+        realm.executeTransaction {
+            task.deleteAllFromRealm()
+        }
+    }
 
     private fun getSwipeToDismissTouchHelper(adapter: CoverageAdapter)=
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(

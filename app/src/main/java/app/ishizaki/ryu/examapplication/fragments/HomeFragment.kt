@@ -1,10 +1,7 @@
 package app.ishizaki.ryu.examapplication.fragments
 
-import android.annotation.SuppressLint
 import android.app.DatePickerDialog
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -60,7 +57,6 @@ class HomeFragment : Fragment(){
 
             DatePickerDialog(
                 requireContext(),
-//                R.style.DatePickerStyle,
 
                 { _, year, monthOfYear, dayOfMonth ->
                     Calendar.getInstance().apply { set(year, monthOfYear, dayOfMonth) }
@@ -103,8 +99,18 @@ class HomeFragment : Fragment(){
 
         }
 
+        intentResultActivityButton.setOnClickListener {
+            val intent = Intent(activity, ResultActivity::class.java)
+            activity?.startActivity(intent)
+        }
+
+
+
 
     }
+
+
+
 
 
     fun readFirst(): UntilExamDate? {

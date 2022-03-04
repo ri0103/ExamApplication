@@ -26,6 +26,8 @@
     <color name="menu_color1">#6e6e6e</color>
     <color name="menu_color2">#242424</color>
     <color name="delete_red">#ff5252</color>
+    <color name="home_save_button_color">#8cc2ff</color>
+    <color name="selection_buttons_color">#e3e3e3</color>
 
     <color name="bg_grey">#ededed</color>
     <color name="bg_red">#fff5f5</color>

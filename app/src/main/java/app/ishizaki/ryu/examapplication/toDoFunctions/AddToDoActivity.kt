@@ -1,17 +1,23 @@
-package app.ishizaki.ryu.examapplication
+package app.ishizaki.ryu.examapplication.toDoFunctions
 
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
+import android.app.*
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import app.ishizaki.ryu.examapplication.*
+import app.ishizaki.ryu.examapplication.Notification
 import io.realm.Realm
 import io.realm.Sort
 import kotlinx.android.synthetic.main.activity_add_to_do.*
 import java.text.SimpleDateFormat
 import java.time.*
 import java.util.*
+
 
 class AddToDoActivity : AppCompatActivity(){
 
@@ -20,17 +26,18 @@ class AddToDoActivity : AppCompatActivity(){
     var dateStartSet: Date = Date(System.currentTimeMillis())
     var dateEndSet: Date = Date(System.currentTimeMillis())
     val calendarDefault: Calendar = Calendar.getInstance()
-    val dateFormatShow = SimpleDateFormat("M/dd (E)", Locale.JAPANESE)
+    val dateFormatShow = SimpleDateFormat("M/dd(E)", Locale.JAPANESE)
     val timeFormatShow = SimpleDateFormat("H:mm~", Locale.JAPANESE)
-    var dateTimeStartHistory: Date = Date(System.currentTimeMillis())
-    var dateTimeEndHistory: Date = Date(System.currentTimeMillis())
+    val timeFormatError = SimpleDateFormat("H:mm", Locale.JAPANESE)
     var numberPickerHistory: Int = 50
     var ToDoSaved = readFirst()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_to_do)
+
 
         if (ToDoSaved !=null){
             if ( Date(System.currentTimeMillis()) > ToDoSaved!!.dateTimeEnd){
@@ -49,7 +56,7 @@ class AddToDoActivity : AppCompatActivity(){
                     },
                     0
                 )
-            }else {
+            }else{
                 calendarDefault.setTime(ToDoSaved!!.dateTimeEnd)
             }
 
@@ -77,15 +84,13 @@ class AddToDoActivity : AppCompatActivity(){
 
 
         if (ToDoSaved !=null){
-            dateTimeStartHistory = ToDoSaved!!.dateTimeStart
-            dateTimeEndHistory = ToDoSaved!!.dateTimeEnd
             numberPickerHistory = ToDoSaved!!.timeLenght
         }
 
-        timeNumberPicker.minValue = 0
-        timeNumberPicker.maxValue = 180
-        timeNumberPicker.value = numberPickerHistory
 
+        timeNumberPicker.minValue = 0
+        timeNumberPicker.maxValue = 30
+        timeNumberPicker.value = numberPickerHistory
 
         dateScheduleButton.setOnClickListener {
             DatePickerDialog(
@@ -144,29 +149,17 @@ class AddToDoActivity : AppCompatActivity(){
         }
         subjectSchedule.dropDownHeight = 600
 
+
+        createNotificationChannel()
+
         scheduleSaveButton.setOnClickListener {
 
             dateStartSet = calendarDefault.time
             dateEndSet = calendarDefault.time
             dateEndSet.minutes = calendarDefault.get(Calendar.MINUTE)+timeNumberPicker.value
 
-            if (ToDoSaved !=null){
-
-                if (dateTimeEndHistory > dateStartSet && dateTimeStartHistory< dateEndSet){
-                    Toast.makeText(applicationContext, "他の予定と重なっています！！", Toast.LENGTH_SHORT).show()
-                }else{
-                    realm.executeTransaction {
-                        val newToDo: ToDo = it.createObject(ToDo::class.java, UUID.randomUUID().toString())
-                        newToDo.subject = subjectSchedule.text.toString()
-                        newToDo.content = contentSchedule.text.toString()
-                        newToDo.bgColor = colorSaved
-                        newToDo.dateTimeStart = dateStartSet
-                        newToDo.dateTimeEnd = dateEndSet
-                        newToDo.timeLenght = timeNumberPicker.value
-                    }
-                    finish()
-                }
-
+            if (ToDoSaved !=null && ToDoSaved!!.dateTimeEnd > dateStartSet && ToDoSaved!!.dateTimeStart < dateEndSet){
+                Toast.makeText(applicationContext, "${timeFormatError.format(ToDoSaved!!.dateTimeStart)}~${timeFormatError.format(ToDoSaved!!.dateTimeEnd)}の「${ToDoSaved!!.subject}」と時間が重なっています", Toast.LENGTH_SHORT).show()
             }else{
                 realm.executeTransaction {
                     val newToDo: ToDo = it.createObject(ToDo::class.java, UUID.randomUUID().toString())
@@ -177,13 +170,10 @@ class AddToDoActivity : AppCompatActivity(){
                     newToDo.dateTimeEnd = dateEndSet
                     newToDo.timeLenght = timeNumberPicker.value
                 }
+                scheduleNotification()
                 finish()
             }
-
         }
-
-
-
 
         cancelAddingToDo.setOnClickListener{
             finish()
@@ -196,42 +186,7 @@ class AddToDoActivity : AppCompatActivity(){
         return realm.where(ToDo::class.java).sort("dateTimeEnd", Sort.DESCENDING).findFirst()
     }
 
-//    private fun showDatePickerDialog(){
-//
-//        val datePickerDialogClass = DatePickerDialogClass()
-//        datePickerDialogClass.show(supportFragmentManager, null)
-//
-//    }
-//
-//    private fun showTimePickerDialog(){
-//
-//        val timePickerDialogClass = TimePickerDialogClass()
-//        timePickerDialogClass.show(supportFragmentManager, null)
-//
-//    }
 
-
-
-//    override fun selectedDate(year: Int, month: Int, date: Int) {
-//
-////        calendarTestIfFuture.set(year, month, date)
-//
-////        if((calendarTestIfFuture.timeInMillis - System.currentTimeMillis() ) / 86400000 < 0){
-////            Toast.makeText(applicationContext, "過去の日付は選択できません(m_m)", Toast.LENGTH_SHORT).show()
-////        }else {
-//        calendarDefault.set(year, month, date)
-//        showDateText()
-////        }
-//    }
-//
-//
-//    override fun selectedTime(hourOfDay: Int, minute: Int) {
-//
-//        calendarDefault.set(Calendar.HOUR_OF_DAY, hourOfDay)
-//        calendarDefault.set(Calendar.MINUTE, minute)
-//        timeScheduleButton.text = timeFormatShow.format(calendarDefault.time)
-//
-//    }
 
     private fun dateSelectChoices(){
 
@@ -373,6 +328,54 @@ class AddToDoActivity : AppCompatActivity(){
             colorSaved = R.drawable.bg_resource12
         }
 
+
+    }
+
+
+
+    private fun scheduleNotification()
+    {
+        val intent = Intent(applicationContext, Notification::class.java)
+        val title = subjectSchedule.text.toString()
+        val message = contentSchedule.text.toString()
+        intent.putExtra(titleExtra, "「${title}」の勉強を10分後に開始しましょう！")
+        intent.putExtra(messageExtra, message)
+
+        val pendingIntent = PendingIntent.getBroadcast(
+            applicationContext,
+            NotificationId.iD,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val time = getTime()
+        alarmManager.setExactAndAllowWhileIdle(
+            AlarmManager.RTC_WAKEUP,
+            time,
+            pendingIntent
+        )
+    }
+
+
+    private fun getTime(): Long
+    {
+        val calendarNotification = Calendar.getInstance()
+        calendarNotification.time = calendarDefault.time
+        calendarNotification.add(Calendar.MINUTE, -10)
+
+        return calendarNotification.timeInMillis
+    }
+
+    private fun createNotificationChannel()
+    {
+        val name = "予定通知"
+        val desc = "やることリストに登録されている予定の開始10分前に通知を送信します"
+        val importance = NotificationManager.IMPORTANCE_HIGH
+        val channel = NotificationChannel(channelID, name, importance)
+        channel.description = desc
+        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
     }
 
 

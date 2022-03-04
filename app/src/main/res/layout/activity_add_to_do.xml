@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddToDoActivity"
+    tools:context=".toDoFunctions.AddToDoActivity"
     android:background="@color/bg_grey"
     android:id="@+id/addToDoActivityBG">
 
@@ -126,8 +126,8 @@
                     android:backgroundTint="@color/matcha_green"
                     android:fontFamily="@font/mplusregular"
                     android:text="/月/日(/)"
-                    android:textColor="@color/bothwhite"
-                    android:textSize="14sp"
+                    android:textColor="@color/blackorwhite"
+                    android:textSize="18sp"
                     app:cornerRadius="10sp"
                     android:padding="0sp"/>
 
@@ -138,8 +138,8 @@
                     android:layout_height="60sp"
                     android:backgroundTint="@color/matcha_green"
                     android:text="//://~"
-                    android:textColor="@color/bothwhite"
-                    android:textSize="14sp"
+                    android:textColor="@color/blackorwhite"
+                    android:textSize="18sp"
                     android:layout_marginRight="12sp"
                     app:cornerRadius="10sp"
                     android:fontFamily="@font/mplusregular"
@@ -150,6 +150,7 @@
                     android:layout_height="60sp"
                     android:id="@+id/timeNumberPicker"
                     android:background="@drawable/number_picker_background"
+                    android:theme="@style/NumberPickerAddToDo"
                     />
                 <TextView
                     android:layout_width="40sp"
@@ -164,11 +165,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:gravity="center">
                 <HorizontalScrollView
                     android:layout_width="100sp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30sp"
+                    android:layout_marginLeft="15sp"
                     android:fadeScrollbars="false"
                     >
 
@@ -186,7 +188,7 @@
                             android:textSize="8sp"
                             android:padding="0sp"
                             android:textColor="@color/blackorwhite"
-                            android:backgroundTint="@color/bg_grey"
+                            android:backgroundTint="@color/selection_buttons_color"
                             android:elevation="5sp"
                             android:id="@+id/selectTodayButton"/>
                         <Button
@@ -197,7 +199,7 @@
                             android:textSize="8sp"
                             android:padding="0sp"
                             android:textColor="@color/blackorwhite"
-                            android:backgroundTint="@color/bg_grey"
+                            android:backgroundTint="@color/selection_buttons_color"
                             android:elevation="5sp"
                             android:id="@+id/selectTomorrowButton"/>
                         <Button
@@ -208,7 +210,7 @@
                             android:textSize="8sp"
                             android:padding="0sp"
                             android:textColor="@color/blackorwhite"
-                            android:backgroundTint="@color/bg_grey"
+                            android:backgroundTint="@color/selection_buttons_color"
                             android:elevation="5sp"
                             android:id="@+id/selectNextTomorrowButton"/>
                         <Button
@@ -219,7 +221,7 @@
                             android:textSize="8sp"
                             android:padding="0sp"
                             android:textColor="@color/blackorwhite"
-                            android:backgroundTint="@color/bg_grey"
+                            android:backgroundTint="@color/selection_buttons_color"
                             android:elevation="5sp"
                             android:id="@+id/selectNextWeekButton"/>
 
@@ -228,7 +230,8 @@
                 <HorizontalScrollView
                     android:layout_width="100sp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30sp"
+                    android:layout_marginLeft="15sp"
+                    android:layout_marginRight="15sp"
                     android:fadeScrollbars="false"
                     >
 
@@ -246,7 +249,7 @@
                             android:textSize="8sp"
                             android:padding="0sp"
                             android:textColor="@color/blackorwhite"
-                            android:backgroundTint="@color/bg_grey"
+                            android:backgroundTint="@color/selection_buttons_color"
                             android:elevation="5sp"
                             android:id="@+id/addfiveminsButton"/>
                         <Button
@@ -257,7 +260,7 @@
                             android:textSize="8sp"
                             android:padding="0sp"
                             android:textColor="@color/blackorwhite"
-                            android:backgroundTint="@color/bg_grey"
+                            android:backgroundTint="@color/selection_buttons_color"
                             android:elevation="5sp"
                             android:id="@+id/addtenminsButton"/>
                         <Button
@@ -268,7 +271,7 @@
                             android:textSize="8sp"
                             android:padding="0sp"
                             android:textColor="@color/blackorwhite"
-                            android:backgroundTint="@color/bg_grey"
+                            android:backgroundTint="@color/selection_buttons_color"
                             android:elevation="5sp"
                             android:id="@+id/addthirtyminsButton"/>
                         <Button
@@ -279,7 +282,7 @@
                             android:textSize="8sp"
                             android:padding="0sp"
                             android:textColor="@color/blackorwhite"
-                            android:backgroundTint="@color/bg_grey"
+                            android:backgroundTint="@color/selection_buttons_color"
                             android:elevation="5sp"
                             android:id="@+id/addonehourButton"/>
 
@@ -288,8 +291,8 @@
                 <HorizontalScrollView
                     android:layout_width="100sp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30sp"
                     android:fadeScrollbars="false"
+                    android:layout_marginRight="15sp"
                     >
 
                     <LinearLayout
@@ -306,7 +309,7 @@
                             android:textSize="8sp"
                             android:padding="0sp"
                             android:textColor="@color/blackorwhite"
-                            android:backgroundTint="@color/bg_grey"
+                            android:backgroundTint="@color/selection_buttons_color"
                             android:elevation="5sp"
                             android:id="@+id/selectfifteenminsButton"/>
                         <Button
@@ -317,7 +320,7 @@
                             android:textSize="8sp"
                             android:padding="0sp"
                             android:textColor="@color/blackorwhite"
-                            android:backgroundTint="@color/bg_grey"
+                            android:backgroundTint="@color/selection_buttons_color"
                             android:elevation="5sp"
                             android:id="@+id/selectthirtyminsButton"/>
                         <Button
@@ -328,7 +331,7 @@
                             android:textSize="8sp"
                             android:padding="0sp"
                             android:textColor="@color/blackorwhite"
-                            android:backgroundTint="@color/bg_grey"
+                            android:backgroundTint="@color/selection_buttons_color"
                             android:elevation="5sp"
                             android:id="@+id/selectfourtyfiveminsButton"/>
                         <Button
@@ -339,7 +342,7 @@
                             android:textSize="8sp"
                             android:padding="0sp"
                             android:textColor="@color/blackorwhite"
-                            android:backgroundTint="@color/bg_grey"
+                            android:backgroundTint="@color/selection_buttons_color"
                             android:elevation="5sp"
                             android:id="@+id/selectfiftyminsButton"/>
                         <Button
@@ -350,7 +353,7 @@
                             android:textSize="8sp"
                             android:padding="0sp"
                             android:textColor="@color/blackorwhite"
-                            android:backgroundTint="@color/bg_grey"
+                            android:backgroundTint="@color/selection_buttons_color"
                             android:elevation="5sp"
                             android:id="@+id/selectsixtyminsButton"/>
 

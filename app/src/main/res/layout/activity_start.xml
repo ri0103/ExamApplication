@@ -24,6 +24,14 @@
        app:itemIconTint="@drawable/bottom_menu_color"
        />
 
+<!--    <Button-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="testButons"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:id="@+id/testButton"/>-->
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"

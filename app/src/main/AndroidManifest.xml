@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.ishizaki.ryu.examapplication">
 
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
     <application
         android:name=".RealmApplication"
         android:allowBackup="true"
@@ -11,8 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamApplication">
         <activity
-            android:name=".AddTimeTableActivity"
-            android:exported="false" />
+            android:name=".ResultActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
+
+        <receiver
+            android:name=".Notification"
+            android:enabled="true" />
+
         <activity
             android:name=".startActivity"
             android:exported="true"
@@ -28,7 +36,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AddToDoActivity"
+            android:name=".toDoFunctions.AddToDoActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
     </application>

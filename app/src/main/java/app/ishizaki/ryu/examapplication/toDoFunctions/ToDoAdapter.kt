@@ -1,4 +1,4 @@
-package app.ishizaki.ryu.examapplication
+package app.ishizaki.ryu.examapplication.toDoFunctions
 
 
 import android.annotation.SuppressLint
@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import app.ishizaki.ryu.examapplication.R
 import io.realm.OrderedRealmCollection
 import io.realm.Realm
 import io.realm.RealmRecyclerViewAdapter
@@ -17,10 +19,9 @@ import java.time.LocalDate
 import java.util.*
 
 class ToDoAdapter(
-    private val context: RecyclerView,
     private var taskList: OrderedRealmCollection<ToDo>?,
     private var listener: OnButtonClickListener,
-    private val autoUpdate: Boolean
+    autoUpdate: Boolean
 ): RealmRecyclerViewAdapter<ToDo, ToDoAdapter.ViewHolder>(taskList, autoUpdate){
 
 
@@ -37,8 +38,6 @@ class ToDoAdapter(
         return taskList?.size ?: 0
     }
 
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
                val v = LayoutInflater.from(parent.context).inflate(
                    R.layout.item_schedule_data_cell, parent, false
@@ -50,9 +49,6 @@ class ToDoAdapter(
     val realm: Realm by lazy {
         Realm.getDefaultInstance()
     }
-
-
-
 
     @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -70,7 +66,12 @@ class ToDoAdapter(
             holder.dateText.text = SimpleDateFormat("M月dd日(E)  H:mm", Locale.JAPANESE).format(toDo.dateTimeStart)
         }
 
-        holder.timeLengthText.text = SimpleDateFormat("～H:mm", Locale.JAPANESE).format(toDo.dateTimeEnd)
+        if (toDo.dateTimeStart == toDo.dateTimeEnd){
+            holder.timeLengthText.isVisible = false
+        }else {
+            holder.timeLengthText.text =
+                SimpleDateFormat("～H:mm", Locale.JAPANESE).format(toDo.dateTimeEnd)
+        }
 
         if(
             toDo.dateTimeEnd.time < System.currentTimeMillis()
@@ -92,7 +93,6 @@ class ToDoAdapter(
     interface OnButtonClickListener{
         fun onButtonClick(item: ToDo)
     }
-
 
 
 }
