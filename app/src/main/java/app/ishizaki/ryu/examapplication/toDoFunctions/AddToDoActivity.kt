@@ -169,7 +169,7 @@ class AddToDoActivity : AppCompatActivity(){
                     newToDo.dateTimeStart = dateStartSet
                     newToDo.dateTimeEnd = dateEndSet
                     newToDo.timeLenght = timeNumberPicker.value
-                    newToDo.notificationID = NotificationId.iD
+                    newToDo.notificationID = NotificationId.iD+1
                 }
                 scheduleNotification()
                 finish()

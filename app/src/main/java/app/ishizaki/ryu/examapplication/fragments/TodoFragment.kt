@@ -203,12 +203,17 @@ class TodoFragment : Fragment() {
                 val notificationID = toDoList[viewHolder.adapterPosition]?.notificationID
                 val pendingIntent = notificationID?.let {
                     PendingIntent.getBroadcast(activity,
-                        it, intent, PendingIntent.FLAG_NO_CREATE)
+                        it, intent,PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_NO_CREATE
+                    )
                 }
 
+                Toast.makeText(activity, notificationID.toString(), Toast.LENGTH_SHORT).show()
+
                 val alarmManager = activity?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-                alarmManager.cancel(pendingIntent)
-                pendingIntent?.cancel()
+                if(pendingIntent !=null && alarmManager !=null) {
+                    alarmManager.cancel(pendingIntent)
+                    pendingIntent?.cancel()
+                }
 
                 realm.executeTransaction{
                     val id = toDoList[viewHolder.adapterPosition]?.id
