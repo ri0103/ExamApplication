@@ -41,20 +41,21 @@
         app:layout_constraintTop_toBottomOf="@id/toDoTitleText"
         app:layout_constraintVertical_bias="0.0" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/emptyTextToDo"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/toDoTitleText"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        android:layout_margin="60sp"-->
-<!--        android:text="予定を作成\nしてください"-->
-<!--        android:textSize="48sp"-->
-<!--        android:gravity="center"-->
-<!--        android:fontFamily="@font/mplusmedium"-->
-<!--        />-->
+    <TextView
+        android:id="@+id/emptyTextToDo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toDoTitleText"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="10sp"
+        android:text="まだ予定は追加\nされていません"
+        android:textSize="36sp"
+        android:gravity="center"
+        android:fontFamily="@font/mplusmedium"
+        />
+
 
     <ImageButton
         android:id="@+id/fab"

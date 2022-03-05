@@ -7,6 +7,7 @@ import java.util.*
 open class ToDo(
     @PrimaryKey
     open var id: String = UUID.randomUUID().toString(),
+    open var notificationID: Int = 0,
     open var subject: String = "",
     open var content: String = "",
     open var bgColor: Int = 0,

@@ -1,7 +1,10 @@
 package app.ishizaki.ryu.examapplication.fragments
 
+import android.app.AlarmManager
 import android.app.AlertDialog
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Context.ALARM_SERVICE
 import android.content.Intent
 import android.graphics.Canvas
 import android.os.Bundle
@@ -13,6 +16,7 @@ import android.widget.Adapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -23,6 +27,7 @@ import app.ishizaki.ryu.examapplication.toDoFunctions.AddToDoActivity
 import app.ishizaki.ryu.examapplication.toDoFunctions.ToDo
 import app.ishizaki.ryu.examapplication.toDoFunctions.ToDoAdapter
 import io.realm.Realm
+import io.realm.RealmChangeListener
 import io.realm.RealmResults
 import io.realm.Sort
 import kotlinx.android.synthetic.main.activity_add_to_do.*
@@ -49,9 +54,6 @@ class TodoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-//        emptyTextToDo.isVisible = toDoList.isEmpty()
-
-
         recyclerView1.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = ToDoAdapter(toDoList, object : ToDoAdapter.OnButtonClickListener {
@@ -60,12 +62,11 @@ class TodoFragment : Fragment() {
 //                    Toast.makeText(getActivity(),"リスナーの設置テスト",Toast.LENGTH_SHORT).show()
 
                 }
-            }, true)
+            }, true, requireContext())
 
         }
 
-
-
+        emptyTextToDo.isVisible = toDoList.isEmpty()
 
 
 
@@ -83,27 +84,14 @@ class TodoFragment : Fragment() {
             true
         }
 
-        toDoTitleText.setOnClickListener {
-//            Toast.makeText(context, "aaa", Toast.LENGTH_SHORT).show()
-//            this.refreshFragment(context)
-            recyclerView1.apply {
-                layoutManager = LinearLayoutManager(activity)
-                adapter = ToDoAdapter(toDoList, object : ToDoAdapter.OnButtonClickListener {
-                    override fun onButtonClick(item: ToDo) {
-//                    Toast.makeText(getActivity(),"リスナーの設置テスト",Toast.LENGTH_SHORT).show()
-                    }
-                }, true)
 
-            }
-
-        }
 
         val swipeToDismissTouchHelper = getSwipeToDismissTouchHelper(adapter = ToDoAdapter(
             toDoList,
             object : ToDoAdapter.OnButtonClickListener {
                 override fun onButtonClick(item: ToDo) {} },
-            true
-        ))
+            true, requireContext()))
+
         swipeToDismissTouchHelper.attachToRecyclerView(recyclerView1)
 
 
@@ -113,6 +101,24 @@ class TodoFragment : Fragment() {
         }
 
 
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        realm.addChangeListener{
+
+            emptyTextToDo.isVisible = toDoList.isEmpty()
+
+        }
+
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        realm.removeAllChangeListeners()
 
     }
 
@@ -192,6 +198,18 @@ class TodoFragment : Fragment() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+                val intent = Intent(activity, Notification::class.java)
+                val notificationID = toDoList[viewHolder.adapterPosition]?.notificationID
+                val pendingIntent = notificationID?.let {
+                    PendingIntent.getBroadcast(activity,
+                        it, intent, PendingIntent.FLAG_NO_CREATE)
+                }
+
+                val alarmManager = activity?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                alarmManager.cancel(pendingIntent)
+                pendingIntent?.cancel()
+
                 realm.executeTransaction{
                     val id = toDoList[viewHolder.adapterPosition]?.id
                     val task = realm.where(ToDo::class.java).equalTo("id", id).findFirst()
@@ -199,10 +217,9 @@ class TodoFragment : Fragment() {
                         task.deleteFromRealm()
                     }
                 }
+
                 toDoList = realm.where(ToDo::class.java).findAll().sort("dateTimeStart", Sort.ASCENDING)
                 adapter.notifyItemRemoved(viewHolder.adapterPosition)
-
-//                cancelNotification()
 
 
             }

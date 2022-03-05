@@ -2,6 +2,7 @@ package app.ishizaki.ryu.examapplication.toDoFunctions
 
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -21,7 +22,8 @@ import java.util.*
 class ToDoAdapter(
     private var taskList: OrderedRealmCollection<ToDo>?,
     private var listener: OnButtonClickListener,
-    autoUpdate: Boolean
+    autoUpdate: Boolean,
+    val context: Context
 ): RealmRecyclerViewAdapter<ToDo, ToDoAdapter.ViewHolder>(taskList, autoUpdate){
 
 
@@ -71,6 +73,7 @@ class ToDoAdapter(
         }else {
             holder.timeLengthText.text =
                 SimpleDateFormat("～H:mm", Locale.JAPANESE).format(toDo.dateTimeEnd)
+            holder.timeLengthText.isVisible = true
         }
 
         if(
@@ -83,12 +86,17 @@ class ToDoAdapter(
             holder.timeLengthText.setTextColor(Color.RED)
         }else{
             holder.scheduleCell.setBackgroundResource(toDo.bgColor)
+            holder.subjectText.setTextColor(context.getColor(R.color.cell_title_color))
+            holder.contentText.setTextColor(context.getColor(R.color.blackorwhite))
+            holder.dateText.setTextColor(context.getColor(R.color.blackorwhite))
+            holder.timeLengthText.setTextColor(context.getColor(R.color.blackorwhite))
         }
 
         holder.scheduleCell.setOnClickListener {
             listener.onButtonClick(toDo)
         }
     }
+
 
     interface OnButtonClickListener{
         fun onButtonClick(item: ToDo)

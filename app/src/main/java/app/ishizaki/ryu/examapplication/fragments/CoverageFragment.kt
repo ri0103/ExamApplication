@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -18,11 +19,16 @@ import io.realm.Realm
 import io.realm.RealmResults
 import io.realm.Sort
 import kotlinx.android.synthetic.main.fragment_coverage.*
+import kotlinx.android.synthetic.main.fragment_todo.*
 
 class CoverageFragment : Fragment() {
 
 
     private val realm: Realm by lazy {
+        Realm.getDefaultInstance()
+    }
+
+    private val realm2: Realm by lazy {
         Realm.getDefaultInstance()
     }
 
@@ -39,11 +45,16 @@ class CoverageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         recyclerView2.apply {
             layoutManager = GridLayoutManager (activity, 2, GridLayoutManager.VERTICAL, false)
             adapter = CoverageAdapter(coverageList, true)
-
         }
+
+        emptyTextCoverage.isVisible = coverageList.isEmpty()
+
+
+
 
 
 
@@ -75,6 +86,22 @@ class CoverageFragment : Fragment() {
         }
 
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        realm2.addChangeListener {
+
+            emptyTextCoverage.isVisible = coverageList.isEmpty()
+
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        realm2.removeAllChangeListeners()
     }
 
     fun readAll(): RealmResults<Coverage> {

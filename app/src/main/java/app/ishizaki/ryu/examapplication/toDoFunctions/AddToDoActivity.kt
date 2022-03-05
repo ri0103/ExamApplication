@@ -89,7 +89,7 @@ class AddToDoActivity : AppCompatActivity(){
 
 
         timeNumberPicker.minValue = 0
-        timeNumberPicker.maxValue = 30
+        timeNumberPicker.maxValue = 999
         timeNumberPicker.value = numberPickerHistory
 
         dateScheduleButton.setOnClickListener {
@@ -169,6 +169,7 @@ class AddToDoActivity : AppCompatActivity(){
                     newToDo.dateTimeStart = dateStartSet
                     newToDo.dateTimeEnd = dateEndSet
                     newToDo.timeLenght = timeNumberPicker.value
+                    newToDo.notificationID = NotificationId.iD
                 }
                 scheduleNotification()
                 finish()
@@ -185,7 +186,6 @@ class AddToDoActivity : AppCompatActivity(){
     fun readFirst(): ToDo? {
         return realm.where(ToDo::class.java).sort("dateTimeEnd", Sort.DESCENDING).findFirst()
     }
-
 
 
     private fun dateSelectChoices(){
@@ -371,7 +371,7 @@ class AddToDoActivity : AppCompatActivity(){
     {
         val name = "予定通知"
         val desc = "やることリストに登録されている予定の開始10分前に通知を送信します"
-        val importance = NotificationManager.IMPORTANCE_HIGH
+        val importance = NotificationManager.IMPORTANCE_DEFAULT
         val channel = NotificationChannel(channelID, name, importance)
         channel.description = desc
         val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
