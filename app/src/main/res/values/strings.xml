@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">定期試験アプリ</string>
+    <string name="app_name">しけんしる</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_test">TestActivity</string>
@@ -45,14 +45,6 @@
         <item>保健</item>
     </string-array>
     
-    <string-array name="number_picker_numbers">
-        <item>0</item>
-        <item>5</item>
-        <item>10</item>
-        <item>15</item>
-        <item>20</item>
-        <item>25</item>
-        <item>30</item>
-    </string-array>
+
 
 </resources>

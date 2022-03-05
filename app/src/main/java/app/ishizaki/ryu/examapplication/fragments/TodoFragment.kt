@@ -128,20 +128,6 @@ class TodoFragment : Fragment() {
         return realm.where(ToDo::class.java).findAll().sort("dateTimeStart", Sort.ASCENDING)
     }
 
-//    private fun refreshFragment(context: Context?){
-//        context?.let {
-//            val fragmentManager = (context as? AppCompatActivity)?.supportFragmentManager
-//            fragmentManager?.let {
-//                val currentFragment = fragmentManager.findFragmentById(R.id.fragment_container)
-//                currentFragment?.let{
-//                    val fragmentTransaction = fragmentManager.beginTransaction()
-//                    fragmentTransaction.detach(it)
-//                    fragmentTransaction.attach(it)
-//                    fragmentTransaction.commit()
-//                }
-//            }
-//        }
-//    }
 
 
 
@@ -152,35 +138,7 @@ class TodoFragment : Fragment() {
         }
     }
 
-//    private fun cancelNotification()
-//    {
-//        val intent = Intent(requireContext(), Notification::class.java)
-//
-//        val pendingIntent = PendingIntent.getBroadcast(
-//            requireContext(),
-//            NotificationId.iD,
-//            intent,
-//            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-//        )
-//
-//        pendingIntent.cancel()
-//    }
 
-//    private fun cancelNotification(){
-////        val alarmManager = getSystemService(requireContext().ALARM_SERVICE) as AlarmManager
-//        val intent = Intent(requireContext(), Notification::class.java)
-//
-//        val pendingIntent = PendingIntent.getBroadcast(
-//            requireContext(),
-//            NotificationId.iD,
-//            intent,
-//            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-//        )
-//
-////        alarmManager.cancel(pendingIntent)
-//        pendingIntent.cancel()
-//        Toast.makeText(activity, "通知はキャンセルされました", Toast.LENGTH_SHORT).show()
-//    }
 
 
     private fun getSwipeToDismissTouchHelper(adapter: ToDoAdapter)=
@@ -206,8 +164,6 @@ class TodoFragment : Fragment() {
                         it, intent,PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_NO_CREATE
                     )
                 }
-
-                Toast.makeText(activity, notificationID.toString(), Toast.LENGTH_SHORT).show()
 
                 val alarmManager = activity?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
                 if(pendingIntent !=null && alarmManager !=null) {
