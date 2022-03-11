@@ -12,6 +12,7 @@ import androidx.core.view.isVisible
 import app.ishizaki.ryu.examapplication.*
 import io.realm.Realm
 import kotlinx.android.synthetic.main.fragment_home.*
+import java.time.LocalDate
 import java.util.*
 
 class HomeFragment : Fragment(){
@@ -49,7 +50,7 @@ class HomeFragment : Fragment(){
             dateSavedE = UntilExamDateSaved!!.dateE
             countDownShow()
         }else{
-            countDownShow()
+            countDownFirstShow()
         }
 
 
@@ -57,6 +58,7 @@ class HomeFragment : Fragment(){
 
             DatePickerDialog(
                 requireContext(),
+                R.style.PickerStyle,
 
                 { _, year, monthOfYear, dayOfMonth ->
                     Calendar.getInstance().apply { set(year, monthOfYear, dayOfMonth) }
@@ -68,9 +70,9 @@ class HomeFragment : Fragment(){
                     countDownShow()
 
                 },
-                calendar2.get(Calendar.YEAR),
-                calendar2.get(Calendar.MONTH),
-                calendar2.get(Calendar.DAY_OF_MONTH)
+                calendar1.get(Calendar.YEAR),
+                calendar1.get(Calendar.MONTH),
+                calendar1.get(Calendar.DAY_OF_MONTH)
             ).apply {
             }.show()
 
@@ -120,7 +122,7 @@ class HomeFragment : Fragment(){
 
     fun countDownShow(){
 
-        calendar1.set(yearSavedE as Int, monthSavedE as Int, dateSavedE as Int)
+        calendar1.set(yearSavedE, monthSavedE, dateSavedE)
         var timeMills1: Long = calendar1.timeInMillis
         var currentTimeMills: Long = System.currentTimeMillis()
         var timeDiff: Long = timeMills1 - currentTimeMills;
@@ -133,11 +135,11 @@ class HomeFragment : Fragment(){
 
             if (timeDiff<-8760000){
                 untilExamTitle.text="ようこそ！"
-                untilExamNumber.setText("定期試験の開始日を\n選択することで、\nカウントダウン\nが開始されます！")
+                untilExamNumber.setText("試験の開始日を\n選択することで、\nカウントダウン\nが開始されます！")
                 untilExamNumber.typeface = this.context?.let { ResourcesCompat.getFont(it, R.font.mplusregular) }
                 untilExamNumber.textSize = 24F
                 untilExamNumber.setTextColor(getResources().getColor(R.color.blackorwhite))
-                untilExamSelectButton.text="定期試験の開始日を選択"
+                untilExamSelectButton.text="試験の開始日を選択"
             }else {
                 untilExamNumber.setText("!試験期間中!")
                 untilExamNumber.typeface = this.context?.let { ResourcesCompat.getFont(it, R.font.mplusmedium) }
@@ -156,7 +158,7 @@ class HomeFragment : Fragment(){
                 var str: String = timeDiff.toString() + "日"
                 untilExamNumber.setText(str)
                 untilExamNumber.textSize = 130F
-                untilExamTitle.text="定期試験まであと"
+                untilExamTitle.text="試験まであと"
                 untilExamTitle.isVisible = true
                 untilExamNumber.setTextColor(getResources().getColor(R.color.delete_red))
                 untilExamNumber.typeface = this.context?.let { ResourcesCompat.getFont(it, R.font.mplusbold) }
@@ -165,7 +167,7 @@ class HomeFragment : Fragment(){
                 var str: String = timeDiff.toString() + "日"
                 untilExamNumber.setText(str)
                 untilExamNumber.textSize = 100F
-                untilExamTitle.text="定期試験まであと"
+                untilExamTitle.text="試験まであと"
                 untilExamTitle.isVisible = true
                 untilExamNumber.setTextColor(getResources().getColor(R.color.blackorwhite))
                 untilExamNumber.typeface = this.context?.let { ResourcesCompat.getFont(it, R.font.mplusbold) }
@@ -176,6 +178,67 @@ class HomeFragment : Fragment(){
 
 
     }
+
+
+    fun countDownFirstShow(){
+
+        calendar2.set(yearSavedE, monthSavedE, dateSavedE)
+        var timeMills1: Long = calendar2.timeInMillis
+        var currentTimeMills: Long = System.currentTimeMillis()
+        var timeDiff: Long = timeMills1 - currentTimeMills;
+        timeDiff = timeDiff / 1000;
+        timeDiff = timeDiff / 60;
+        timeDiff = timeDiff / 60;
+
+
+        if (timeDiff<0.1){
+
+            if (timeDiff<-8760000){
+                untilExamTitle.text="ようこそ！"
+                untilExamNumber.setText("試験の開始日を\n選択することで、\nカウントダウン\nが開始されます！")
+                untilExamNumber.typeface = this.context?.let { ResourcesCompat.getFont(it, R.font.mplusregular) }
+                untilExamNumber.textSize = 24F
+                untilExamNumber.setTextColor(getResources().getColor(R.color.blackorwhite))
+                untilExamSelectButton.text="試験の開始日を選択"
+            }else {
+                untilExamNumber.setText("!試験期間中!")
+                untilExamNumber.typeface = this.context?.let { ResourcesCompat.getFont(it, R.font.mplusmedium) }
+                untilExamNumber.textSize = 60F
+                untilExamTitle.isVisible = false
+                untilExamNumber.setTextColor(getResources().getColor(R.color.delete_red))
+                untilExamSelectButton.text="${yearSavedE as Int}年${monthSavedE as Int+1}月${dateSavedE as Int}日~"
+            }
+
+        }
+        else{
+            timeDiff = timeDiff / 24;
+            timeDiff = timeDiff + 1
+
+            if(timeDiff<4){
+                var str: String = timeDiff.toString() + "日"
+                untilExamNumber.setText(str)
+                untilExamNumber.textSize = 130F
+                untilExamTitle.text="試験まであと"
+                untilExamTitle.isVisible = true
+                untilExamNumber.setTextColor(getResources().getColor(R.color.delete_red))
+                untilExamNumber.typeface = this.context?.let { ResourcesCompat.getFont(it, R.font.mplusbold) }
+                untilExamSelectButton.text="${yearSavedE as Int}年${monthSavedE as Int+1}月${dateSavedE as Int}日~"
+            }else{
+                var str: String = timeDiff.toString() + "日"
+                untilExamNumber.setText(str)
+                untilExamNumber.textSize = 100F
+                untilExamTitle.text="試験まであと"
+                untilExamTitle.isVisible = true
+                untilExamNumber.setTextColor(getResources().getColor(R.color.blackorwhite))
+                untilExamNumber.typeface = this.context?.let { ResourcesCompat.getFont(it, R.font.mplusbold) }
+                untilExamSelectButton.text="${yearSavedE as Int}年${monthSavedE as Int+1}月${dateSavedE as Int}日~"
+            }
+        }
+
+
+
+    }
+
 
 
 }

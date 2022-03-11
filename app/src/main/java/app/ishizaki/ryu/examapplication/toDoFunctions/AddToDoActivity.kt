@@ -95,6 +95,8 @@ class AddToDoActivity : AppCompatActivity(){
         dateScheduleButton.setOnClickListener {
             DatePickerDialog(
                 this,
+                R.style.PickerStyle,
+
                 { _, year, month, dayOfMonth ->
                     Calendar.getInstance().apply { set(year, month, dayOfMonth) }
 
@@ -115,6 +117,8 @@ class AddToDoActivity : AppCompatActivity(){
         timeScheduleButton.setOnClickListener{
             TimePickerDialog(
                 this,
+                R.style.TimePickerStyle,
+
                 { _, hour, minute ->
                     Calendar.getInstance().apply {
                         set(Calendar.HOUR_OF_DAY, hour);set(Calendar.MINUTE, minute)

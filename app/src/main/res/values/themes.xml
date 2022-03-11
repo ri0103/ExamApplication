@@ -21,32 +21,51 @@
         <item name="android:textColorPrimary">@color/blackorwhite</item>
         <item name="android:fontFamily">@font/mplusregular</item>
     </style>
+    
+    <style name="BottomNavBar">
+        <item name="fontFamily">@font/mplusbold</item>
+    </style>
 
 
-<!--    <style name="DatePickerStyle" parent="Theme.AppCompat.Light.Dialog">-->
-<!--        <item name="colorAccent">#ebf1ff</item>-->
-<!--&lt;!&ndash;        selected Item color&ndash;&gt;-->
-<!--        <item name="colorControlActivated">#004f8c</item>-->
-<!--&lt;!&ndash;         Highlight item color&ndash;&gt;-->
-<!--        <item name="colorControlHighlight">#004f8c</item>-->
-<!--&lt;!&ndash;        Calender Background color&ndash;&gt;-->
-<!--        <item name="android:windowBackground">#ebf1ff</item>-->
-<!--&lt;!&ndash;         Ok Cancel Color&ndash;&gt;-->
-<!--        <item name="android:textColor">@color/whiteorblack</item>-->
 
-<!--        &lt;!&ndash; Calender Number color arrow color (< >) &ndash;&gt;-->
-<!--        <item name="android:textColorPrimary">@color/blackorwhite</item>-->
-<!--        &lt;!&ndash;day , month&ndash;&gt;-->
-<!--        <item name="android:textColorPrimaryInverse">@color/blackorwhite</item>-->
-<!--        &lt;!&ndash; year&ndash;&gt;-->
-<!--        <item name="android:textColorSecondaryInverse">@color/blackorwhite</item>-->
-<!--        <item name="android:textColorLink">@color/whiteorblack</item>-->
-<!--        <item name="android:datePickerMode">spinner</item>-->
-<!--        <item name="android:datePickerStyle">@android:style/Widget.DatePicker</item>-->
-<!--        <item name="cornerRadius">30sp</item>-->
+    <style name="PickerStyle" parent="Theme.AppCompat.Light.Dialog">
+<!--        <item name="colorAccent">#f0f9ff</item>-->
+        <item name="android:windowBackground">@drawable/picker_dialog_bg</item>
+        <item name="colorControlHighlight">#ffffe3</item>
+        <item name="colorControlActivated">#7ccc70</item>
+<!--        <item name="colorSecondary">#004f8c</item>-->
+        <item name="colorOnPrimary">#3f98fc</item>
+        <item name="android:textColorPrimary">#262626</item>
+        <item name="android:textColorSecondary">#262626</item>
+        <item name="android:textColorPrimaryInverse">#d9f0ff</item>
+        <item name="android:textColorSecondaryInverse">#fffdf0</item>
+        <item name="fontFamily">@font/mplusregular</item>
+        <item name="android:datePickerStyle">@style/CustomDatePickerStyle</item>
+    </style>
+
+    <style name="CustomDatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
+        <item name="android:headerBackground">@drawable/picker_header_bg</item>
+    </style>
+
+    <style name="TimePickerStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@drawable/picker_dialog_bg</item>
+        <item name="colorControlHighlight">#ffffe3</item>
+        <item name="colorControlActivated">#7ccc70</item>
+        <item name="colorOnPrimary">#3f98fc</item>
+        <item name="android:textColorPrimary">#262626</item>
+        <item name="android:textColorSecondary">#262626</item>
+        <item name="android:textColorPrimaryInverse">#d9f0ff</item>
+        <item name="android:textColorSecondaryInverse">#fffdf0</item>
+        <item name="fontFamily">@font/mplusregular</item>
+        <item name="android:timePickerStyle">@style/CustomTimePickerStyle</item>
+    </style>
+
+    <style name="CustomTimePickerStyle" parent="@android:style/Widget.Material.Light.TimePicker">
+        <item name="android:headerBackground">@drawable/picker_header_bg</item>
+        <item name="android:numbersBackgroundColor">#d9f0ff</item>
+    </style>
 
 
-<!--    </style>-->
 
 
 

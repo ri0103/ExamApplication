@@ -22,6 +22,7 @@
        android:background="@color/menu_bg_color"
        app:itemTextColor="@drawable/bottom_menu_color"
        app:itemIconTint="@drawable/bottom_menu_color"
+       android:theme="@style/BottomNavBar"
        />
 
 <!--    <Button-->

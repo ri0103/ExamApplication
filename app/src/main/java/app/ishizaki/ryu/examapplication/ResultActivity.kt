@@ -4,6 +4,8 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import com.google.android.material.snackbar.Snackbar
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_result.*
 import java.util.*
@@ -211,6 +213,8 @@ class ResultActivity : AppCompatActivity() {
             calculateScoresSum()
             myScoreResultSum.text = myScoreSum.toString()
             averageScoreResultSum.text = averageScoreSum.toString()
+            val snackBarLayout: View = findViewById(android.R.id.content)
+            Snackbar.make(snackBarLayout, "点数が保存されました", Snackbar.LENGTH_SHORT).show()
         }
 
 
@@ -220,6 +224,73 @@ class ResultActivity : AppCompatActivity() {
                 .setMessage("すべての点数・結果を削除してもよろしいですか。")
                 .setPositiveButton("はい"){ _,_ ->
                     deleteResultFromRealm()
+
+
+
+
+                    subjectResultET1.setText("")
+                    subjectResultET2.setText("")
+                    subjectResultET3.setText("")
+                    subjectResultET4.setText("")
+                    subjectResultET5.setText("")
+                    subjectResultET6.setText("")
+                    subjectResultET7.setText("")
+                    subjectResultET8.setText("")
+                    subjectResultET9.setText("")
+                    subjectResultET10.setText("")
+                    subjectResultET11.setText("")
+                    subjectResultET12.setText("")
+                    subjectResultET13.setText("")
+                    subjectResultET14.setText("")
+                    subjectResultET15.setText("")
+                    subjectResultET16.setText("")
+                    subjectResultET17.setText("")
+                    subjectResultET18.setText("")
+
+                    myScoreResultET1.setText("")
+                    myScoreResultET2.setText("")
+                    myScoreResultET3.setText("")
+                    myScoreResultET4.setText("")
+                    myScoreResultET5.setText("")
+                    myScoreResultET6.setText("")
+                    myScoreResultET7.setText("")
+                    myScoreResultET8.setText("")
+                    myScoreResultET9.setText("")
+                    myScoreResultET10.setText("")
+                    myScoreResultET11.setText("")
+                    myScoreResultET12.setText("")
+                    myScoreResultET13.setText("")
+                    myScoreResultET14.setText("")
+                    myScoreResultET15.setText("")
+                    myScoreResultET16.setText("")
+                    myScoreResultET17.setText("")
+                    myScoreResultET18.setText("")
+
+                    averageScoreResultET1.setText("")
+                    averageScoreResultET2.setText("")
+                    averageScoreResultET3.setText("")
+                    averageScoreResultET4.setText("")
+                    averageScoreResultET5.setText("")
+                    averageScoreResultET6.setText("")
+                    averageScoreResultET7.setText("")
+                    averageScoreResultET8.setText("")
+                    averageScoreResultET9.setText("")
+                    averageScoreResultET10.setText("")
+                    averageScoreResultET11.setText("")
+                    averageScoreResultET12.setText("")
+                    averageScoreResultET13.setText("")
+                    averageScoreResultET14.setText("")
+                    averageScoreResultET15.setText("")
+                    averageScoreResultET16.setText("")
+                    averageScoreResultET17.setText("")
+                    averageScoreResultET18.setText("")
+
+                    myScoreResultSum.setText("0")
+                    averageScoreResultSum.setText("0")
+                    examNameResultET.setText("")
+
+
+
                 }
                 .setNegativeButton("キャンセル"){_,_ -> }
                 .show()

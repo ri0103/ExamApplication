@@ -13,4 +13,47 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorOnPrimary</item>
         <!-- Customize your theme here. -->
     </style>
+
+
+    <style name="PickerStyle" parent="Theme.AppCompat.Light.Dialog">
+        <!--        <item name="colorAccent">#f0f9ff</item>-->
+        <item name="android:windowBackground">@drawable/picker_dialog_bg</item>
+        <item name="colorControlHighlight">#b3ab1b</item>
+        <item name="colorControlActivated">#bfffb5</item>
+<!--        <item name="colorSecondary">#004f8c</item>-->
+        <item name="colorOnPrimary">#d9ebff</item>
+        <item name="android:textColorPrimary">#ededed</item>
+        <item name="android:textColorSecondary">#ededed</item>
+        <item name="android:textColorPrimaryInverse">#5393bd</item>
+        <item name="android:textColorSecondaryInverse">#262626</item>
+        <item name="fontFamily">@font/mplusregular</item>
+        <item name="android:datePickerStyle">@style/CustomDatePickerStyle</item>
+    </style>
+
+    <style name="CustomDatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
+        <item name="android:headerBackground">@drawable/picker_header_bg</item>
+    </style>
+
+    <style name="TimePickerStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@drawable/picker_dialog_bg</item>
+        <item name="colorControlHighlight">#b3ab1b</item>
+        <item name="colorControlActivated">#bfffb5</item>
+        <item name="colorOnPrimary">#d9ebff</item>
+        <item name="android:textColorPrimary">#ededed</item>
+        <item name="android:textColorSecondary">#ededed</item>
+        <item name="android:textColorPrimaryInverse">#5393bd</item>
+        <item name="android:textColorSecondaryInverse">#262626</item>
+        <item name="fontFamily">@font/mplusregular</item>
+        <item name="android:timePickerStyle">@style/CustomTimePickerStyle</item>
+    </style>
+
+    <style name="CustomTimePickerStyle" parent="@android:style/Widget.Material.Light.TimePicker">
+        <item name="android:headerBackground">@drawable/picker_header_bg</item>
+        <item name="android:numbersBackgroundColor">#5393bd</item>
+    </style>
+
+
+
+
+
 </resources>

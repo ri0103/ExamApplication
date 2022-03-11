@@ -18,7 +18,7 @@
     <color name="blackorwhite">#363636</color>
     <color name="bothblack">#262626</color>
     <color name="bothwhite">#ededed</color>
-    <color name="background_main">#fffff7</color>
+    <color name="background_main">#fffff3</color>
     <color name="menu_bg_color">#b5dfff</color>
     <color name="cell_bg_color">#edfffa</color>
     <color name="cell_title_color">#06003b</color>
@@ -28,6 +28,8 @@
     <color name="delete_red">#ff5252</color>
     <color name="home_save_button_color">#8cc2ff</color>
     <color name="selection_buttons_color">#e3e3e3</color>
+    <color name="picker_bg_color">#f0f9ff</color>
+    <color name="picker_header_color">#3e6d8c</color>
 
     <color name="bg_grey">#ededed</color>
     <color name="bg_red">#fff5f5</color>

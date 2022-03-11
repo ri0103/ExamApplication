@@ -74,7 +74,7 @@ class TodoFragment : Fragment() {
         toDoTitleText.setOnLongClickListener {
             AlertDialog.Builder(this.requireContext())
                 .setTitle("予定の一括削除")
-                .setMessage("すべての予定を削除してもよろしいですか。")
+                .setMessage("すべての予定を削除してもよろしいですか。\n\n注：現時点では、こちらから削除した場合通知は削除されない仕様になっています。。通知も削除したい場合はスワイプでの削除をお願いいたします。")
                 .setPositiveButton("はい"){ _,_ ->
                     deleteToDoFromRealm()
                 }
@@ -132,6 +132,18 @@ class TodoFragment : Fragment() {
 
 
     fun deleteToDoFromRealm() {
+
+
+//        val intent = Intent(activity, Notification::class.java)
+//        val pendingIntent = PendingIntent.getBroadcast(activity, 0, intent,PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_NO_CREATE)
+//
+//
+//        val alarmManager = activity?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+//        if(pendingIntent !=null && alarmManager !=null) {
+//            alarmManager.cancel(pendingIntent)
+//            pendingIntent?.cancel()
+//        }
+
         val task = realm.where(ToDo::class.java).findAll()
         realm.executeTransaction {
                 task.deleteAllFromRealm()

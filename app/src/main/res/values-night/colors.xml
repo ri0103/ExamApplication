@@ -28,6 +28,8 @@
     <color name="delete_red">#ff5252</color>
     <color name="home_save_button_color">#70b3ff</color>
     <color name="selection_buttons_color">#242424</color>
+    <color name="picker_bg_color">#3e6d8c</color>
+    <color name="picker_header_color">#f0f9ff</color>
 
     <color name="bg_grey">#3A3A3A</color>
     <color name="bg_red">#4F0101</color>
