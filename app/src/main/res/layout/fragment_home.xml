@@ -81,10 +81,10 @@
 
     <Button
         android:id="@+id/intentResultActivityButton"
-        android:layout_width="120sp"
-        android:layout_height="60sp"
+        android:layout_width="100sp"
+        android:layout_height="40sp"
         android:backgroundTint="@color/bg_yellow"
-        android:text="試験履歴\n(β版"
+        android:text="試験履歴"
         app:cornerRadius="8sp"
         android:textSize="12sp"
         android:elevation="4sp"
